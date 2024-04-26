@@ -1,0 +1,850 @@
+(set! geometry-lattice (make lattice (basis-size 1.0 0.93759644 0.59954864) (basis1 1.0 0.0 0.0) (basis2 0.0 0.9375964436 0.0) (basis3 0.0 0.0 0.5995486432)))
+(set! k-points (interpolate 1 (list
+
+			(vector3 0.0 0.0 0.0)			;V0
+			(vector3 0.0 0.5 -0.0)			;V1
+			(vector3 0.5 0.5 -0.5)			;V2
+			(vector3 0.5 0.5 -0.0)			;V3
+			(vector3 0.5 0.5 0.5)			;V4
+			(vector3 0.0 0.5 0.5)			;V5
+			(vector3 -0.5 0.5 0.5)			;V6
+			(vector3 -0.5 0.5 0.0)			;V7
+			(vector3 -0.5 0.5 -0.5)			;V8
+			(vector3 0.0 0.5 -0.5)			;V9
+			(vector3 0.5 0.5 -0.5)			;V10
+			(vector3 0.0 0.0 0.0)			;V11
+			(vector3 0.0 -0.0 0.5)			;V12
+			(vector3 0.5 0.5 0.5)			;V13
+			(vector3 0.5 -0.0 0.5)			;V14
+			(vector3 0.5 -0.5 0.5)			;V15
+			(vector3 0.0 -0.5 0.5)			;V16
+			(vector3 -0.5 -0.5 0.5)			;V17
+			(vector3 -0.5 -0.0 0.5)			;V18
+			(vector3 -0.5 0.5 0.5)			;V19
+			(vector3 0.0 0.5 0.5)			;V20
+			(vector3 0.5 0.5 0.5)			;V21
+			(vector3 0.0 0.0 0.0)			;V22
+			(vector3 0.0 0.0 -0.5)			;V23
+			(vector3 0.5 -0.5 -0.5)			;V24
+			(vector3 0.5 0.0 -0.5)			;V25
+			(vector3 0.5 0.5 -0.5)			;V26
+			(vector3 0.0 0.5 -0.5)			;V27
+			(vector3 -0.5 0.5 -0.5)			;V28
+			(vector3 -0.5 0.0 -0.5)			;V29
+			(vector3 -0.5 -0.5 -0.5)			;V30
+			(vector3 0.0 -0.5 -0.5)			;V31
+			(vector3 0.5 -0.5 -0.5)			;V32
+			(vector3 0.0 0.0 0.0)			;V33
+			(vector3 0.5 -0.0 -0.0)			;V34
+			(vector3 0.5 -0.5 -0.5)			;V35
+			(vector3 0.5 -0.5 -0.0)			;V36
+			(vector3 0.5 -0.5 0.5)			;V37
+			(vector3 0.5 -0.0 0.5)			;V38
+			(vector3 0.5 0.5 0.5)			;V39
+			(vector3 0.5 0.5 -0.0)			;V40
+			(vector3 0.5 0.5 -0.5)			;V41
+			(vector3 0.5 0.0 -0.5)			;V42
+			(vector3 0.5 -0.5 -0.5)			;V43
+			(vector3 0.0 0.0 0.0)			;V44
+			(vector3 0.0 -0.5 -0.0)			;V45
+			(vector3 0.5 -0.5 0.5)			;V46
+			(vector3 0.5 -0.5 -0.0)			;V47
+			(vector3 0.5 -0.5 -0.5)			;V48
+			(vector3 0.0 -0.5 -0.5)			;V49
+			(vector3 -0.5 -0.5 -0.5)			;V50
+			(vector3 -0.5 -0.5 0.0)			;V51
+			(vector3 -0.5 -0.5 0.5)			;V52
+			(vector3 0.0 -0.5 0.5)			;V53
+			(vector3 0.5 -0.5 0.5)			;V54
+)))
+(define-param eps 16.0)
+ (define-param r 0.0)
+(define diel (make dielectric (epsilon eps)))
+(set! geometry (list (make sphere (center -0.045844906377851546 -0.22274693504976517 -0.3627836736536372) (radius r) (material diel))
+
+	(make sphere (center 0.07135511059775929 0.23805302722969973 0.4444163036539833) (radius r) (material diel))
+
+	(make sphere (center 0.07135511059775929 0.23805302722969973 -0.3627836736536372) (radius r) (material diel))
+
+	(make sphere (center -0.045844906377851546 -0.22274693504976517 0.4444163036539833) (radius r) (material diel))
+
+	(make sphere (center 0.07135511059775929 -0.22274693504976517 0.4444163036539833) (radius r) (material diel))
+
+	(make sphere (center -0.045844906377851546 0.23805302722969973 -0.3627836736536372) (radius r) (material diel))
+
+	(make sphere (center -0.045844906377851546 0.23805302722969973 0.4444163036539833) (radius r) (material diel))
+
+	(make sphere (center 0.07135511059775929 -0.22274693504976517 -0.3627836736536372) (radius r) (material diel))
+
+	(make sphere (center 0.4541550936127447 0.2772530947364012 0.13721634869092636) (radius r) (material diel))
+
+	(make sphere (center -0.4286448893928368 -0.26194694298012206 -0.05558366649157187) (radius r) (material diel))
+
+	(make sphere (center -0.4286448893928368 -0.26194694298012206 0.13721634869092636) (radius r) (material diel))
+
+	(make sphere (center 0.4541550936127447 0.2772530947364012 -0.05558366649157187) (radius r) (material diel))
+
+	(make sphere (center -0.4286448893928368 0.2772530947364012 -0.05558366649157187) (radius r) (material diel))
+
+	(make sphere (center 0.4541550936127447 -0.26194694298012206 0.13721634869092636) (radius r) (material diel))
+
+	(make sphere (center 0.4541550936127447 -0.26194694298012206 -0.05558366649157187) (radius r) (material diel))
+
+	(make sphere (center -0.4286448893928368 0.2772530947364012 0.13721634869092636) (radius r) (material diel))
+
+	(make sphere (center -0.2802448956046031 -0.3358469422187528 -0.20628366940607146) (radius r) (material diel))
+
+	(make sphere (center 0.3057550849665078 0.3511530791310942 0.28791632180430937) (radius r) (material diel))
+
+	(make sphere (center 0.3057550849665078 0.3511530791310942 -0.20628366940607146) (radius r) (material diel))
+
+	(make sphere (center -0.2802448956046031 -0.3358469422187528 0.28791632180430937) (radius r) (material diel))
+
+	(make sphere (center 0.3057550849665078 -0.3358469422187528 0.28791632180430937) (radius r) (material diel))
+
+	(make sphere (center -0.2802448956046031 0.3511530791310942 -0.20628366940607146) (radius r) (material diel))
+
+	(make sphere (center -0.2802448956046031 0.3511530791310942 0.28791632180430937) (radius r) (material diel))
+
+	(make sphere (center 0.3057550849665078 -0.3358469422187528 -0.20628366940607146) (radius r) (material diel))
+
+	(make sphere (center 0.21975511928161146 0.1641530428751255 0.29371633060333946) (radius r) (material diel))
+
+	(make sphere (center -0.1942449150617036 -0.14884692088695922 -0.21208367820510146) (radius r) (material diel))
+
+	(make sphere (center -0.1942449150617036 -0.14884692088695922 0.29371633060333946) (radius r) (material diel))
+
+	(make sphere (center 0.21975511928161146 0.1641530428751255 -0.21208367820510146) (radius r) (material diel))
+
+	(make sphere (center -0.1942449150617036 0.1641530428751255 -0.21208367820510146) (radius r) (material diel))
+
+	(make sphere (center 0.21975511928161146 -0.14884692088695922 0.29371633060333946) (radius r) (material diel))
+
+	(make sphere (center 0.21975511928161146 -0.14884692088695922 -0.21208367820510146) (radius r) (material diel))
+
+	(make sphere (center -0.1942449150617036 0.1641530428751255 0.29371633060333946) (radius r) (material diel))
+
+	(make sphere (center -0.23794489482500364 -0.2820469404943037 -0.3611836763644421) (radius r) (material diel))
+
+	(make sphere (center 0.2634550990825267 0.29735309229070156 0.4428163362286439) (radius r) (material diel))
+
+	(make sphere (center 0.2634550990825267 0.29735309229070156 -0.3611836763644421) (radius r) (material diel))
+
+	(make sphere (center -0.23794489482500364 -0.2820469404943037 0.4428163362286439) (radius r) (material diel))
+
+	(make sphere (center 0.2634550990825267 -0.2820469404943037 0.4428163362286439) (radius r) (material diel))
+
+	(make sphere (center -0.23794489482500364 0.29735309229070156 -0.3611836763644421) (radius r) (material diel))
+
+	(make sphere (center -0.23794489482500364 0.29735309229070156 0.4428163362286439) (radius r) (material diel))
+
+	(make sphere (center 0.2634550990825267 -0.2820469404943037 -0.3611836763644421) (radius r) (material diel))
+
+	(make sphere (center 0.26205510516559244 0.21795302971551805 0.1388163161790048) (radius r) (material diel))
+
+	(make sphere (center -0.2365449009456847 -0.20264693753558355 -0.05718366378076695) (radius r) (material diel))
+
+	(make sphere (center -0.2365449009456847 -0.20264693753558355 0.1388163161790048) (radius r) (material diel))
+
+	(make sphere (center 0.26205510516559244 0.21795302971551805 -0.05718366378076695) (radius r) (material diel))
+
+	(make sphere (center -0.2365449009456847 0.21795302971551805 -0.05718366378076695) (radius r) (material diel))
+
+	(make sphere (center 0.26205510516559244 -0.20264693753558355 0.1388163161790048) (radius r) (material diel))
+
+	(make sphere (center 0.26205510516559244 -0.20264693753558355 -0.05718366378076695) (radius r) (material diel))
+
+	(make sphere (center -0.2365449009456847 0.21795302971551805 0.1388163161790048) (radius r) (material diel))
+
+	(make sphere (center -0.4305448992006028 -0.3862469385682258 -0.055983673264149714) (radius r) (material diel))
+
+	(make sphere (center 0.4560551109059349 0.40155303821024785 0.13761629586127122) (radius r) (material diel))
+
+	(make sphere (center 0.4560551109059349 0.40155303821024785 -0.055983673264149714) (radius r) (material diel))
+
+	(make sphere (center -0.4305448992006028 -0.3862469385682258 0.13761629586127122) (radius r) (material diel))
+
+	(make sphere (center 0.4560551109059349 -0.3862469385682258 0.13761629586127122) (radius r) (material diel))
+
+	(make sphere (center -0.4305448992006028 0.40155303821024785 -0.055983673264149714) (radius r) (material diel))
+
+	(make sphere (center -0.4305448992006028 0.40155303821024785 0.13761629586127122) (radius r) (material diel))
+
+	(make sphere (center 0.4560551109059349 -0.3862469385682258 -0.055983673264149714) (radius r) (material diel))
+
+	(make sphere (center 0.0694550933421842 0.11375308379597177 0.4440163565463776) (radius r) (material diel))
+
+	(make sphere (center -0.0439448891222764 -0.09844693199957394 -0.3623836743470232) (radius r) (material diel))
+
+	(make sphere (center -0.0439448891222764 -0.09844693199957394 0.4440163565463776) (radius r) (material diel))
+
+	(make sphere (center 0.0694550933421842 0.11375308379597177 -0.3623836743470232) (radius r) (material diel))
+
+	(make sphere (center -0.0439448891222764 0.11375308379597177 -0.3623836743470232) (radius r) (material diel))
+
+	(make sphere (center 0.0694550933421842 -0.09844693199957394 0.4440163565463776) (radius r) (material diel))
+
+	(make sphere (center 0.0694550933421842 -0.09844693199957394 -0.3623836743470232) (radius r) (material diel))
+
+	(make sphere (center -0.0439448891222764 0.11375308379597177 0.4440163565463776) (radius r) (material diel))
+
+	(make sphere (center -0.289944895901024 -0.17564692750861194 -0.31008366818498734) (radius r) (material diel))
+
+	(make sphere (center 0.31545508522531346 0.19095307930500977 0.39171632058322525) (radius r) (material diel))
+
+	(make sphere (center 0.31545508522531346 0.19095307930500977 -0.31008366818498734) (radius r) (material diel))
+
+	(make sphere (center -0.289944895901024 -0.17564692750861194 0.39171632058322525) (radius r) (material diel))
+
+	(make sphere (center 0.31545508522531346 -0.17564692750861194 0.39171632058322525) (radius r) (material diel))
+
+	(make sphere (center -0.289944895901024 0.19095307930500977 -0.31008366818498734) (radius r) (material diel))
+
+	(make sphere (center -0.289944895901024 0.19095307930500977 0.39171632058322525) (radius r) (material diel))
+
+	(make sphere (center 0.31545508522531346 -0.17564692750861194 -0.31008366818498734) (radius r) (material diel))
+
+	(make sphere (center 0.21005511898519053 0.32435304270120974 0.18991633182442358) (radius r) (material diel))
+
+	(make sphere (center -0.18454491476528267 -0.30904695048115655 -0.10828367942618555) (radius r) (material diel))
+
+	(make sphere (center -0.18454491476528267 -0.30904695048115655 0.18991633182442358) (radius r) (material diel))
+
+	(make sphere (center 0.21005511898519053 0.32435304270120974 -0.10828367942618555) (radius r) (material diel))
+
+	(make sphere (center -0.18454491476528267 0.32435304270120974 -0.10828367942618555) (radius r) (material diel))
+
+	(make sphere (center 0.21005511898519053 -0.30904695048115655 0.18991633182442358) (radius r) (material diel))
+
+	(make sphere (center 0.21005511898519053 -0.30904695048115655 -0.10828367942618555) (radius r) (material diel))
+
+	(make sphere (center -0.18454491476528267 0.32435304270120974 0.18991633182442358) (radius r) (material diel))
+
+	(make sphere (center -0.33334490040479314 -0.43094693898542186 -0.12928367731038787) (radius r) (material diel))
+
+	(make sphere (center 0.3588550748334643 0.44625306470463183 0.21091629984477012) (radius r) (material diel))
+
+	(make sphere (center 0.3588550748334643 0.44625306470463183 -0.12928367731038787) (radius r) (material diel))
+
+	(make sphere (center -0.33334490040479314 -0.43094693898542186 0.21091629984477012) (radius r) (material diel))
+
+	(make sphere (center 0.3588550748334643 -0.43094693898542186 0.21091629984477012) (radius r) (material diel))
+
+	(make sphere (center -0.33334490040479314 0.44625306470463183 -0.12928367731038787) (radius r) (material diel))
+
+	(make sphere (center -0.33334490040479314 0.44625306470463183 0.21091629984477012) (radius r) (material diel))
+
+	(make sphere (center 0.3588550748334643 -0.43094693898542186 -0.12928367731038787) (radius r) (material diel))
+
+	(make sphere (center 0.16665512937703958 0.06905305726146899 0.37071635250013957) (radius r) (material diel))
+
+	(make sphere (center -0.14114489536589514 -0.053746935273302876 -0.2890836703007851) (radius r) (material diel))
+
+	(make sphere (center -0.14114489536589514 -0.053746935273302876 0.37071635250013957) (radius r) (material diel))
+
+	(make sphere (center 0.16665512937703958 0.06905305726146899 -0.2890836703007851) (radius r) (material diel))
+
+	(make sphere (center -0.14114489536589514 0.06905305726146899 -0.2890836703007851) (radius r) (material diel))
+
+	(make sphere (center 0.16665512937703958 -0.053746935273302876 0.37071635250013957) (radius r) (material diel))
+
+	(make sphere (center 0.16665512937703958 -0.053746935273302876 -0.2890836703007851) (radius r) (material diel))
+
+	(make sphere (center -0.14114489536589514 0.06905305726146899 0.37071635250013957) (radius r) (material diel))
+
+	(make sphere (center -0.1399449048412162 -0.25524693387265096 -0.2640836792877039) (radius r) (material diel))
+
+	(make sphere (center 0.16545510909873912 0.2705530558608172 0.34571631675401393) (radius r) (material diel))
+
+	(make sphere (center 0.16545510909873912 0.2705530558608172 -0.2640836792877039) (radius r) (material diel))
+
+	(make sphere (center -0.1399449048412162 -0.25524693387265096 0.34571631675401393) (radius r) (material diel))
+
+	(make sphere (center 0.16545510909873912 -0.25524693387265096 0.34571631675401393) (radius r) (material diel))
+
+	(make sphere (center -0.1399449048412162 0.2705530558608172 -0.2640836792877039) (radius r) (material diel))
+
+	(make sphere (center -0.1399449048412162 0.2705530558608172 0.34571631675401393) (radius r) (material diel))
+
+	(make sphere (center 0.16545510909873912 -0.25524693387265096 -0.2640836792877039) (radius r) (material diel))
+
+	(make sphere (center 0.36005509514938 0.24475306614540254 0.2359163356536349) (radius r) (material diel))
+
+	(make sphere (center -0.33454489092947215 -0.22944694415723627 -0.15428368325539693) (radius r) (material diel))
+
+	(make sphere (center -0.33454489092947215 -0.22944694415723627 0.2359163356536349) (radius r) (material diel))
+
+	(make sphere (center 0.36005509514938 0.24475306614540254 -0.15428368325539693) (radius r) (material diel))
+
+	(make sphere (center -0.33454489092947215 0.24475306614540254 -0.15428368325539693) (radius r) (material diel))
+
+	(make sphere (center 0.36005509514938 -0.22944694415723627 0.2359163356536349) (radius r) (material diel))
+
+	(make sphere (center 0.36005509514938 -0.22944694415723627 -0.15428368325539693) (radius r) (material diel))
+
+	(make sphere (center -0.33454489092947215 0.24475306614540254 0.2359163356536349) (radius r) (material diel))
+
+	(make sphere (center -0.2750448970053705 -0.42844693764095226 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.30055511612089664 0.44375306709120604 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.30055511612089664 -0.42844693764095226 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.2750448970053705 0.44375306709120604 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.22495508808960735 0.07155305487489488 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.19944488386969955 -0.05624693288672866 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.19944488386969955 0.07155305487489488 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.22495508808960735 -0.05624693288672866 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.30854489782046357 -0.10214694992455658 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.33405513186922325 0.1174530421044912 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.33405513186922325 -0.10214694992455658 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.30854489782046357 0.1174530421044912 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.19145507237889586 0.3978530798616097 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.16594489791260958 -0.3825469280652119 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.16594489791260958 0.3978530798616097 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.19145507237889586 -0.3825469280652119 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.0826449034698356 -0.2584469433043959 -0.3028836804149791) (radius r) (material diel))
+
+	(make sphere (center 0.1081550778985067 0.27375305040850567 0.38451631788128926) (radius r) (material diel))
+
+	(make sphere (center 0.1081550778985067 0.27375305040850567 -0.3028836804149791) (radius r) (material diel))
+
+	(make sphere (center -0.0826449034698356 -0.2584469433043959 0.38451631788128926) (radius r) (material diel))
+
+	(make sphere (center 0.1081550778985067 -0.2584469433043959 0.38451631788128926) (radius r) (material diel))
+
+	(make sphere (center -0.0826449034698356 0.27375305040850567 -0.3028836804149791) (radius r) (material diel))
+
+	(make sphere (center -0.0826449034698356 0.27375305040850567 0.38451631788128926) (radius r) (material diel))
+
+	(make sphere (center 0.1081550778985067 -0.2584469433043959 -0.3028836804149791) (radius r) (material diel))
+
+	(make sphere (center 0.4173551263496124 0.24155307159771394 0.19711633446362042) (radius r) (material diel))
+
+	(make sphere (center -0.39184489230085273 -0.22624694960954783 -0.11548368212812166) (radius r) (material diel))
+
+	(make sphere (center -0.39184489230085273 -0.22624694960954783 0.19711633446362042) (radius r) (material diel))
+
+	(make sphere (center 0.4173551263496124 0.24155307159771394 -0.11548368212812166) (radius r) (material diel))
+
+	(make sphere (center -0.39184489230085273 0.24155307159771394 -0.11548368212812166) (radius r) (material diel))
+
+	(make sphere (center 0.4173551263496124 -0.22624694960954783 0.19711633446362042) (radius r) (material diel))
+
+	(make sphere (center 0.4173551263496124 -0.22624694960954783 -0.11548368212812166) (radius r) (material diel))
+
+	(make sphere (center -0.39184489230085273 0.24155307159771394 0.19711633446362042) (radius r) (material diel))
+
+	(make sphere (center -0.2385449050017691 -0.302746933260148 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.2640550794304402 0.31805307013237066 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.2640550794304402 -0.302746933260148 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.2385449050017691 0.31805307013237066 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.261455124817679 0.19725305183373026 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.23594489076891922 -0.1819469298455641 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.23594489076891922 0.19725305183373026 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.261455124817679 -0.1819469298455641 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.2647449014654176 -0.49234693900391097 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.2902551355141773 -0.49234693900391097 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.2352550687339418 0.0076530610141424815 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.2097448943052707 0.0076530610141424815 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.05374490597282805 -0.24264694408280316 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.07925511023035098 0.257953051186913 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.07925511023035098 -0.24264694408280316 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.05374490597282805 0.257953051186913 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.44625509401776814 0.25735307081930675 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.4207448897602451 -0.24204694883114053 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.4207448897602451 0.25735307081930675 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.44625509401776814 -0.24204694883114053 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 -0.39354693546527186 -0.0898836659615066) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 0.4088530574534381 0.17151631835974457) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 0.4088530574534381 -0.0898836659615066) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 -0.39354693546527186 0.17151631835974457) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 0.10645306451266284 0.410116333985165) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 -0.09114694252449662 -0.32848368164966635) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 -0.09114694252449662 0.410116333985165) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 0.10645306451266284 -0.32848368164966635) (radius r) (material diel))
+
+	(make sphere (center -0.32194490114067054 -0.13864692702793718 -0.37698367560848123) (radius r) (material diel))
+
+	(make sphere (center 0.3474550904649601 0.1539530192078717 0.45861633540994395) (radius r) (material diel))
+
+	(make sphere (center 0.3474550904649601 0.1539530192078717 -0.37698367560848123) (radius r) (material diel))
+
+	(make sphere (center -0.32194490114067054 -0.13864692702793718 0.45861633540994395) (radius r) (material diel))
+
+	(make sphere (center 0.3474550904649601 -0.13864692702793718 0.45861633540994395) (radius r) (material diel))
+
+	(make sphere (center -0.32194490114067054 0.1539530192078717 -0.37698367560848123) (radius r) (material diel))
+
+	(make sphere (center -0.32194490114067054 0.1539530192078717 0.45861633540994395) (radius r) (material diel))
+
+	(make sphere (center 0.3474550904649601 -0.13864692702793718 -0.37698367560848123) (radius r) (material diel))
+
+	(make sphere (center 0.1780551137455439 0.3613531027582291 0.12301631693496573) (radius r) (material diel))
+
+	(make sphere (center -0.1525449095256361 -0.34604695096183136 -0.04138366453672776) (radius r) (material diel))
+
+	(make sphere (center -0.1525449095256361 -0.34604695096183136 0.12301631693496573) (radius r) (material diel))
+
+	(make sphere (center 0.1780551137455439 0.3613531027582291 -0.04138366453672776) (radius r) (material diel))
+
+	(make sphere (center -0.1525449095256361 0.3613531027582291 -0.04138366453672776) (radius r) (material diel))
+
+	(make sphere (center 0.1780551137455439 -0.34604695096183136 0.12301631693496573) (radius r) (material diel))
+
+	(make sphere (center 0.1780551137455439 -0.34604695096183136 -0.04138366453672776) (radius r) (material diel))
+
+	(make sphere (center -0.1525449095256361 0.3613531027582291 0.12301631693496573) (radius r) (material diel))
+
+	(make sphere (center -0.30624490360923 -0.41174693807977797 -0.0426836716784173) (radius r) (material diel))
+
+	(make sphere (center 0.3317551078291378 0.4270530377218 0.12431635381503248) (radius r) (material diel))
+
+	(make sphere (center 0.3317551078291378 0.4270530377218 -0.0426836716784173) (radius r) (material diel))
+
+	(make sphere (center -0.30624490360923 -0.41174693807977797 0.12431635381503248) (radius r) (material diel))
+
+	(make sphere (center 0.3317551078291378 -0.41174693807977797 0.12431635381503248) (radius r) (material diel))
+
+	(make sphere (center -0.30624490360923 0.4270530377218 -0.0426836716784173) (radius r) (material diel))
+
+	(make sphere (center -0.30624490360923 0.4270530377218 0.12431635381503248) (radius r) (material diel))
+
+	(make sphere (center 0.3317551078291378 -0.41174693807977797 -0.0426836716784173) (radius r) (material diel))
+
+	(make sphere (center 0.19375509638136618 0.08825308428441953 0.4573162985298771) (radius r) (material diel))
+
+	(make sphere (center -0.16824489216145838 -0.07294693248802164 -0.37568367593275565) (radius r) (material diel))
+
+	(make sphere (center -0.16824489216145838 -0.07294693248802164 0.4573162985298771) (radius r) (material diel))
+
+	(make sphere (center 0.19375509638136618 0.08825308428441953 -0.37568367593275565) (radius r) (material diel))
+
+	(make sphere (center -0.16824489216145838 0.08825308428441953 -0.37568367593275565) (radius r) (material diel))
+
+	(make sphere (center 0.19375509638136618 -0.07294693248802164 0.4573162985298771) (radius r) (material diel))
+
+	(make sphere (center 0.19375509638136618 -0.07294693248802164 -0.37568367593275565) (radius r) (material diel))
+
+	(make sphere (center -0.16824489216145838 0.08825308428441953 0.4573162985298771) (radius r) (material diel))
+
+	(make sphere (center -0.3932449011134052 -0.4215469400523375 -0.11678365940595548) (radius r) (material diel))
+
+	(make sphere (center 0.4187551202289314 0.4368530546185349 0.1984163118041935) (radius r) (material diel))
+
+	(make sphere (center 0.4187551202289314 0.4368530546185349 -0.11678365940595548) (radius r) (material diel))
+
+	(make sphere (center -0.3932449011134052 -0.4215469400523375 0.1984163118041935) (radius r) (material diel))
+
+	(make sphere (center 0.4187551202289314 -0.4215469400523375 0.1984163118041935) (radius r) (material diel))
+
+	(make sphere (center -0.3932449011134052 0.4368530546185349 -0.11678365940595548) (radius r) (material diel))
+
+	(make sphere (center -0.3932449011134052 0.4368530546185349 0.1984163118041935) (radius r) (material diel))
+
+	(make sphere (center 0.4187551202289314 -0.4215469400523375 -0.11678365940595548) (radius r) (material diel))
+
+	(make sphere (center 0.10675508398157257 0.07845306738768482 0.38321634060345544) (radius r) (material diel))
+
+	(make sphere (center -0.08124487976166483 -0.0631469453995186 -0.3015836882052174) (radius r) (material diel))
+
+	(make sphere (center -0.08124487976166483 -0.0631469453995186 0.38321634060345544) (radius r) (material diel))
+
+	(make sphere (center 0.10675508398157257 0.07845306738768482 -0.3015836882052174) (radius r) (material diel))
+
+	(make sphere (center -0.08124487976166483 0.07845306738768482 -0.3015836882052174) (radius r) (material diel))
+
+	(make sphere (center 0.10675508398157257 -0.0631469453995186 0.38321634060345544) (radius r) (material diel))
+
+	(make sphere (center 0.10675508398157257 -0.0631469453995186 -0.3015836882052174) (radius r) (material diel))
+
+	(make sphere (center -0.08124487976166483 0.07845306738768482 0.38321634060345544) (radius r) (material diel))
+
+	(make sphere (center -0.3100448934335253 -0.3938469405531908 -0.2058836626334936) (radius r) (material diel))
+
+	(make sphere (center 0.3355550827578148 0.4091530476573005 0.2875163150317315) (radius r) (material diel))
+
+	(make sphere (center 0.3355550827578148 0.4091530476573005 -0.2058836626334936) (radius r) (material diel))
+
+	(make sphere (center -0.3100448934335253 -0.3938469405531908 0.2875163150317315) (radius r) (material diel))
+
+	(make sphere (center 0.3355550827578148 -0.3938469405531908 0.2875163150317315) (radius r) (material diel))
+
+	(make sphere (center -0.3100448934335253 0.4091530476573005 -0.2058836626334936) (radius r) (material diel))
+
+	(make sphere (center -0.3100448934335253 0.4091530476573005 0.2875163150317315) (radius r) (material diel))
+
+	(make sphere (center 0.3355550827578148 -0.3938469405531908 -0.2058836626334936) (radius r) (material diel))
+
+	(make sphere (center 0.1899551214903044 0.10615307434891913 0.29411633737591736) (radius r) (material diel))
+
+	(make sphere (center -0.16444491723278137 -0.09084695236075291 -0.21248368497767936) (radius r) (material diel))
+
+	(make sphere (center -0.16444491723278137 -0.09084695236075291 0.29411633737591736) (radius r) (material diel))
+
+	(make sphere (center 0.1899551214903044 0.10615307434891913 -0.21248368497767936) (radius r) (material diel))
+
+	(make sphere (center -0.16444491723278137 0.10615307434891913 -0.21248368497767936) (radius r) (material diel))
+
+	(make sphere (center 0.1899551214903044 -0.09084695236075291 0.29411633737591736) (radius r) (material diel))
+
+	(make sphere (center 0.1899551214903044 -0.09084695236075291 -0.21248368497767936) (radius r) (material diel))
+
+	(make sphere (center -0.16444491723278137 0.10615307434891913 0.29411633737591736) (radius r) (material diel))
+
+	(make sphere (center -0.2635448960451203 -0.32894694463013807 -0.3040836709315963) (radius r) (material diel))
+
+	(make sphere (center 0.2890551151982616 0.3442530666183042 0.38571633819902285) (radius r) (material diel))
+
+	(make sphere (center 0.2890551151982616 0.3442530666183042 -0.3040836709315963) (radius r) (material diel))
+
+	(make sphere (center -0.2635448960451203 -0.32894694463013807 0.38571633819902285) (radius r) (material diel))
+
+	(make sphere (center 0.2890551151982616 -0.32894694463013807 0.38571633819902285) (radius r) (material diel))
+
+	(make sphere (center -0.2635448960451203 0.3442530666183042 -0.3040836709315963) (radius r) (material diel))
+
+	(make sphere (center -0.2635448960451203 0.3442530666183042 0.38571633819902285) (radius r) (material diel))
+
+	(make sphere (center 0.2890551151982616 -0.32894694463013807 -0.3040836709315963) (radius r) (material diel))
+
+	(make sphere (center 0.2364550890498574 0.17105305538791532 0.19591631414588673) (radius r) (material diel))
+
+	(make sphere (center -0.21094488482994972 -0.15574693335963047 -0.11428366181038802) (radius r) (material diel))
+
+	(make sphere (center -0.21094488482994972 -0.15574693335963047 0.19591631414588673) (radius r) (material diel))
+
+	(make sphere (center 0.2364550890498574 0.17105305538791532 -0.11428366181038802) (radius r) (material diel))
+
+	(make sphere (center -0.21094488482994972 0.17105305538791532 -0.11428366181038802) (radius r) (material diel))
+
+	(make sphere (center 0.2364550890498574 -0.15574693335963047 0.19591631414588673) (radius r) (material diel))
+
+	(make sphere (center 0.2364550890498574 -0.15574693335963047 -0.11428366181038802) (radius r) (material diel))
+
+	(make sphere (center -0.21094488482994972 0.17105305538791532 0.19591631414588673) (radius r) (material diel))
+
+	(make sphere (center -0.17784490565737004 -0.279346939475559 -0.336383673805722) (radius r) (material diel))
+
+	(make sphere (center 0.20335513970612967 0.2946530614637251 0.4180163336071847) (radius r) (material diel))
+
+	(make sphere (center 0.20335513970612967 0.2946530614637251 -0.336383673805722) (radius r) (material diel))
+
+	(make sphere (center -0.17784490565737004 -0.279346939475559 0.4180163336071847) (radius r) (material diel))
+
+	(make sphere (center 0.20335513970612967 -0.279346939475559 0.4180163336071847) (radius r) (material diel))
+
+	(make sphere (center -0.17784490565737004 0.2946530614637251 -0.336383673805722) (radius r) (material diel))
+
+	(make sphere (center -0.17784490565737004 0.2946530614637251 0.4180163336071847) (radius r) (material diel))
+
+	(make sphere (center 0.20335513970612967 -0.279346939475559 -0.336383673805722) (radius r) (material diel))
+
+	(make sphere (center 0.32215506454198944 0.2206530605023757 0.16361631873772498) (radius r) (material diel))
+
+	(make sphere (center -0.2966448901133183 -0.20534693851420943 -0.08198366640222621) (radius r) (material diel))
+
+	(make sphere (center -0.2966448901133183 -0.20534693851420943 0.16361631873772498) (radius r) (material diel))
+
+	(make sphere (center 0.32215506454198944 0.2206530605023757 -0.08198366640222621) (radius r) (material diel))
+
+	(make sphere (center -0.2966448901133183 0.2206530605023757 -0.08198366640222621) (radius r) (material diel))
+
+	(make sphere (center 0.32215506454198944 -0.20534693851420943 0.16361631873772498) (radius r) (material diel))
+
+	(make sphere (center 0.32215506454198944 -0.20534693851420943 -0.08198366640222621) (radius r) (material diel))
+
+	(make sphere (center -0.2966448901133183 0.2206530605023757 0.16361631873772498) (radius r) (material diel))
+
+	(make sphere (center -0.2643448946809074 -0.22324692861882778 -0.3651836770220241) (radius r) (material diel))
+
+	(make sphere (center 0.2898550691095784 0.238553050606994 0.4468163442894507) (radius r) (material diel))
+
+	(make sphere (center 0.2898550691095784 0.238553050606994 -0.3651836770220241) (radius r) (material diel))
+
+	(make sphere (center -0.2643448946809074 -0.22324692861882778 0.4468163442894507) (radius r) (material diel))
+
+	(make sphere (center 0.2898550691095784 -0.22324692861882778 0.4468163442894507) (radius r) (material diel))
+
+	(make sphere (center -0.2643448946809074 0.238553050606994 -0.3651836770220241) (radius r) (material diel))
+
+	(make sphere (center -0.2643448946809074 0.238553050606994 0.4468163442894507) (radius r) (material diel))
+
+	(make sphere (center 0.2898550691095784 -0.22324692861882778 -0.3651836770220241) (radius r) (material diel))
+
+	(make sphere (center 0.23565513510092556 0.2767530713992256 0.13481630805545886) (radius r) (material diel))
+
+	(make sphere (center -0.210144901089781 -0.2614469494110595 -0.0531836557199602) (radius r) (material diel))
+
+	(make sphere (center -0.210144901089781 -0.2614469494110595 0.13481630805545886) (radius r) (material diel))
+
+	(make sphere (center 0.23565513510092556 0.2767530713992256 -0.0531836557199602) (radius r) (material diel))
+
+	(make sphere (center -0.210144901089781 0.2767530713992256 -0.0531836557199602) (radius r) (material diel))
+
+	(make sphere (center 0.23565513510092556 -0.2614469494110595 0.13481630805545886) (radius r) (material diel))
+
+	(make sphere (center 0.23565513510092556 -0.2614469494110595 -0.0531836557199602) (radius r) (material diel))
+
+	(make sphere (center -0.210144901089781 0.2767530713992256 0.13481630805545886) (radius r) (material diel))
+
+	(make sphere (center -0.42204489687667 -0.4094469364095834 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.4475551309254297 0.42475307328180606 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.4475551309254297 -0.4094469364095834 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.42204489687667 0.42475307328180606 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.07795507332268942 0.09055304868429476 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.052444898894018266 -0.07524692669612859 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.052444898894018266 0.09055304868429476 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.07795507332268942 -0.07524692669612859 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 -0.2335469390445063 -0.3441836717345971) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 0.24885303122444086 0.42581631666687114) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 0.24885303122444086 -0.3441836717345971) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 -0.2335469390445063 0.42581631666687114) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 0.26645309074165996 0.1558163357407778) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 -0.2511469389452622 -0.07418368334253977) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 -0.2511469389452622 0.1558163357407778) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 0.26645309074165996 -0.07418368334253977) (radius r) (material diel))
+
+	(make sphere (center -0.22444488980866906 -0.39534693614443495 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.24995512385742874 0.41065305813260117 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.24995512385742874 -0.39534693614443495 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.22444488980866906 0.41065305813260117 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.2755550803906904 0.10465306387361845 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.2500449059244041 -0.08934694184533354 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.2500449059244041 0.10465306387361845 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.2755550803906904 -0.08934694184533354 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.06224488595333322 -0.16014694825899461 -0.35218367304976117) (radius r) (material diel))
+
+	(make sphere (center 0.0877550902108562 0.17545307024716067 0.4338163328512238) (radius r) (material diel))
+
+	(make sphere (center 0.0877550902108562 0.17545307024716067 -0.35218367304976117) (radius r) (material diel))
+
+	(make sphere (center -0.06224488595333322 -0.16014694825899461 0.4338163328512238) (radius r) (material diel))
+
+	(make sphere (center 0.0877550902108562 -0.16014694825899461 0.4338163328512238) (radius r) (material diel))
+
+	(make sphere (center -0.06224488595333322 0.17545307024716067 -0.35218367304976117) (radius r) (material diel))
+
+	(make sphere (center -0.06224488595333322 0.17545307024716067 0.4338163328512238) (radius r) (material diel))
+
+	(make sphere (center 0.0877550902108562 -0.16014694825899461 -0.35218367304976117) (radius r) (material diel))
+
+	(make sphere (center 0.4377551140372629 0.33985305175905883 0.1478163194936859) (radius r) (material diel))
+
+	(make sphere (center -0.41224490981735507 -0.3245469297708926 -0.06618366715818708) (radius r) (material diel))
+
+	(make sphere (center -0.41224490981735507 -0.3245469297708926 0.1478163194936859) (radius r) (material diel))
+
+	(make sphere (center 0.4377551140372629 0.33985305175905883 -0.06618366715818708) (radius r) (material diel))
+
+	(make sphere (center -0.41224490981735507 0.33985305175905883 -0.06618366715818708) (radius r) (material diel))
+
+	(make sphere (center 0.4377551140372629 -0.3245469297708926 0.1478163194936859) (radius r) (material diel))
+
+	(make sphere (center 0.4377551140372629 -0.3245469297708926 -0.06618366715818708) (radius r) (material diel))
+
+	(make sphere (center -0.41224490981735507 0.33985305175905883 0.1478163194936859) (radius r) (material diel))
+
+	(make sphere (center -0.23404490330458078 -0.34154693441998585 -0.1378836738524909) (radius r) (material diel))
+
+	(make sphere (center 0.2595551075621038 0.3568530712922085 0.21951629644961235) (radius r) (material diel))
+
+	(make sphere (center 0.2595551075621038 0.3568530712922085 -0.1378836738524909) (radius r) (material diel))
+
+	(make sphere (center -0.23404490330458078 -0.34154693441998585 0.21951629644961235) (radius r) (material diel))
+
+	(make sphere (center 0.2595551075621038 -0.34154693441998585 0.21951629644961235) (radius r) (material diel))
+
+	(make sphere (center -0.23404490330458078 0.3568530712922085 -0.1378836738524909) (radius r) (material diel))
+
+	(make sphere (center -0.23404490330458078 0.3568530712922085 0.21951629644961235) (radius r) (material diel))
+
+	(make sphere (center 0.2595551075621038 -0.34154693441998585 -0.1378836738524909) (radius r) (material diel))
+
+	(make sphere (center 0.2659550966860154 0.1584530507140111 0.3621163559580365) (radius r) (material diel))
+
+	(make sphere (center -0.24044489242849235 -0.14314692868572615 -0.280483673758682) (radius r) (material diel))
+
+	(make sphere (center -0.24044489242849235 -0.14314692868572615 0.3621163559580365) (radius r) (material diel))
+
+	(make sphere (center 0.2659550966860154 0.1584530507140111 -0.280483673758682) (radius r) (material diel))
+
+	(make sphere (center -0.24044489242849235 0.1584530507140111 -0.280483673758682) (radius r) (material diel))
+
+	(make sphere (center 0.2659550966860154 -0.14314692868572615 0.3621163559580365) (radius r) (material diel))
+
+	(make sphere (center 0.2659550966860154 -0.14314692868572615 -0.280483673758682) (radius r) (material diel))
+
+	(make sphere (center -0.24044489242849235 0.1584530507140111 0.3621163559580365) (radius r) (material diel))
+
+	(make sphere (center -0.3161448923646726 -0.49234693900391097 -0.14988366835927308) (radius r) (material diel))
+
+	(make sphere (center 0.34165508172657727 -0.49234693900391097 0.23151632075751105) (radius r) (material diel))
+
+	(make sphere (center 0.34165508172657727 -0.49234693900391097 -0.14988366835927308) (radius r) (material diel))
+
+	(make sphere (center -0.3161448923646726 -0.49234693900391097 0.23151632075751105) (radius r) (material diel))
+
+	(make sphere (center 0.18385512252154196 0.0076530610141424815 0.3501163316501378) (radius r) (material diel))
+
+	(make sphere (center -0.15834491830163416 0.0076530610141424815 -0.26848367925189986) (radius r) (material diel))
+
+	(make sphere (center -0.15834491830163416 0.0076530610141424815 0.3501163316501378) (radius r) (material diel))
+
+	(make sphere (center 0.18385512252154196 0.0076530610141424815 -0.26848367925189986) (radius r) (material diel))
+
+	(make sphere (center -0.33144489804483634 -0.1917469467422988 -0.23838367635987215) (radius r) (material diel))
+
+	(make sphere (center 0.35695511719797773 0.20705306873046497 0.3200163436272987) (radius r) (material diel))
+
+	(make sphere (center 0.35695511719797773 0.20705306873046497 -0.23838367635987215) (radius r) (material diel))
+
+	(make sphere (center -0.33144489804483634 -0.1917469467422988 0.3200163436272987) (radius r) (material diel))
+
+	(make sphere (center 0.35695511719797773 -0.1917469467422988 0.3200163436272987) (radius r) (material diel))
+
+	(make sphere (center -0.33144489804483634 0.20705306873046497 -0.23838367635987215) (radius r) (material diel))
+
+	(make sphere (center -0.33144489804483634 0.20705306873046497 0.3200163436272987) (radius r) (material diel))
+
+	(make sphere (center 0.35695511719797773 -0.1917469467422988 -0.23838367635987215) (radius r) (material diel))
+
+	(make sphere (center 0.1685550870501415 0.30825305327575453 0.2616163087176109) (radius r) (material diel))
+
+	(make sphere (center -0.1430448828302336 -0.2929469312875884 -0.1799836563821121) (radius r) (material diel))
+
+	(make sphere (center -0.1430448828302336 -0.2929469312875884 0.2616163087176109) (radius r) (material diel))
+
+	(make sphere (center 0.1685550870501415 0.30825305327575453 -0.1799836563821121) (radius r) (material diel))
+
+	(make sphere (center -0.1430448828302336 0.30825305327575453 -0.1799836563821121) (radius r) (material diel))
+
+	(make sphere (center 0.1685550870501415 -0.2929469312875884 0.2616163087176109) (radius r) (material diel))
+
+	(make sphere (center 0.1685550870501415 -0.2929469312875884 -0.1799836563821121) (radius r) (material diel))
+
+	(make sphere (center -0.1430448828302336 0.30825305327575453 0.2616163087176109) (radius r) (material diel))
+
+	(make sphere (center -0.3354448912613868 -0.04404693498334339 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.3609550656900579 0.059353056971509555 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.3609550656900579 -0.04404693498334339 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center -0.3354448912613868 0.059353056971509555 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.1645551385580612 0.4559530649945914 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.13904490450930151 -0.4406469430064251 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.13904490450930151 0.4559530649945914 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.1645551385580612 -0.4406469430064251 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.15314488987354968 -0.19114693656646098 -0.25218367154213833) (radius r) (material diel))
+
+	(make sphere (center 0.17865509409345742 0.20645302874639543 0.3338163090084484) (radius r) (material diel))
+
+	(make sphere (center 0.17865509409345742 0.20645302874639543 -0.25218367154213833) (radius r) (material diel))
+
+	(make sphere (center -0.15314488987354968 -0.19114693656646098 0.3338163090084484) (radius r) (material diel))
+
+	(make sphere (center 0.17865509409345742 -0.19114693656646098 0.3338163090084484) (radius r) (material diel))
+
+	(make sphere (center -0.15314488987354968 0.20645302874639543 -0.25218367154213833) (radius r) (material diel))
+
+	(make sphere (center -0.15314488987354968 0.20645302874639543 0.3338163090084484) (radius r) (material diel))
+
+	(make sphere (center 0.17865509409345742 -0.19114693656646098 -0.25218367154213833) (radius r) (material diel))
+
+	(make sphere (center 0.34685511011704656 0.3088530932197054 0.2478163433364612) (radius r) (material diel))
+
+	(make sphere (center -0.3213449058971387 -0.2935469414233075 -0.16618369100096247) (radius r) (material diel))
+
+	(make sphere (center -0.3213449058971387 -0.2935469414233075 0.2478163433364612) (radius r) (material diel))
+
+	(make sphere (center 0.34685511011704656 0.3088530932197054 -0.16618369100096247) (radius r) (material diel))
+
+	(make sphere (center -0.3213449058971387 0.3088530932197054 -0.16618369100096247) (radius r) (material diel))
+
+	(make sphere (center 0.34685511011704656 -0.2935469414233075 0.2478163433364612) (radius r) (material diel))
+
+	(make sphere (center 0.34685511011704656 -0.2935469414233075 -0.16618369100096247) (radius r) (material diel))
+
+	(make sphere (center -0.3213449058971387 0.3088530932197054 0.2478163433364612) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 -0.32134693518308544 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center -0.48724489788064224 0.33665305717125155 0.04081632619911901) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 0.17865306479484927 -0.4591836738102919) (radius r) (material diel))
+
+	(make sphere (center 0.012755102109953897 -0.1633469428066831 -0.4591836738102919) (radius r) (material diel))
+))
+(set-param! resolution 32)
+(set-param! mesh-size 5)
+(set-param! num-bands 20)
+(run)
