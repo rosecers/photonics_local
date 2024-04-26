@@ -1,0 +1,1843 @@
+command-line param: r=0.02
+command-line param: eps=16
+init-params: initializing eigensolver data
+Computing 20 bands with 1.000000e-07 tolerance.
+Working in 3 dimensions.
+Grid size is 16 x 16 x 16.
+Solving for 10 bands at a time.
+Creating Maxwell data...
+Allocating fields...
+Mesh size is 5.
+Lattice vectors:
+     (1, 0, 0)
+     (0, 1, 0)
+     (0, 0, 1)
+Cell volume = 1
+Reciprocal lattice vectors (/ 2 pi):
+     (1, -0, 0)
+     (-0, 1, -0)
+     (0, -0, 1)
+Geometric objects:
+     sphere, center = (-0.40625,-0.40625,-0.40625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.09375,0.09375,0.09375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.15625,-0.40625,0.09375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.34375,-0.40625,0.09375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.09375,-0.15625,-0.40625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.09375,0.34375,-0.40625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.40625,0.09375,-0.15625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.40625,0.09375,0.34375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.15625,-0.15625,-0.15625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.34375,0.34375,0.34375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.34375,0.34375,-0.15625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.15625,-0.15625,0.34375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.34375,-0.15625,0.34375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.15625,0.34375,-0.15625)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (-0.15625,0.34375,0.34375)
+          radius 0.02
+          dielectric constant epsilon = 1
+     sphere, center = (0.34375,-0.15625,-0.15625)
+          radius 0.02
+          dielectric constant epsilon = 1
+Geometric object tree has depth 4 and 16 object nodes (vs. 16 actual objects)
+Initializing dielectric function...
+109 k-points:
+     (0,0,0)
+     (0,-0.25,0)
+     (0,-0.5,0)
+     (-0.25,-0.5,-0.25)
+     (-0.5,-0.5,-0.5)
+     (-0.5,-0.5,-0.25)
+     (-0.5,-0.5,0)
+     (-0.5,-0.5,0.25)
+     (-0.5,-0.5,0.5)
+     (-0.25,-0.5,0.5)
+     (0,-0.5,0.5)
+     (0.25,-0.5,0.5)
+     (0.5,-0.5,0.5)
+     (0.5,-0.5,0.25)
+     (0.5,-0.5,0)
+     (0.5,-0.5,-0.25)
+     (0.5,-0.5,-0.5)
+     (0.25,-0.5,-0.5)
+     (0,-0.5,-0.5)
+     (-0.25,-0.5,-0.5)
+     (-0.5,-0.5,-0.5)
+     (-0.25,-0.25,-0.25)
+     (0,0,0)
+     (0,0,0.25)
+     (0,0,0.5)
+     (-0.25,0.25,0.5)
+     (-0.5,0.5,0.5)
+     (-0.25,0.5,0.5)
+     (0,0.5,0.5)
+     (0.25,0.5,0.5)
+     (0.5,0.5,0.5)
+     (0.5,0.25,0.5)
+     (0.5,0,0.5)
+     (0.5,-0.25,0.5)
+     (0.5,-0.5,0.5)
+     (0.25,-0.5,0.5)
+     (0,-0.5,0.5)
+     (-0.25,-0.5,0.5)
+     (-0.5,-0.5,0.5)
+     (-0.5,-0.25,0.5)
+     (-0.5,0,0.5)
+     (-0.5,0.25,0.5)
+     (-0.5,0.5,0.5)
+     (-0.25,0.25,0.25)
+     (0,0,0)
+     (0,0,-0.25)
+     (0,0,-0.5)
+     (0.25,0.25,-0.5)
+     (0.5,0.5,-0.5)
+     (0.25,0.5,-0.5)
+     (0,0.5,-0.5)
+     (-0.25,0.5,-0.5)
+     (-0.5,0.5,-0.5)
+     (-0.5,0.25,-0.5)
+     (-0.5,0,-0.5)
+     (-0.5,-0.25,-0.5)
+     (-0.5,-0.5,-0.5)
+     (-0.25,-0.5,-0.5)
+     (0,-0.5,-0.5)
+     (0.25,-0.5,-0.5)
+     (0.5,-0.5,-0.5)
+     (0.5,-0.25,-0.5)
+     (0.5,0,-0.5)
+     (0.5,0.25,-0.5)
+     (0.5,0.5,-0.5)
+     (0.25,0.25,-0.25)
+     (0,0,0)
+     (0.25,0,0)
+     (0.5,0,0)
+     (0.5,0.25,0.25)
+     (0.5,0.5,0.5)
+     (0.5,0.5,0.25)
+     (0.5,0.5,0)
+     (0.5,0.5,-0.25)
+     (0.5,0.5,-0.5)
+     (0.5,0.25,-0.5)
+     (0.5,0,-0.5)
+     (0.5,-0.25,-0.5)
+     (0.5,-0.5,-0.5)
+     (0.5,-0.5,-0.25)
+     (0.5,-0.5,0)
+     (0.5,-0.5,0.25)
+     (0.5,-0.5,0.5)
+     (0.5,-0.25,0.5)
+     (0.5,0,0.5)
+     (0.5,0.25,0.5)
+     (0.5,0.5,0.5)
+     (0.25,0.25,0.25)
+     (0,0,0)
+     (0,0.25,0)
+     (0,0.5,0)
+     (0.25,0.5,-0.25)
+     (0.5,0.5,-0.5)
+     (0.5,0.5,-0.25)
+     (0.5,0.5,0)
+     (0.5,0.5,0.25)
+     (0.5,0.5,0.5)
+     (0.25,0.5,0.5)
+     (0,0.5,0.5)
+     (-0.25,0.5,0.5)
+     (-0.5,0.5,0.5)
+     (-0.5,0.5,0.25)
+     (-0.5,0.5,0)
+     (-0.5,0.5,-0.25)
+     (-0.5,0.5,-0.5)
+     (-0.25,0.5,-0.5)
+     (0,0.5,-0.5)
+     (0.25,0.5,-0.5)
+     (0.5,0.5,-0.5)
+Solving for band polarization: .
+Initializing fields to random numbers...
+elapsed time for initialization: 0 seconds.
+epsilon: 15.7432-16, mean 15.992, harm. mean 15.9918, 100% > 1, 96.875% "fill"
+Outputting input-epsilon...
+solve_kpoint (0,0,0):
+freqs:, k index, k1, k2, k3, kmag/2pi, band 1, band 2, band 3, band 4, band 5, band 6, band 7, band 8, band 9, band 10, band 11, band 12, band 13, band 14, band 15, band 16, band 17, band 18, band 19, band 20
+Solving for bands 3 to 12...
+    iteration    6: trace = 0.626617820138297 (0.0186458% change)
+    iteration   12: trace = 0.6265454052450855 (0.00525223% change)
+Finished solving for bands 3 to 12 after 15 iterations.
+Solving for bands 13 to 20...
+    iteration    6: trace = 0.8773732536658909 (0.0219934% change)
+    iteration   12: trace = 0.8764126408228516 (0.00560169% change)
+    iteration   18: trace = 0.8760965342961973 (0.00129325% change)
+    iteration   24: trace = 0.8759529826628919 (0.000318479% change)
+    iteration   30: trace = 0.8758987186460289 (6.50026e-05% change)
+    iteration   36: trace = 0.875862380217723 (6.23124e-05% change)
+    iteration   42: trace = 0.875832984532925 (8.7367e-05% change)
+    iteration   48: trace = 0.8758168782506891 (4.1056e-05% change)
+Finished solving for bands 13 to 20 after 53 iterations.
+Finished k-point with 28.7 mean iterations/band.
+freqs:, 1, 0, 0, 0, 0, 0, 0, 0.250247, 0.250247, 0.250247, 0.250247, 0.250251, 0.250253, 0.250395, 0.250396, 0.250396, 0.250396, 0.25039, 0.250391, 0.353582, 0.353582, 0.353582, 0.353675, 0.353677, 0.353818
+elapsed time for k point: 50 seconds.
+solve_kpoint (0,-0.25,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4777137941987259 (0.000262821% change)
+Finished solving for bands 1 to 10 after 8 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9165176011530449 (0.0182121% change)
+    iteration    9: trace = 0.9164622111909004 (0.00111512% change)
+    iteration   14: trace = 0.9163354298710318 (5.42568e-05% change)
+    iteration   19: trace = 0.9163302192286673 (0.000282551% change)
+Finished solving for bands 11 to 20 after 22 iterations.
+Finished k-point with 15 mean iterations/band.
+freqs:, 2, 0, -0.25, 0, 0.25, 0.0625806, 0.0625809, 0.187741, 0.187742, 0.257948, 0.257949, 0.257957, 0.257958, 0.258094, 0.2581, 0.258094, 0.2581, 0.312706, 0.312707, 0.312873, 0.312874, 0.312891, 0.312891, 0.312992, 0.313026
+elapsed time for k point: 29 seconds.
+solve_kpoint (0,-0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.5322632749616308 (0.00479226% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.7836099864854429 (0.00271649% change)
+Finished solving for bands 11 to 20 after 7 iterations.
+Finished k-point with 8 mean iterations/band.
+freqs:, 3, 0, -0.5, 0, 0.5, 0.125161, 0.125161, 0.125162, 0.125162, 0.279703, 0.279704, 0.279732, 0.279733, 0.279837, 0.279862, 0.279839, 0.279865, 0.279865, 0.279865, 0.279902, 0.279902, 0.280001, 0.280002, 0.280029, 0.28003
+elapsed time for k point: 15 seconds.
+solve_kpoint (-0.25,-0.5,-0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 1.045234110805994 (0.00332637% change)
+    iteration    9: trace = 1.045072252571981 (0.00295823% change)
+    iteration   14: trace = 1.044925662753329 (0.00272162% change)
+    iteration   19: trace = 1.044787693068742 (0.00260007% change)
+    iteration   24: trace = 1.044653349517526 (0.00256291% change)
+    iteration   29: trace = 1.044518775188781 (0.00259438% change)
+    iteration   34: trace = 1.04438054658891 (0.00269078% change)
+    iteration   39: trace = 1.044235117205041 (0.00285849% change)
+    iteration   44: trace = 1.044078264620154 (0.00311533% change)
+    iteration   49: trace = 1.043904343085067 (0.00349609% change)
+    iteration   54: trace = 1.043705016369961 (0.00406632% change)
+    iteration   59: trace = 1.043466766862178 (0.00495449% change)
+    iteration   64: trace = 1.043165419230784 (0.00643225% change)
+    iteration   69: trace = 1.042753156107471 (0.00911429% change)
+    iteration   74: trace = 0.9242534999837284 (0.0107742% change)
+Finished solving for bands 11 to 20 after 78 iterations.
+Finished k-point with 41.5 mean iterations/band.
+freqs:, 4, -0.25, -0.5, -0.25, 0.612372, 0.15329, 0.15329, 0.15329, 0.15329, 0.234154, 0.234154, 0.234154, 0.234154, 0.234154, 0.234154, 0.234154, 0.234154, 0.293526, 0.293526, 0.293526, 0.293526, 0.342763, 0.342763, 0.342763, 0.342763
+elapsed time for k point: 1 minute, 22 seconds.
+solve_kpoint (-0.5,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9704842395119149 (0.0598769% change)
+    iteration    9: trace = 0.9698922276987484 (0.0133863% change)
+    iteration   14: trace = 0.9697216819749105 (0.000980434% change)
+    iteration   19: trace = 0.9696535047026631 (0.000137582% change)
+    iteration   24: trace = 0.9696193274710398 (2.66324e-05% change)
+    iteration   29: trace = 0.9695991400891899 (2.2232e-05% change)
+    iteration   34: trace = 0.9695770169735338 (1.24441e-05% change)
+    iteration   39: trace = 0.9695669488221544 (2.64967e-06% change)
+Finished solving for bands 11 to 20 after 39 iterations.
+Finished k-point with 21 mean iterations/band.
+freqs:, 5, -0.5, -0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.414606, 0.414606, 0.414606, 0.414607
+elapsed time for k point: 41 seconds.
+solve_kpoint (-0.5,-0.5,-0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4151278750972212 (9.43187e-05% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9471062686808284 (0.226392% change)
+    iteration    9: trace = 0.9298924069700774 (0.294861% change)
+    iteration   14: trace = 0.91753931780952 (0.0952609% change)
+    iteration   19: trace = 0.9164384442274021 (0.00453602% change)
+    iteration   24: trace = 0.9163995637994502 (0.000122586% change)
+Finished solving for bands 11 to 20 after 28 iterations.
+Finished k-point with 17.5 mean iterations/band.
+freqs:, 6, -0.5, -0.5, -0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.258024, 0.258025, 0.258024, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 34 seconds.
+solve_kpoint (-0.5,-0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4384368086043945 (0.00251393% change)
+    iteration   12: trace = 0.4382674879966658 (0.000416975% change)
+    iteration   18: trace = 0.4382523958737671 (3.10278e-06% change)
+Finished solving for bands 1 to 10 after 18 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401160109836186 (0.00169322% change)
+    iteration    9: trace = 0.9399032663942786 (2.09827e-05% change)
+    iteration   14: trace = 0.9398875219346691 (1.03165e-05% change)
+    iteration   19: trace = 0.9398408067273736 (0.000277888% change)
+    iteration   24: trace = 0.9398229836466577 (0.000749739% change)
+Finished solving for bands 11 to 20 after 26 iterations.
+Finished k-point with 22 mean iterations/band.
+freqs:, 7, -0.5, -0.5, 0, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.306274, 0.306275, 0.306449, 0.306574, 0.306577, 0.306577, 0.306577, 0.306578, 0.306579, 0.306579, 0.306581, 0.306581
+elapsed time for k point: 39 seconds.
+solve_kpoint (-0.5,-0.5,0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 4 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164135144138823 (0.0174509% change)
+Finished solving for bands 11 to 20 after 8 iterations.
+Finished k-point with 6 mean iterations/band.
+freqs:, 8, -0.5, -0.5, 0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.359491, 0.359492, 0.359492, 0.359492
+elapsed time for k point: 12 seconds.
+solve_kpoint (-0.5,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701898349911431 (0.0717392% change)
+    iteration    9: trace = 0.9697970639977123 (0.0169608% change)
+    iteration   14: trace = 0.9696601935428341 (0.00357079% change)
+    iteration   19: trace = 0.9696128738147222 (0.000637506% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 9, -0.5, -0.5, 0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.414607, 0.414609, 0.414616, 0.41462
+elapsed time for k point: 27 seconds.
+solve_kpoint (-0.25,-0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4675709381444272 (4.50588e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9072919548296948 (0.711604% change)
+    iteration    9: trace = 0.8804886844500279 (0.381999% change)
+    iteration   14: trace = 0.8776796824150972 (0.00761758% change)
+    iteration   19: trace = 0.8775793998852131 (0.000809629% change)
+    iteration   24: trace = 0.8775666584073456 (0.00015729% change)
+    iteration   29: trace = 0.8775619613067018 (7.87246e-05% change)
+    iteration   34: trace = 0.877559708312585 (3.80072e-05% change)
+    iteration   39: trace = 0.8775584940924528 (2.23444e-05% change)
+    iteration   44: trace = 0.8775577449422625 (1.40002e-05% change)
+Finished solving for bands 11 to 20 after 48 iterations.
+Finished k-point with 27 mean iterations/band.
+freqs:, 10, -0.25, -0.5, 0.5, 0.75, 0.189485, 0.189873, 0.190001, 0.193067, 0.193079, 0.193423, 0.225523, 0.243311, 0.261573, 0.262804, 0.209348, 0.227991, 0.255266, 0.257852, 0.258025, 0.258026, 0.359491, 0.359492, 0.359495, 0.359504
+elapsed time for k point: 53 seconds.
+solve_kpoint (0,-0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386220178054093 (0.000564081% change)
+    iteration   12: trace = 0.4384456570289382 (0.0041754% change)
+    iteration   19: trace = 0.438259307506513 (0.00265672% change)
+    iteration   25: trace = 0.4382545800186646 (0.000313839% change)
+Finished solving for bands 1 to 10 after 28 iterations.
+Solving for bands 11 to 20...
+    iteration    2: trace = 0.9401642673456411 (0.0051847% change)
+    iteration    5: trace = 0.940154164582908 (0.000476325% change)
+    iteration    8: trace = 0.9398547852277422 (0.00119054% change)
+    iteration   12: trace = 0.9398461540043646 (0.000767195% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 21.5 mean iterations/band.
+freqs:, 11, 0, -0.5, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306276, 0.306448, 0.306575, 0.306578, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306581, 0.306586
+elapsed time for k point: 45 seconds.
+solve_kpoint (0.25,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9285928218270711 (1.30684% change)
+    iteration    9: trace = 0.9164359694500332 (0.0102653% change)
+    iteration   14: trace = 0.9164005385265398 (1.77775e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 10 mean iterations/band.
+freqs:, 12, 0.25, -0.5, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 19 seconds.
+solve_kpoint (0.5,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9702012320302138 (0.0727736% change)
+    iteration    9: trace = 0.9698017752494679 (0.0164569% change)
+    iteration   14: trace = 0.969660593326016 (0.00337532% change)
+    iteration   19: trace = 0.9696142480897583 (0.00063612% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 13, 0.5, -0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414612, 0.414616, 0.414619
+elapsed time for k point: 26 seconds.
+solve_kpoint (0.5,-0.5,0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4730759779184151 (3.03603e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8838639863204432 (1.46897% change)
+    iteration    9: trace = 0.869117268983772 (0.0131981% change)
+    iteration   14: trace = 0.8690191589445445 (0.000671322% change)
+    iteration   19: trace = 0.8690085526533695 (0.000115517% change)
+    iteration   24: trace = 0.8690059349825803 (3.85703e-05% change)
+    iteration   29: trace = 0.8690048416823608 (1.92984e-05% change)
+    iteration   33: trace = 0.8690042993303445 (1.39084e-05% change)
+    iteration   38: trace = 0.8690038018663235 (9.93912e-06% change)
+Finished solving for bands 11 to 20 after 38 iterations.
+Finished k-point with 22 mean iterations/band.
+freqs:, 14, 0.5, -0.5, 0.25, 0.75, 0.188631, 0.188713, 0.189513, 0.191503, 0.191656, 0.194163, 0.235777, 0.249551, 0.26136, 0.262081, 0.201624, 0.217073, 0.254428, 0.257675, 0.258025, 0.258025, 0.359491, 0.359492, 0.359493, 0.359504
+elapsed time for k point: 43 seconds.
+solve_kpoint (0.5,-0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386194305580808 (0.000313603% change)
+    iteration   12: trace = 0.4384761544232071 (0.000360487% change)
+    iteration   18: trace = 0.4382939460506303 (0.000402033% change)
+    iteration   24: trace = 0.4382563745015089 (2.329e-05% change)
+Finished solving for bands 1 to 10 after 29 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.940161310754461 (0.000115219% change)
+    iteration    9: trace = 0.9399116989567748 (0.000101725% change)
+    iteration   14: trace = 0.9398348798506916 (4.80897e-05% change)
+    iteration   19: trace = 0.9398254224908973 (2.1652e-05% change)
+Finished solving for bands 11 to 20 after 20 iterations.
+Finished k-point with 24.5 mean iterations/band.
+freqs:, 15, 0.5, -0.5, 0, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306275, 0.306448, 0.306575, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306579, 0.306581, 0.306582
+elapsed time for k point: 41 seconds.
+solve_kpoint (0.5,-0.5,-0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164233946725312 (0.0178334% change)
+    iteration    9: trace = 0.9164005645273501 (2.95182e-06% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 16, 0.5, -0.5, -0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359492, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 14 seconds.
+solve_kpoint (0.5,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9702030349662736 (0.0716086% change)
+    iteration    9: trace = 0.9699604626896311 (0.0039765% change)
+    iteration   14: trace = 0.9696997838325779 (0.000507929% change)
+    iteration   19: trace = 0.9696212915442686 (6.39477e-05% change)
+    iteration   23: trace = 0.9695949340149871 (3.2868e-05% change)
+    iteration   27: trace = 0.9695851738162394 (0.000154024% change)
+Finished solving for bands 11 to 20 after 29 iterations.
+Finished k-point with 16 mean iterations/band.
+freqs:, 17, 0.5, -0.5, -0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414608, 0.414608, 0.414614, 0.414616
+elapsed time for k point: 33 seconds.
+solve_kpoint (0.25,-0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.477774439597177 (3.7193e-05% change)
+    iteration   13: trace = 0.4777734583793704 (2.4729e-05% change)
+    iteration   20: trace = 0.477772757321555 (1.8701e-05% change)
+    iteration   26: trace = 0.4777722741913328 (1.57137e-05% change)
+    iteration   32: trace = 0.4777718591021064 (1.36973e-05% change)
+    iteration   38: trace = 0.4777714918546986 (1.22378e-05% change)
+    iteration   44: trace = 0.4777711602602838 (1.11275e-05% change)
+    iteration   50: trace = 0.477770856379259 (1.02512e-05% change)
+Finished solving for bands 1 to 10 after 52 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8643003896513282 (1.21559% change)
+    iteration    9: trace = 0.858150813390596 (0.00137583% change)
+Finished solving for bands 11 to 20 after 13 iterations.
+Finished k-point with 32.5 mean iterations/band.
+freqs:, 18, 0.25, -0.5, -0.5, 0.75, 0.188378, 0.188534, 0.18863, 0.18867, 0.189435, 0.189443, 0.252731, 0.256438, 0.258906, 0.259078, 0.191396, 0.196208, 0.257766, 0.257841, 0.258025, 0.258025, 0.359491, 0.359491, 0.359492, 0.359492
+elapsed time for k point: 51 seconds.
+solve_kpoint (0,-0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386181393064223 (0.00373737% change)
+    iteration   13: trace = 0.4384049893032216 (0.00254272% change)
+    iteration   19: trace = 0.4382645025309454 (0.00321339% change)
+    iteration   25: trace = 0.4382537899602713 (0.000640461% change)
+Finished solving for bands 1 to 10 after 28 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9400739099892622 (0.000241006% change)
+    iteration    9: trace = 0.9398337219999596 (2.73094e-05% change)
+    iteration   14: trace = 0.9398212976667346 (1.94278e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 21.5 mean iterations/band.
+freqs:, 19, 0, -0.5, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.306274, 0.306276, 0.306447, 0.306575, 0.306577, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.30658, 0.306581
+elapsed time for k point: 37 seconds.
+solve_kpoint (-0.25,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9613422074474361 (0.167745% change)
+    iteration    9: trace = 0.9245404522897187 (0.520151% change)
+    iteration   14: trace = 0.9167141064610841 (0.0328029% change)
+    iteration   19: trace = 0.9164081876891521 (0.000997341% change)
+    iteration   24: trace = 0.9163983637989521 (3.42048e-05% change)
+Finished solving for bands 11 to 20 after 26 iterations.
+Finished k-point with 15.5 mean iterations/band.
+freqs:, 20, -0.25, -0.5, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.258024, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.359492, 0.359492, 0.359492, 0.359492
+elapsed time for k point: 30 seconds.
+solve_kpoint (-0.5,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9702249574513611 (0.071666% change)
+    iteration    9: trace = 0.9698083092900118 (0.0166227% change)
+    iteration   14: trace = 0.9696596158041739 (0.00360231% change)
+    iteration   19: trace = 0.9696104998144572 (0.000669659% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 21, -0.5, -0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.414606, 0.414609, 0.414616, 0.41462
+elapsed time for k point: 26 seconds.
+solve_kpoint (-0.25,-0.25,-0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4307923464075988 (6.23474e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9398108970420167 (1.73911% change)
+    iteration    9: trace = 0.932068616729164 (0.0018903% change)
+    iteration   14: trace = 0.9320609445968828 (0.000170511% change)
+    iteration   18: trace = 0.9319996271417023 (0.00119121% change)
+    iteration   23: trace = 0.9319947577414494 (6.63445e-05% change)
+    iteration   28: trace = 0.9319633243441428 (0.000219781% change)
+Finished solving for bands 11 to 20 after 31 iterations.
+Finished k-point with 18.5 mean iterations/band.
+freqs:, 22, -0.25, -0.25, -0.25, 0.433013, 0.108393, 0.108393, 0.207555, 0.207556, 0.207556, 0.207556, 0.207556, 0.207556, 0.27278, 0.27278, 0.27278, 0.27278, 0.27278, 0.27278, 0.325023, 0.325023, 0.325175, 0.325175, 0.325176, 0.325314
+elapsed time for k point: 37 seconds.
+solve_kpoint (0,0,0):
+Solving for bands 3 to 12...
+    iteration    6: trace = 0.7558536950507415 (0.00695379% change)
+    iteration   12: trace = 0.7555164689474562 (0.00783061% change)
+    iteration   18: trace = 0.755128420885737 (0.00916873% change)
+    iteration   24: trace = 0.7546603058503756 (0.0113114% change)
+    iteration   30: trace = 0.754064326001852 (0.0146782% change)
+    iteration   36: trace = 0.7532906575726778 (0.0188317% change)
+    iteration   42: trace = 0.7523470047284184 (0.0222972% change)
+    iteration   48: trace = 0.7512048705501096 (0.0284629% change)
+    iteration   53: trace = 0.749767495737798 (0.0489946% change)
+    iteration   59: trace = 0.7367939945702583 (0.197052% change)
+    iteration   65: trace = 0.6926626187879936 (0.0308617% change)
+    iteration   72: trace = 0.6265720173926278 (0.0177662% change)
+    iteration   78: trace = 0.6265339052826594 (0.00167064% change)
+Finished solving for bands 3 to 12 after 80 iterations.
+Solving for bands 13 to 20...
+    iteration    6: trace = 0.9491536080795259 (0.332388% change)
+    iteration   12: trace = 0.8775757977285441 (0.272882% change)
+    iteration   18: trace = 0.8765600708243868 (0.0318711% change)
+    iteration   24: trace = 0.8761559849687185 (0.00183449% change)
+    iteration   30: trace = 0.8759768132850057 (0.000939855% change)
+    iteration   36: trace = 0.8758707156018545 (0.000172254% change)
+    iteration   42: trace = 0.8758370240829676 (3.96952e-05% change)
+    iteration   48: trace = 0.8758233279392011 (1.3272e-05% change)
+Finished solving for bands 13 to 20 after 53 iterations.
+Finished k-point with 61.2 mean iterations/band.
+freqs:, 23, 0, 0, 0, 0, 0, 0, 0.250246, 0.250247, 0.250247, 0.250247, 0.250247, 0.250248, 0.250395, 0.250395, 0.250396, 0.250396, 0.250394, 0.250396, 0.353582, 0.353582, 0.353582, 0.353675, 0.353675, 0.353824
+elapsed time for k point: 1 minute, 38 seconds.
+solve_kpoint (0,0,0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.47771492144847 (0.000312794% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9165217959075505 (0.0118167% change)
+    iteration    9: trace = 0.9164538079938891 (0.00349267% change)
+    iteration   14: trace = 0.9163310719905901 (3.13639e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 11 mean iterations/band.
+freqs:, 24, 0, 0, 0.25, 0.25, 0.0625807, 0.062581, 0.187741, 0.187742, 0.257948, 0.257949, 0.257958, 0.257958, 0.258096, 0.2581, 0.258094, 0.258099, 0.312708, 0.312711, 0.312873, 0.312875, 0.312891, 0.312891, 0.312992, 0.313022
+elapsed time for k point: 21 seconds.
+solve_kpoint (0,0,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.5322682443482866 (0.00462288% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.783605873285386 (0.00094426% change)
+Finished solving for bands 11 to 20 after 6 iterations.
+Finished k-point with 7.5 mean iterations/band.
+freqs:, 25, 0, 0, 0.5, 0.5, 0.125161, 0.125161, 0.125162, 0.125162, 0.279703, 0.279703, 0.279733, 0.279733, 0.279845, 0.279863, 0.279838, 0.279857, 0.279865, 0.279865, 0.279902, 0.279902, 0.280002, 0.280003, 0.280029, 0.280031
+elapsed time for k point: 14 seconds.
+solve_kpoint (-0.25,0.25,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 1.042796188926934 (0.00313407% change)
+    iteration    9: trace = 1.042637175858134 (0.00299543% change)
+    iteration   14: trace = 1.042484073197681 (0.00290816% change)
+    iteration   19: trace = 1.042333104541531 (0.00289939% change)
+    iteration   23: trace = 1.042211082031334 (0.00294973% change)
+    iteration   28: trace = 1.042053427005469 (0.00308795% change)
+    iteration   33: trace = 1.041885637269469 (0.00332364% change)
+    iteration   38: trace = 1.04170175303798 (0.00368808% change)
+    iteration   43: trace = 1.041493341301012 (0.00424215% change)
+    iteration   48: trace = 1.041247161438419 (0.00510507% change)
+    iteration   53: trace = 1.04094021797951 (0.00652416% change)
+    iteration   57: trace = 1.040622565702457 (0.00840659% change)
+    iteration   61: trace = 1.040197323411191 (0.0114969% change)
+    iteration   65: trace = 1.039600596760422 (0.0162477% change)
+    iteration   69: trace = 1.038790643158435 (0.0212764% change)
+    iteration   73: trace = 0.92441903281791 (0.123865% change)
+    iteration   78: trace = 0.9242355249089904 (1.0262e-05% change)
+Finished solving for bands 11 to 20 after 79 iterations.
+Finished k-point with 42 mean iterations/band.
+freqs:, 26, -0.25, 0.25, 0.5, 0.612372, 0.15329, 0.15329, 0.153291, 0.153291, 0.234154, 0.234154, 0.234154, 0.234154, 0.234155, 0.234155, 0.234155, 0.234155, 0.293526, 0.293526, 0.293527, 0.293527, 0.342763, 0.342763, 0.342764, 0.342764
+elapsed time for k point: 1 minute, 26 seconds.
+solve_kpoint (-0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9704685398498656 (0.0611367% change)
+    iteration    9: trace = 0.9698970482796421 (0.0141571% change)
+    iteration   14: trace = 0.9697010571155863 (0.00246835% change)
+    iteration   19: trace = 0.9696430252065164 (0.000449038% change)
+    iteration   23: trace = 0.9696142488814951 (1.87354e-05% change)
+    iteration   28: trace = 0.9695985396001263 (2.01824e-05% change)
+    iteration   33: trace = 0.9695767637447381 (1.14656e-05% change)
+    iteration   38: trace = 0.9695682923663311 (7.09225e-06% change)
+Finished solving for bands 11 to 20 after 38 iterations.
+Finished k-point with 20.5 mean iterations/band.
+freqs:, 27, -0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414606, 0.414606, 0.414607, 0.414607
+elapsed time for k point: 41 seconds.
+solve_kpoint (-0.25,0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4151299724313495 (2.75817e-05% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9446904748466212 (0.436784% change)
+    iteration    9: trace = 0.9172512124196532 (0.145033% change)
+    iteration   14: trace = 0.9164018014521579 (0.000323415% change)
+Finished solving for bands 11 to 20 after 17 iterations.
+Finished k-point with 12 mean iterations/band.
+freqs:, 28, -0.25, 0.5, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258025, 0.258026, 0.258024, 0.258025, 0.258025, 0.258025, 0.258026, 0.258026, 0.359491, 0.359491, 0.359493, 0.359494
+elapsed time for k point: 23 seconds.
+solve_kpoint (0,0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.438356607085657 (0.00137447% change)
+    iteration   12: trace = 0.4382608694626845 (0.000171077% change)
+    iteration   18: trace = 0.4382541251952452 (1.05915e-05% change)
+Finished solving for bands 1 to 10 after 19 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.940004914348596 (0.00177229% change)
+    iteration    9: trace = 0.9398443989286406 (2.60302e-05% change)
+    iteration   14: trace = 0.939826815982461 (3.98251e-06% change)
+Finished solving for bands 11 to 20 after 14 iterations.
+Finished k-point with 16.5 mean iterations/band.
+freqs:, 29, 0, 0.5, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177006, 0.177006, 0.306274, 0.306276, 0.306448, 0.306574, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.30658, 0.306582, 0.306585
+elapsed time for k point: 29 seconds.
+solve_kpoint (0.25,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9682612568894171 (0.0743891% change)
+    iteration    9: trace = 0.963319888036972 (0.160727% change)
+    iteration   14: trace = 0.939514682120397 (0.272425% change)
+    iteration   19: trace = 0.9212450910749076 (0.331278% change)
+    iteration   24: trace = 0.9164609608954631 (0.0125129% change)
+    iteration   29: trace = 0.91640231086643 (8.312e-05% change)
+Finished solving for bands 11 to 20 after 32 iterations.
+Finished k-point with 18.5 mean iterations/band.
+freqs:, 30, 0.25, 0.5, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258026, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.258027, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 37 seconds.
+solve_kpoint (0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9702006404419405 (0.0725076% change)
+    iteration    9: trace = 0.9698044887373569 (0.0161838% change)
+    iteration   14: trace = 0.969663687102956 (0.00333314% change)
+    iteration   19: trace = 0.969617098120847 (0.000617214% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 31, 0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414607, 0.414612, 0.414616, 0.414621
+elapsed time for k point: 26 seconds.
+solve_kpoint (0.5,0.25,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4774831284120225 (0.0642892% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8689956945733863 (1.51% change)
+    iteration    9: trace = 0.8572978584185299 (0.00415888% change)
+    iteration   14: trace = 0.8572790262964056 (1.70437e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 11 mean iterations/band.
+freqs:, 32, 0.5, 0.25, 0.5, 0.75, 0.188176, 0.188238, 0.188436, 0.188497, 0.188856, 0.189059, 0.252181, 0.258029, 0.258751, 0.258967, 0.18886, 0.19639, 0.257712, 0.257943, 0.258025, 0.258026, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 21 seconds.
+solve_kpoint (0.5,0,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386290215993003 (0.0121894% change)
+    iteration   12: trace = 0.4385384000011843 (0.0141837% change)
+    iteration   18: trace = 0.4384478607105404 (0.00525362% change)
+    iteration   24: trace = 0.4383528454833197 (0.000448761% change)
+    iteration   30: trace = 0.4383096961171265 (0.000153414% change)
+    iteration   36: trace = 0.4382764887140401 (9.2576e-05% change)
+    iteration   42: trace = 0.4382601549952184 (0.000142978% change)
+    iteration   48: trace = 0.438254299485065 (0.000242495% change)
+Finished solving for bands 1 to 10 after 51 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401896879409488 (0.000127841% change)
+    iteration    9: trace = 0.9399564291000013 (8.94058e-05% change)
+    iteration   14: trace = 0.9398405719242305 (0.000133868% change)
+    iteration   19: trace = 0.9398262505652908 (9.46662e-05% change)
+Finished solving for bands 11 to 20 after 20 iterations.
+Finished k-point with 35.5 mean iterations/band.
+freqs:, 33, 0.5, 0, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177006, 0.177006, 0.306274, 0.306275, 0.306448, 0.306575, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.30658, 0.306581, 0.306583
+elapsed time for k point: 58 seconds.
+solve_kpoint (0.5,-0.25,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164227149567848 (0.0170981% change)
+    iteration    8: trace = 0.9164019520924059 (1.65111e-05% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 34, 0.5, -0.25, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258026, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 14 seconds.
+solve_kpoint (0.5,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701960572760696 (0.0726369% change)
+    iteration    9: trace = 0.9698039144006091 (0.0162362% change)
+    iteration   14: trace = 0.9696645540263372 (0.00322599% change)
+    iteration   19: trace = 0.9696193920625051 (0.000580247% change)
+    iteration   24: trace = 0.9695947356004957 (7.3146e-05% change)
+    iteration   29: trace = 0.9695859609629232 (7.54006e-05% change)
+Finished solving for bands 11 to 20 after 33 iterations.
+Finished k-point with 18 mean iterations/band.
+freqs:, 35, 0.5, -0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414607, 0.414607, 0.414608, 0.414608
+elapsed time for k point: 36 seconds.
+solve_kpoint (0.25,-0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4777862497942995 (0.000613388% change)
+    iteration   12: trace = 0.4777852106578834 (2.62068e-05% change)
+    iteration   18: trace = 0.4777846190574404 (1.7784e-05% change)
+    iteration   24: trace = 0.4777841785041436 (1.39687e-05% change)
+    iteration   30: trace = 0.4777838177850873 (1.17337e-05% change)
+    iteration   36: trace = 0.4777835075820188 (1.02429e-05% change)
+Finished solving for bands 1 to 10 after 38 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8723203963994766 (1.34858% change)
+    iteration    9: trace = 0.8560618268637129 (0.0151971% change)
+    iteration   14: trace = 0.8560037679179355 (4.37108e-05% change)
+Finished solving for bands 11 to 20 after 16 iterations.
+Finished k-point with 27 mean iterations/band.
+freqs:, 36, 0.25, -0.5, 0.5, 0.75, 0.18807, 0.188133, 0.188188, 0.188245, 0.188507, 0.188611, 0.254068, 0.258345, 0.258479, 0.258757, 0.187977, 0.193741, 0.257905, 0.257926, 0.258025, 0.258025, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 44 seconds.
+solve_kpoint (0,-0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386519017373093 (0.0404562% change)
+    iteration   12: trace = 0.438589111003058 (0.00423333% change)
+    iteration   18: trace = 0.4384619150680382 (0.000194334% change)
+    iteration   24: trace = 0.4383642852303956 (0.000354377% change)
+    iteration   30: trace = 0.4383056378739771 (0.0038393% change)
+    iteration   36: trace = 0.4382797207277347 (0.00308509% change)
+    iteration   42: trace = 0.4382669087369294 (0.000711696% change)
+    iteration   48: trace = 0.4382557992975387 (2.57919e-05% change)
+    iteration   54: trace = 0.4382529869970953 (5.74635e-06% change)
+Finished solving for bands 1 to 10 after 54 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401460718867144 (0.00012837% change)
+    iteration    9: trace = 0.9399916304433295 (5.30863e-05% change)
+    iteration   14: trace = 0.9398511743370511 (0.000312523% change)
+    iteration   19: trace = 0.9398277139302829 (0.000210964% change)
+Finished solving for bands 11 to 20 after 21 iterations.
+Finished k-point with 37.5 mean iterations/band.
+freqs:, 37, 0, -0.5, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306274, 0.30645, 0.306575, 0.306578, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306581, 0.306584
+elapsed time for k point: 1 minute, 2 seconds.
+solve_kpoint (-0.25,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164237583881091 (0.0202941% change)
+    iteration    8: trace = 0.9164004249597439 (1.88512e-05% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 38, -0.25, -0.5, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359492, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 14 seconds.
+solve_kpoint (-0.5,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701798347865002 (0.072056% change)
+    iteration    9: trace = 0.9697948084239486 (0.016277% change)
+    iteration   13: trace = 0.9696952182581438 (0.000547621% change)
+    iteration   18: trace = 0.9696254090205745 (6.1478e-05% change)
+    iteration   23: trace = 0.9695959636885315 (9.78222e-06% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 39, -0.5, -0.5, 0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414614, 0.414617, 0.41462
+elapsed time for k point: 26 seconds.
+solve_kpoint (-0.5,-0.25,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4730474176940943 (4.00387e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8954739798045137 (0.498139% change)
+    iteration    9: trace = 0.8690919403795878 (0.420299% change)
+    iteration   14: trace = 0.8662367350788949 (0.00774492% change)
+    iteration   19: trace = 0.8661388162672025 (0.000675587% change)
+    iteration   24: trace = 0.8661280304324748 (0.000160052% change)
+    iteration   29: trace = 0.8661236325425687 (6.95362e-05% change)
+    iteration   34: trace = 0.866121602802198 (3.64646e-05% change)
+    iteration   39: trace = 0.8661204242139027 (2.17258e-05% change)
+    iteration   44: trace = 0.8661197441207762 (1.24688e-05% change)
+Finished solving for bands 11 to 20 after 47 iterations.
+Finished k-point with 26.5 mean iterations/band.
+freqs:, 40, -0.5, -0.25, 0.5, 0.75, 0.1887, 0.188822, 0.189291, 0.190317, 0.190383, 0.190778, 0.233746, 0.258787, 0.259797, 0.260749, 0.188918, 0.218722, 0.256868, 0.257887, 0.258025, 0.258026, 0.359493, 0.359494, 0.359494, 0.359503
+elapsed time for k point: 53 seconds.
+solve_kpoint (-0.5,0,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386234728269668 (0.00174332% change)
+    iteration   12: trace = 0.4385092074441431 (0.00417391% change)
+    iteration   18: trace = 0.4383599000938233 (0.0068117% change)
+    iteration   24: trace = 0.4382986283665314 (0.0069363% change)
+    iteration   30: trace = 0.4382741498060291 (0.00123132% change)
+    iteration   36: trace = 0.4382607449349426 (8.42413e-05% change)
+    iteration   42: trace = 0.4382551892678598 (1.49972e-05% change)
+    iteration   48: trace = 0.4382530747207647 (1.60907e-05% change)
+Finished solving for bands 1 to 10 after 49 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401978943065598 (0.000106612% change)
+    iteration    8: trace = 0.9399929211193468 (0.00177141% change)
+    iteration   13: trace = 0.9398437583613057 (0.00507023% change)
+    iteration   18: trace = 0.9398267668887412 (0.00108041% change)
+Finished solving for bands 11 to 20 after 21 iterations.
+Finished k-point with 35 mean iterations/band.
+freqs:, 41, -0.5, 0, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306275, 0.306448, 0.306575, 0.306578, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.30658, 0.306581
+elapsed time for k point: 57 seconds.
+solve_kpoint (-0.5,0.25,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    5: trace = 0.9164036876898897 (0.00171688% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 42, -0.5, 0.25, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 13 seconds.
+solve_kpoint (-0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701645432859112 (0.0721795% change)
+    iteration    9: trace = 0.9697886213745849 (0.015868% change)
+    iteration   14: trace = 0.9696622549850941 (0.0032707% change)
+    iteration   19: trace = 0.969620804093503 (0.000644503% change)
+    iteration   24: trace = 0.9695964842701614 (0.000107294% change)
+    iteration   29: trace = 0.9695854318489637 (0.000118354% change)
+Finished solving for bands 11 to 20 after 33 iterations.
+Finished k-point with 18 mean iterations/band.
+freqs:, 43, -0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414607, 0.414607, 0.414608
+elapsed time for k point: 37 seconds.
+solve_kpoint (-0.25,0.25,0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4307939128392458 (7.6023e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9377911930152754 (1.71524% change)
+    iteration    9: trace = 0.9320672484818616 (0.000925356% change)
+    iteration   14: trace = 0.9320564172910872 (0.000618932% change)
+    iteration   19: trace = 0.9319906093775114 (6.9236e-05% change)
+    iteration   24: trace = 0.9319838952629736 (0.000465605% change)
+    iteration   29: trace = 0.9319696975761285 (6.07392e-06% change)
+Finished solving for bands 11 to 20 after 29 iterations.
+Finished k-point with 17.5 mean iterations/band.
+freqs:, 44, -0.25, 0.25, 0.25, 0.433013, 0.108393, 0.108393, 0.207555, 0.207556, 0.207556, 0.207556, 0.207557, 0.207557, 0.272781, 0.272781, 0.27278, 0.27278, 0.272781, 0.272781, 0.325023, 0.325023, 0.325175, 0.325175, 0.325176, 0.325323
+elapsed time for k point: 34 seconds.
+solve_kpoint (0,0,0):
+Solving for bands 3 to 12...
+    iteration    6: trace = 0.750183714566442 (0.00612113% change)
+    iteration   12: trace = 0.7498886340295547 (0.00691504% change)
+    iteration   18: trace = 0.7495471726916715 (0.00815304% change)
+    iteration   24: trace = 0.7491315787803147 (0.0101612% change)
+    iteration   30: trace = 0.7485946248457588 (0.0134377% change)
+    iteration   36: trace = 0.7478752861010971 (0.017953% change)
+    iteration   42: trace = 0.7469598266561051 (0.0220517% change)
+    iteration   48: trace = 0.7458359149515411 (0.0281415% change)
+    iteration   54: trace = 0.7440115273766909 (0.05764% change)
+    iteration   60: trace = 0.631880396699523 (14.7824% change)
+    iteration   66: trace = 0.630873417184629 (0.0315374% change)
+    iteration   72: trace = 0.6265515282948819 (0.00163825% change)
+    iteration   78: trace = 0.6265329987017155 (1.23209e-05% change)
+Finished solving for bands 3 to 12 after 79 iterations.
+Solving for bands 13 to 20...
+    iteration    6: trace = 0.9514778228353481 (0.354605% change)
+    iteration   12: trace = 0.8779249523114085 (0.0775353% change)
+    iteration   18: trace = 0.8774084429057325 (0.00180903% change)
+    iteration   24: trace = 0.8762424581436488 (0.00238204% change)
+    iteration   30: trace = 0.8759775650219691 (0.00304874% change)
+    iteration   36: trace = 0.8759165502307606 (0.00120309% change)
+    iteration   42: trace = 0.8758842062061349 (0.00170936% change)
+    iteration   48: trace = 0.875852565937228 (0.0020646% change)
+    iteration   54: trace = 0.8758334195829776 (0.000884587% change)
+    iteration   60: trace = 0.8758236566205158 (0.000380322% change)
+    iteration   66: trace = 0.8758181135251266 (8.68716e-05% change)
+Finished solving for bands 13 to 20 after 70 iterations.
+Finished k-point with 67.5 mean iterations/band.
+freqs:, 45, 0, 0, 0, 0, 0, 0, 0.250246, 0.250247, 0.250247, 0.250247, 0.250247, 0.250247, 0.250395, 0.250396, 0.250396, 0.250396, 0.250395, 0.250396, 0.353582, 0.353582, 0.353582, 0.353675, 0.353675, 0.353819
+elapsed time for k point: 1 minute, 50 seconds.
+solve_kpoint (0,0,-0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4777154099471752 (0.000161179% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.916501583056366 (0.0106548% change)
+    iteration    9: trace = 0.9164414062615034 (0.00187292% change)
+    iteration   14: trace = 0.9163350306317221 (1.57076e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 11 mean iterations/band.
+freqs:, 46, 0, 0, -0.25, 0.25, 0.0625806, 0.0625809, 0.187741, 0.187742, 0.257948, 0.257948, 0.257957, 0.257957, 0.258096, 0.258102, 0.258092, 0.258098, 0.312707, 0.312713, 0.312873, 0.312874, 0.312891, 0.312891, 0.312992, 0.313031
+elapsed time for k point: 21 seconds.
+solve_kpoint (0,0,-0.5):
+Solving for bands 1 to 10...
+    iteration    5: trace = 0.5322962140104944 (0.0273043% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.7836006573182843 (0.00284473% change)
+Finished solving for bands 11 to 20 after 7 iterations.
+Finished k-point with 8 mean iterations/band.
+freqs:, 47, 0, 0, -0.5, 0.5, 0.125161, 0.125161, 0.125162, 0.125162, 0.279703, 0.279703, 0.279732, 0.279733, 0.279848, 0.279869, 0.279831, 0.279854, 0.279865, 0.279865, 0.279902, 0.279902, 0.280002, 0.280002, 0.280029, 0.280031
+elapsed time for k point: 15 seconds.
+solve_kpoint (0.25,0.25,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 1.039299749941596 (0.00251269% change)
+    iteration    9: trace = 1.039169926324588 (0.00248731% change)
+    iteration   14: trace = 1.039041285104602 (0.00247209% change)
+    iteration   19: trace = 1.03891241474737 (0.00249198% change)
+    iteration   24: trace = 1.038781146565782 (0.00255723% change)
+    iteration   29: trace = 1.038644867331651 (0.0026764% change)
+    iteration   34: trace = 1.038500406321769 (0.00286234% change)
+    iteration   39: trace = 1.038343662323068 (0.00313716% change)
+    iteration   44: trace = 1.038168905695941 (0.00353988% change)
+    iteration   49: trace = 1.037967465004663 (0.00414209% change)
+    iteration   54: trace = 1.037725064000888 (0.0050833% change)
+    iteration   59: trace = 1.037415982303657 (0.00665539% change)
+    iteration   64: trace = 1.03699003218236 (0.00948118% change)
+    iteration   69: trace = 1.036354007631278 (0.0144331% change)
+    iteration   74: trace = 0.9242602630220593 (0.0168518% change)
+Finished solving for bands 11 to 20 after 78 iterations.
+Finished k-point with 41.5 mean iterations/band.
+freqs:, 48, 0.25, 0.25, -0.5, 0.612372, 0.15329, 0.15329, 0.153291, 0.153291, 0.234154, 0.234154, 0.234154, 0.234154, 0.234155, 0.234155, 0.234154, 0.234155, 0.293526, 0.293526, 0.293526, 0.293526, 0.342763, 0.342763, 0.342764, 0.342764
+elapsed time for k point: 1 minute, 23 seconds.
+solve_kpoint (0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9704654091207968 (0.0614168% change)
+    iteration    9: trace = 0.9698916193802374 (0.0143947% change)
+    iteration   14: trace = 0.9696996356845549 (0.00246834% change)
+    iteration   19: trace = 0.9696419025248553 (0.00046301% change)
+    iteration   24: trace = 0.9696120550106594 (0.000110669% change)
+    iteration   29: trace = 0.9695962487903138 (0.000132939% change)
+    iteration   34: trace = 0.9695756539647612 (2.71849e-05% change)
+Finished solving for bands 11 to 20 after 38 iterations.
+Finished k-point with 20.5 mean iterations/band.
+freqs:, 49, 0.5, 0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414606, 0.414606, 0.414606, 0.414606
+elapsed time for k point: 41 seconds.
+solve_kpoint (0.25,0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4151307677102551 (0.00114666% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.944676710730497 (0.438981% change)
+    iteration    9: trace = 0.9171750504256051 (0.147513% change)
+    iteration   14: trace = 0.9164002158698566 (0.00029383% change)
+Finished solving for bands 11 to 20 after 17 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 50, 0.25, 0.5, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 25 seconds.
+solve_kpoint (0,0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4383561767717999 (0.00132684% change)
+    iteration   12: trace = 0.4382607003616933 (0.000164571% change)
+    iteration   18: trace = 0.4382539132493781 (1.01498e-05% change)
+Finished solving for bands 1 to 10 after 19 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9400035116471773 (0.00175874% change)
+    iteration    9: trace = 0.9398435373457253 (2.61892e-05% change)
+    iteration   14: trace = 0.9398258215642546 (4.05576e-06% change)
+Finished solving for bands 11 to 20 after 14 iterations.
+Finished k-point with 16.5 mean iterations/band.
+freqs:, 51, 0, 0.5, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306276, 0.306448, 0.306574, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306579, 0.306582, 0.306584
+elapsed time for k point: 29 seconds.
+solve_kpoint (-0.25,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9616053978791204 (0.057144% change)
+    iteration    9: trace = 0.9568216158439588 (0.177267% change)
+    iteration   14: trace = 0.9400265346744769 (0.198571% change)
+    iteration   19: trace = 0.925750932083387 (0.318261% change)
+    iteration   24: trace = 0.9172384392686358 (0.0783221% change)
+    iteration   29: trace = 0.9164171459706029 (0.0024363% change)
+    iteration   34: trace = 0.9164003216748121 (3.99405e-05% change)
+Finished solving for bands 11 to 20 after 36 iterations.
+Finished k-point with 20.5 mean iterations/band.
+freqs:, 52, -0.25, 0.5, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359492, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 41 seconds.
+solve_kpoint (-0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701868096309942 (0.0728059% change)
+    iteration    9: trace = 0.9697978053877496 (0.0163964% change)
+    iteration   14: trace = 0.9696641426950597 (0.00326109% change)
+    iteration   19: trace = 0.969618829152423 (0.00056826% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 53, -0.5, 0.5, -0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414613, 0.414616, 0.414623
+elapsed time for k point: 26 seconds.
+solve_kpoint (-0.5,0.25,-0.5):
+Solving for bands 1 to 10...
+    iteration    5: trace = 0.4777882784588588 (7.19096e-05% change)
+    iteration   11: trace = 0.4777745857614073 (2.94039e-05% change)
+    iteration   17: trace = 0.4777738779707735 (2.20037e-05% change)
+    iteration   23: trace = 0.4777733206448111 (1.79008e-05% change)
+    iteration   29: trace = 0.4777728534581287 (1.52966e-05% change)
+    iteration   35: trace = 0.4777724465972128 (1.34869e-05% change)
+    iteration   41: trace = 0.4777720832091482 (1.21489e-05% change)
+    iteration   47: trace = 0.4777717528088145 (1.11149e-05% change)
+    iteration   53: trace = 0.4777714484037339 (1.02888e-05% change)
+Finished solving for bands 1 to 10 after 56 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8625575353235189 (1.00128% change)
+    iteration    9: trace = 0.8584032504985211 (0.000717998% change)
+Finished solving for bands 11 to 20 after 12 iterations.
+Finished k-point with 34 mean iterations/band.
+freqs:, 54, -0.5, 0.25, -0.5, 0.75, 0.188447, 0.18846, 0.18859, 0.188831, 0.18954, 0.1896, 0.252361, 0.25631, 0.258955, 0.259241, 0.191609, 0.196789, 0.257603, 0.2579, 0.258025, 0.258025, 0.35949, 0.359491, 0.359492, 0.359492
+elapsed time for k point: 54 seconds.
+solve_kpoint (-0.5,0,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386195893500733 (0.00315638% change)
+    iteration   12: trace = 0.4384530381482865 (0.012755% change)
+    iteration   18: trace = 0.4383073816176872 (0.0149675% change)
+    iteration   24: trace = 0.4382692811873227 (0.0026165% change)
+    iteration   30: trace = 0.4382584530243388 (0.000383372% change)
+Finished solving for bands 1 to 10 after 35 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401216681171944 (0.000168835% change)
+    iteration    9: trace = 0.9398648675098634 (6.12534e-05% change)
+    iteration   14: trace = 0.9398239362504736 (3.44619e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 25 mean iterations/band.
+freqs:, 55, -0.5, 0, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.306274, 0.306277, 0.306447, 0.306575, 0.306577, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.306582, 0.306582
+elapsed time for k point: 42 seconds.
+solve_kpoint (-0.5,-0.25,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9504449989155923 (0.292283% change)
+    iteration    8: trace = 0.9169753370324379 (0.140381% change)
+    iteration   13: trace = 0.9164007318418738 (0.000588118% change)
+Finished solving for bands 11 to 20 after 17 iterations.
+Finished k-point with 11 mean iterations/band.
+freqs:, 56, -0.5, -0.25, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.258024, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.359492, 0.359492, 0.359492, 0.359492
+elapsed time for k point: 22 seconds.
+solve_kpoint (-0.5,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701957942388046 (0.07183% change)
+    iteration    9: trace = 0.9697956745617812 (0.0174299% change)
+    iteration   14: trace = 0.9696601836687215 (0.003614% change)
+    iteration   19: trace = 0.9696134025277023 (0.000659425% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 57, -0.5, -0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.414607, 0.41461, 0.414617, 0.414621
+elapsed time for k point: 26 seconds.
+solve_kpoint (-0.25,-0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4736481788047908 (3.59787e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8727470900377959 (1.32101% change)
+    iteration    9: trace = 0.8657190910677885 (0.00258721% change)
+    iteration   14: trace = 0.8657035922724928 (4.78203e-05% change)
+Finished solving for bands 11 to 20 after 18 iterations.
+Finished k-point with 12 mean iterations/band.
+freqs:, 58, -0.25, -0.5, -0.5, 0.75, 0.188607, 0.189126, 0.189325, 0.190215, 0.190313, 0.191673, 0.235535, 0.257293, 0.259922, 0.260936, 0.190716, 0.217045, 0.256037, 0.258024, 0.258025, 0.258025, 0.35949, 0.359492, 0.359492, 0.359492
+elapsed time for k point: 24 seconds.
+solve_kpoint (0,-0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386232321239893 (0.00107986% change)
+    iteration   12: trace = 0.4385146064665447 (0.00722185% change)
+    iteration   18: trace = 0.4383764538304112 (0.00279337% change)
+    iteration   24: trace = 0.4383159550247629 (0.00179113% change)
+    iteration   30: trace = 0.4382906554230477 (0.00188872% change)
+    iteration   36: trace = 0.4382754915642903 (0.00137399% change)
+    iteration   42: trace = 0.4382643257499614 (0.00029217% change)
+    iteration   48: trace = 0.4382563257458286 (4.45855e-05% change)
+    iteration   54: trace = 0.4382529778132768 (3.52174e-05% change)
+    iteration   61: trace = 0.4382520148595521 (2.08161e-05% change)
+Finished solving for bands 1 to 10 after 62 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9402317671794153 (8.76506e-05% change)
+    iteration    9: trace = 0.9399007265309774 (0.000283931% change)
+    iteration   14: trace = 0.9398298099780004 (0.00182324% change)
+Finished solving for bands 11 to 20 after 16 iterations.
+Finished k-point with 39 mean iterations/band.
+freqs:, 59, 0, -0.5, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.306274, 0.306274, 0.30645, 0.306575, 0.306577, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.306581, 0.306589
+elapsed time for k point: 1 minute, 2 seconds.
+solve_kpoint (0.25,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164233435726268 (0.0252673% change)
+    iteration    9: trace = 0.9163981355995651 (2.73435e-06% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 60, 0.25, -0.5, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.359491, 0.359492, 0.359492, 0.359492
+elapsed time for k point: 14 seconds.
+solve_kpoint (0.5,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701645236654907 (0.0720481% change)
+    iteration    9: trace = 0.9697882055251804 (0.0159899% change)
+    iteration   14: trace = 0.9696661650746139 (0.00318584% change)
+    iteration   19: trace = 0.9696207413308807 (0.00107084% change)
+    iteration   24: trace = 0.9695993210358562 (0.000159276% change)
+    iteration   29: trace = 0.9695872454637136 (0.000199078% change)
+Finished solving for bands 11 to 20 after 33 iterations.
+Finished k-point with 18 mean iterations/band.
+freqs:, 61, 0.5, -0.5, -0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.414607, 0.414608, 0.414608, 0.414608
+elapsed time for k point: 36 seconds.
+solve_kpoint (0.5,-0.25,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4668495278730709 (4.44704e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9090077272410503 (0.508497% change)
+    iteration    9: trace = 0.8921252451362872 (0.273723% change)
+    iteration   14: trace = 0.8791454651929067 (0.201283% change)
+    iteration   19: trace = 0.8781199827053499 (0.00430628% change)
+    iteration   24: trace = 0.8780715784024843 (0.000692781% change)
+    iteration   29: trace = 0.8780585373800538 (0.000158401% change)
+    iteration   34: trace = 0.8780540171451727 (7.61467e-05% change)
+    iteration   39: trace = 0.8780519516460767 (3.66929e-05% change)
+    iteration   43: trace = 0.8780509712632452 (3.3517e-05% change)
+Finished solving for bands 11 to 20 after 46 iterations.
+Finished k-point with 26 mean iterations/band.
+freqs:, 62, 0.5, -0.25, -0.5, 0.75, 0.189671, 0.190096, 0.190497, 0.192608, 0.192956, 0.1942, 0.224496, 0.242153, 0.261244, 0.262908, 0.210466, 0.229067, 0.254167, 0.25802, 0.258031, 0.258032, 0.359493, 0.359494, 0.359497, 0.359497
+elapsed time for k point: 51 seconds.
+solve_kpoint (0.5,0,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.438624923871651 (0.000145636% change)
+    iteration   12: trace = 0.4385053772930347 (0.00243842% change)
+    iteration   18: trace = 0.4383264817525587 (0.00567441% change)
+    iteration   24: trace = 0.4382818191661408 (0.000852125% change)
+    iteration   30: trace = 0.4382676369085794 (0.000141421% change)
+    iteration   36: trace = 0.4382597786570298 (5.59564e-05% change)
+    iteration   42: trace = 0.4382550306307054 (4.2596e-05% change)
+    iteration   48: trace = 0.4382532567029601 (4.65305e-05% change)
+Finished solving for bands 1 to 10 after 50 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9402315239192508 (0.000100352% change)
+    iteration    9: trace = 0.9398600469294058 (0.000887986% change)
+    iteration   14: trace = 0.9398352371996975 (0.00193723% change)
+Finished solving for bands 11 to 20 after 17 iterations.
+Finished k-point with 33.5 mean iterations/band.
+freqs:, 63, 0.5, 0, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306275, 0.306448, 0.306575, 0.306577, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306581, 0.306585
+elapsed time for k point: 55 seconds.
+solve_kpoint (0.5,0.25,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164219705218216 (0.0199966% change)
+    iteration    9: trace = 0.9164003606848685 (2.37689e-06% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 64, 0.5, 0.25, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 14 seconds.
+solve_kpoint (0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701784378643218 (0.072451% change)
+    iteration    9: trace = 0.9697954738723092 (0.0160206% change)
+    iteration   14: trace = 0.9696651357800311 (0.00322184% change)
+    iteration   19: trace = 0.969621427781586 (0.000625082% change)
+    iteration   24: trace = 0.9695963612328847 (9.44885e-05% change)
+    iteration   29: trace = 0.9695854141165605 (0.000102574% change)
+Finished solving for bands 11 to 20 after 33 iterations.
+Finished k-point with 18 mean iterations/band.
+freqs:, 65, 0.5, 0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414607, 0.414607, 0.414608
+elapsed time for k point: 36 seconds.
+solve_kpoint (0.25,0.25,-0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4307939124900749 (6.72062e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9374921607243829 (1.69225% change)
+    iteration    9: trace = 0.9320662379835271 (0.000856451% change)
+    iteration   14: trace = 0.9320539842924596 (0.00074223% change)
+    iteration   19: trace = 0.9319884605013021 (5.57269e-05% change)
+    iteration   24: trace = 0.9319821509124406 (0.000431222% change)
+    iteration   29: trace = 0.9319711834754703 (3.16801e-06% change)
+Finished solving for bands 11 to 20 after 29 iterations.
+Finished k-point with 17.5 mean iterations/band.
+freqs:, 66, 0.25, 0.25, -0.25, 0.433013, 0.108393, 0.108393, 0.207555, 0.207556, 0.207556, 0.207556, 0.207557, 0.207557, 0.272781, 0.272781, 0.27278, 0.27278, 0.272781, 0.272781, 0.325023, 0.325023, 0.325175, 0.325175, 0.325176, 0.325326
+elapsed time for k point: 35 seconds.
+solve_kpoint (0,0,0):
+Solving for bands 3 to 12...
+    iteration    6: trace = 0.737252031731128 (0.00869492% change)
+    iteration   12: trace = 0.7368417752050603 (0.00977173% change)
+    iteration   18: trace = 0.7363647238369537 (0.0116879% change)
+    iteration   24: trace = 0.7357608129694037 (0.0154816% change)
+    iteration   30: trace = 0.7348823789949425 (0.0241149% change)
+    iteration   36: trace = 0.7333754207278605 (0.0430139% change)
+    iteration   42: trace = 0.7304521991815052 (0.0981062% change)
+    iteration   48: trace = 0.7047114212701874 (1.1027% change)
+    iteration   54: trace = 0.6760747652064618 (0.295958% change)
+    iteration   60: trace = 0.6478451962438069 (0.196394% change)
+    iteration   66: trace = 0.6269622884875556 (0.288943% change)
+    iteration   72: trace = 0.6265485818433161 (0.00341961% change)
+Finished solving for bands 3 to 12 after 75 iterations.
+Solving for bands 13 to 20...
+    iteration    6: trace = 0.9502010901702264 (0.314399% change)
+    iteration   13: trace = 0.877309594935384 (0.462276% change)
+    iteration   19: trace = 0.8761613001037756 (0.045849% change)
+    iteration   25: trace = 0.8760024862669071 (0.00682511% change)
+    iteration   31: trace = 0.875908181596586 (0.00388315% change)
+    iteration   37: trace = 0.8758650376581123 (0.00219193% change)
+    iteration   43: trace = 0.875835151562992 (0.00146406% change)
+    iteration   49: trace = 0.8758233462731317 (0.000515331% change)
+Finished solving for bands 13 to 20 after 52 iterations.
+Finished k-point with 58.3 mean iterations/band.
+freqs:, 67, 0, 0, 0, 0, 0, 0, 0.250246, 0.250247, 0.250247, 0.250247, 0.250247, 0.250247, 0.250395, 0.250395, 0.250396, 0.250396, 0.250395, 0.250396, 0.353582, 0.353582, 0.353582, 0.353675, 0.353677, 0.353824
+elapsed time for k point: 1 minute, 33 seconds.
+solve_kpoint (0.25,0,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.477713212212789 (0.000133343% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9165350186287723 (0.0182786% change)
+    iteration    9: trace = 0.9164606567288788 (0.00150502% change)
+    iteration   14: trace = 0.9163380984100087 (4.84491e-05% change)
+    iteration   19: trace = 0.9163315570639037 (0.000441776% change)
+Finished solving for bands 11 to 20 after 22 iterations.
+Finished k-point with 14.5 mean iterations/band.
+freqs:, 68, 0.25, 0, 0, 0.25, 0.0625807, 0.0625809, 0.187741, 0.187742, 0.257948, 0.257948, 0.257958, 0.257958, 0.258096, 0.258097, 0.258098, 0.258099, 0.312706, 0.312707, 0.312873, 0.312874, 0.312891, 0.312891, 0.312992, 0.313024
+elapsed time for k point: 28 seconds.
+solve_kpoint (0.5,0,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.5322610695112878 (0.00491229% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.7836146481919651 (0.00245107% change)
+Finished solving for bands 11 to 20 after 7 iterations.
+Finished k-point with 8 mean iterations/band.
+freqs:, 69, 0.5, 0, 0, 0.5, 0.125161, 0.125161, 0.125162, 0.125162, 0.279703, 0.279703, 0.279733, 0.279733, 0.279846, 0.27985, 0.279852, 0.279857, 0.279865, 0.279865, 0.279902, 0.279902, 0.280003, 0.280003, 0.280029, 0.28003
+elapsed time for k point: 15 seconds.
+solve_kpoint (0.5,0.25,0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 1.045049902367944 (0.00331327% change)
+    iteration    9: trace = 1.04488805373066 (0.00296592% change)
+    iteration   14: trace = 1.044740714317854 (0.00274038% change)
+    iteration   19: trace = 1.044601560218656 (0.00262586% change)
+    iteration   24: trace = 1.044465704545734 (0.00259472% change)
+    iteration   29: trace = 1.044329295559934 (0.00263264% change)
+    iteration   34: trace = 1.044188854573137 (0.00273697% change)
+    iteration   39: trace = 1.044040723102111 (0.00291527% change)
+    iteration   44: trace = 1.043880489143978 (0.00318713% change)
+    iteration   49: trace = 1.043702187431782 (0.00359048% change)
+    iteration   54: trace = 1.043496917647588 (0.00419691% change)
+    iteration   59: trace = 1.043250092001913 (0.0051479% change)
+    iteration   64: trace = 1.042935325464821 (0.00674499% change)
+    iteration   69: trace = 1.042499983381389 (0.00966931% change)
+    iteration   74: trace = 0.924257469059754 (0.0111816% change)
+    iteration   78: trace = 0.9242357535852386 (2.89066e-06% change)
+Finished solving for bands 11 to 20 after 78 iterations.
+Finished k-point with 41.5 mean iterations/band.
+freqs:, 70, 0.5, 0.25, 0.25, 0.612372, 0.15329, 0.15329, 0.15329, 0.153292, 0.234154, 0.234154, 0.234154, 0.234154, 0.234155, 0.234155, 0.234155, 0.234155, 0.293526, 0.293526, 0.293527, 0.293527, 0.342763, 0.342763, 0.342764, 0.342764
+elapsed time for k point: 1 minute, 22 seconds.
+solve_kpoint (0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9704870570586921 (0.059938% change)
+    iteration    9: trace = 0.9699013734140496 (0.0127631% change)
+    iteration   14: trace = 0.9697119570995346 (0.00210935% change)
+    iteration   19: trace = 0.9696531471667599 (0.000399691% change)
+    iteration   24: trace = 0.9696218338278276 (0.000122486% change)
+    iteration   29: trace = 0.9696043721070365 (0.000121378% change)
+    iteration   34: trace = 0.9695800481000331 (3.58989e-05% change)
+    iteration   39: trace = 0.9695694378913764 (4.74551e-06% change)
+Finished solving for bands 11 to 20 after 39 iterations.
+Finished k-point with 21 mean iterations/band.
+freqs:, 71, 0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414606, 0.414606, 0.414607, 0.414607
+elapsed time for k point: 42 seconds.
+solve_kpoint (0.5,0.5,0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4355706638936543 (0.00774928% change)
+    iteration   12: trace = 0.4353235162958538 (0.0112093% change)
+    iteration   18: trace = 0.4348384996537612 (0.0288308% change)
+    iteration   24: trace = 0.4307015942179715 (0.0665073% change)
+    iteration   30: trace = 0.4289449139421429 (0.0883268% change)
+    iteration   36: trace = 0.4176615979317201 (0.125378% change)
+    iteration   42: trace = 0.4151302448565058 (2.94844e-06% change)
+Finished solving for bands 1 to 10 after 42 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9482627801156368 (0.895466% change)
+    iteration    9: trace = 0.9316287826704956 (0.417974% change)
+    iteration   14: trace = 0.9164350316911868 (0.0067018% change)
+    iteration   19: trace = 0.9164013197337503 (6.40376e-06% change)
+Finished solving for bands 11 to 20 after 19 iterations.
+Finished k-point with 30.5 mean iterations/band.
+freqs:, 72, 0.5, 0.5, 0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187743, 0.187743, 0.258025, 0.258026, 0.258024, 0.258025, 0.258025, 0.258025, 0.258026, 0.258026, 0.359491, 0.359491, 0.359493, 0.359494
+elapsed time for k point: 50 seconds.
+solve_kpoint (0.5,0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4384113761110791 (0.001898% change)
+    iteration   12: trace = 0.438261086140731 (0.000233618% change)
+Finished solving for bands 1 to 10 after 17 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9400746530081555 (0.00251174% change)
+    iteration    9: trace = 0.93984139097959 (1.39116e-05% change)
+    iteration   14: trace = 0.9398275972920974 (7.07959e-06% change)
+Finished solving for bands 11 to 20 after 14 iterations.
+Finished k-point with 15.5 mean iterations/band.
+freqs:, 73, 0.5, 0.5, 0, 0.707107, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177006, 0.177006, 0.306274, 0.306275, 0.30645, 0.306574, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.30658, 0.306582, 0.306584
+elapsed time for k point: 28 seconds.
+solve_kpoint (0.5,0.5,-0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 4 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9614184953724296 (0.168433% change)
+    iteration    9: trace = 0.9278707058359662 (0.492344% change)
+    iteration   14: trace = 0.9171827827001747 (0.0608343% change)
+    iteration   19: trace = 0.9164355738762483 (0.00316007% change)
+    iteration   24: trace = 0.9164034232654545 (0.000130784% change)
+    iteration   29: trace = 0.9164019784794514 (6.62035e-06% change)
+Finished solving for bands 11 to 20 after 29 iterations.
+Finished k-point with 16.5 mean iterations/band.
+freqs:, 74, 0.5, 0.5, -0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258026, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 32 seconds.
+solve_kpoint (0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9702044392788517 (0.0728912% change)
+    iteration    9: trace = 0.9698083637125456 (0.0161252% change)
+    iteration   14: trace = 0.9696631532198789 (0.0033094% change)
+    iteration   19: trace = 0.9696147228875314 (0.000578973% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 75, 0.5, 0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414607, 0.414611, 0.414616, 0.414619
+elapsed time for k point: 26 seconds.
+solve_kpoint (0.5,0.25,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4777121796327786 (0.0161965% change)
+    iteration   12: trace = 0.4777118045692711 (1.26358e-05% change)
+    iteration   18: trace = 0.4777114593439805 (1.16387e-05% change)
+    iteration   24: trace = 0.4777111406007125 (1.07682e-05% change)
+    iteration   30: trace = 0.477710844730261 (1.00202e-05% change)
+Finished solving for bands 1 to 10 after 31 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8866585659996766 (0.374009% change)
+    iteration    9: trace = 0.8586541442535399 (0.430879% change)
+    iteration   14: trace = 0.8566139838493146 (0.00126875% change)
+Finished solving for bands 11 to 20 after 18 iterations.
+Finished k-point with 24.5 mean iterations/band.
+freqs:, 76, 0.5, 0.25, -0.5, 0.75, 0.188097, 0.188183, 0.188198, 0.188738, 0.188803, 0.188902, 0.253131, 0.258105, 0.258577, 0.258826, 0.188617, 0.195061, 0.257541, 0.258012, 0.258025, 0.258025, 0.359485, 0.359491, 0.359492, 0.359493
+elapsed time for k point: 41 seconds.
+solve_kpoint (0.5,0,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386306932621287 (0.0189561% change)
+    iteration   12: trace = 0.4385360065281549 (0.0138304% change)
+    iteration   18: trace = 0.4384577557246411 (0.00173679% change)
+    iteration   25: trace = 0.4383569153477866 (0.00044482% change)
+    iteration   31: trace = 0.4382952612169243 (9.0787e-05% change)
+    iteration   37: trace = 0.4382679346866419 (7.61558e-05% change)
+    iteration   43: trace = 0.4382557235282991 (0.000227121% change)
+    iteration   49: trace = 0.4382533373326751 (0.000205485% change)
+Finished solving for bands 1 to 10 after 52 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401439673554264 (8.95047e-05% change)
+    iteration    9: trace = 0.9400308346821595 (4.58867e-05% change)
+    iteration   14: trace = 0.9399028347858078 (0.000242766% change)
+    iteration   19: trace = 0.9398503587857022 (0.000923459% change)
+    iteration   24: trace = 0.9398324121063013 (0.00106535% change)
+    iteration   29: trace = 0.9398269080153241 (0.0003075% change)
+Finished solving for bands 11 to 20 after 32 iterations.
+Finished k-point with 42 mean iterations/band.
+freqs:, 77, 0.5, 0, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306274, 0.306448, 0.306574, 0.306578, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306579, 0.306581
+elapsed time for k point: 1 minute, 11 seconds.
+solve_kpoint (0.5,-0.25,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164101183405644 (0.00884874% change)
+Finished solving for bands 11 to 20 after 8 iterations.
+Finished k-point with 6.5 mean iterations/band.
+freqs:, 78, 0.5, -0.25, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359492, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 12 seconds.
+solve_kpoint (0.5,-0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.970211587487334 (0.0728794% change)
+    iteration    9: trace = 0.9698084701315023 (0.0165144% change)
+    iteration   14: trace = 0.9696617753511404 (0.00340779% change)
+    iteration   19: trace = 0.9696125928231397 (0.000605529% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 79, 0.5, -0.5, -0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414609, 0.414616, 0.414619
+elapsed time for k point: 26 seconds.
+solve_kpoint (0.5,-0.5,-0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4708004045860616 (3.25947e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8776429921221821 (1.31947% change)
+    iteration    9: trace = 0.869580235547276 (0.00206792% change)
+    iteration   14: trace = 0.8695635950294617 (8.23228e-05% change)
+    iteration   19: trace = 0.869562518847669 (1.22603e-05% change)
+Finished solving for bands 11 to 20 after 20 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 80, 0.5, -0.5, -0.25, 0.75, 0.188549, 0.188708, 0.189799, 0.190285, 0.190911, 0.191127, 0.228098, 0.257526, 0.260409, 0.261284, 0.191906, 0.224618, 0.256379, 0.257795, 0.258025, 0.258025, 0.359492, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 25 seconds.
+solve_kpoint (0.5,-0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.438622423100014 (0.000727095% change)
+    iteration   12: trace = 0.4384689866941499 (0.00135693% change)
+    iteration   18: trace = 0.4383880152394852 (0.00121455% change)
+    iteration   24: trace = 0.4383615171535635 (0.00273287% change)
+    iteration   31: trace = 0.4383408386164248 (0.000419849% change)
+    iteration   37: trace = 0.4383028003080894 (0.00103783% change)
+    iteration   44: trace = 0.4382703011808487 (0.00023225% change)
+    iteration   50: trace = 0.4382576710659871 (0.000400425% change)
+    iteration   56: trace = 0.4382547838102941 (0.000225531% change)
+Finished solving for bands 1 to 10 after 61 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.940147599192484 (9.74165e-05% change)
+    iteration    9: trace = 0.9400244061405141 (1.92087e-05% change)
+    iteration   14: trace = 0.9399452452798664 (0.000237736% change)
+    iteration   19: trace = 0.9398618949150722 (0.000462295% change)
+    iteration   23: trace = 0.9398473533021573 (0.00101922% change)
+    iteration   28: trace = 0.9398329429237726 (0.000904574% change)
+    iteration   33: trace = 0.939826430172824 (0.000363268% change)
+Finished solving for bands 11 to 20 after 36 iterations.
+Finished k-point with 48.5 mean iterations/band.
+freqs:, 81, 0.5, -0.5, 0, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306274, 0.306448, 0.306575, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.306579, 0.30658, 0.306582
+elapsed time for k point: 1 minute, 21 seconds.
+solve_kpoint (0.5,-0.5,0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164050402538586 (0.00468811% change)
+Finished solving for bands 11 to 20 after 8 iterations.
+Finished k-point with 6.5 mean iterations/band.
+freqs:, 82, 0.5, -0.5, 0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 13 seconds.
+solve_kpoint (0.5,-0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701788692447393 (0.0715876% change)
+    iteration    9: trace = 0.9697958754928721 (0.0164903% change)
+    iteration   14: trace = 0.9696618658122207 (0.00345503% change)
+    iteration   19: trace = 0.9696161829963956 (0.0006391% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 83, 0.5, -0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414612, 0.414617, 0.41462
+elapsed time for k point: 26 seconds.
+solve_kpoint (0.5,-0.25,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4707550245229684 (5.10041e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8862192860528489 (1.46683% change)
+    iteration    9: trace = 0.8720707355035483 (0.00919794% change)
+    iteration   14: trace = 0.8720040327012322 (0.000214319% change)
+    iteration   19: trace = 0.872000239728708 (4.48992e-05% change)
+    iteration   24: trace = 0.8719992102221592 (1.47782e-05% change)
+Finished solving for bands 11 to 20 after 27 iterations.
+Finished k-point with 16.5 mean iterations/band.
+freqs:, 84, 0.5, -0.25, 0.5, 0.75, 0.189139, 0.18953, 0.190195, 0.19054, 0.191944, 0.192318, 0.229126, 0.251822, 0.261112, 0.262027, 0.198601, 0.223953, 0.257161, 0.257244, 0.258025, 0.258025, 0.359492, 0.359493, 0.359494, 0.359494
+elapsed time for k point: 32 seconds.
+solve_kpoint (0.5,0,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.438624508128215 (0.000125679% change)
+    iteration   12: trace = 0.438508376333559 (0.000319812% change)
+    iteration   18: trace = 0.4383514584553282 (0.000320966% change)
+    iteration   25: trace = 0.4382940135230785 (0.000232622% change)
+    iteration   31: trace = 0.4382713632700198 (8.63632e-05% change)
+    iteration   37: trace = 0.4382591074892878 (6.29206e-05% change)
+    iteration   44: trace = 0.4382544387550403 (2.90542e-05% change)
+    iteration   50: trace = 0.4382530690790261 (3.94795e-05% change)
+Finished solving for bands 1 to 10 after 52 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9402148601317528 (0.000106191% change)
+    iteration    9: trace = 0.9399173423522786 (0.000140412% change)
+    iteration   14: trace = 0.9398304804037533 (0.000190417% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 33.5 mean iterations/band.
+freqs:, 85, 0.5, 0, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177006, 0.177006, 0.306274, 0.306274, 0.306452, 0.306575, 0.306578, 0.306578, 0.306579, 0.306579, 0.306579, 0.306579, 0.306582, 0.306585
+elapsed time for k point: 53 seconds.
+solve_kpoint (0.5,0.25,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164320630144455 (0.0258364% change)
+    iteration    9: trace = 0.9164020052186388 (3.7024e-06% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 86, 0.5, 0.25, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258026, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.258027, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 13 seconds.
+solve_kpoint (0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701672380017652 (0.0722995% change)
+    iteration    9: trace = 0.9697912436446516 (0.015684% change)
+    iteration   14: trace = 0.9696647768314467 (0.00312923% change)
+    iteration   19: trace = 0.9696237269639651 (0.000630674% change)
+    iteration   24: trace = 0.9695986750685267 (0.000116883% change)
+    iteration   29: trace = 0.9695867818646616 (0.000123422% change)
+Finished solving for bands 11 to 20 after 33 iterations.
+Finished k-point with 18 mean iterations/band.
+freqs:, 87, 0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414607, 0.414607, 0.414607, 0.414608
+elapsed time for k point: 36 seconds.
+solve_kpoint (0.25,0.25,0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4307942008342128 (6.82422e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9380918171774553 (1.72281% change)
+    iteration    9: trace = 0.93206707992911 (0.000994733% change)
+    iteration   14: trace = 0.9320557551470495 (0.000645668% change)
+    iteration   19: trace = 0.9319891272394716 (6.54326e-05% change)
+    iteration   24: trace = 0.9319837285306498 (0.000368441% change)
+    iteration   29: trace = 0.9319718754709899 (4.13775e-06% change)
+Finished solving for bands 11 to 20 after 29 iterations.
+Finished k-point with 17.5 mean iterations/band.
+freqs:, 88, 0.25, 0.25, 0.25, 0.433013, 0.108393, 0.108393, 0.207555, 0.207555, 0.207556, 0.207557, 0.207557, 0.207557, 0.272781, 0.272781, 0.27278, 0.272781, 0.272781, 0.272781, 0.325023, 0.325023, 0.325174, 0.325176, 0.325176, 0.325326
+elapsed time for k point: 34 seconds.
+solve_kpoint (0,0,0):
+Solving for bands 3 to 12...
+    iteration    6: trace = 0.7345570957769563 (0.00839448% change)
+    iteration   12: trace = 0.7341614424360082 (0.00947507% change)
+    iteration   18: trace = 0.733699519384432 (0.0113733% change)
+    iteration   24: trace = 0.733113384056405 (0.0150845% change)
+    iteration   30: trace = 0.7322620874073614 (0.0234004% change)
+    iteration   37: trace = 0.7305056125017055 (0.0439595% change)
+    iteration   44: trace = 0.7266119819299177 (0.137929% change)
+    iteration   50: trace = 0.6695071437385641 (0.0211889% change)
+    iteration   57: trace = 0.6675494372006856 (0.0808879% change)
+    iteration   64: trace = 0.6346714362308262 (1.57465% change)
+    iteration   71: trace = 0.6265682767275992 (0.000316682% change)
+Finished solving for bands 3 to 12 after 76 iterations.
+Solving for bands 13 to 20...
+    iteration    6: trace = 0.9655981735495813 (2.01294% change)
+    iteration   12: trace = 0.8777002871531979 (0.091479% change)
+    iteration   18: trace = 0.8770678117368731 (0.0377614% change)
+    iteration   24: trace = 0.8761271132603283 (0.000305777% change)
+    iteration   31: trace = 0.8759628032328448 (0.000308988% change)
+    iteration   38: trace = 0.8758851964435032 (0.00115357% change)
+    iteration   45: trace = 0.8758468149973396 (0.00206927% change)
+    iteration   52: trace = 0.8758361138685038 (0.000187339% change)
+    iteration   58: trace = 0.8758241881433192 (1.80687e-05% change)
+    iteration   64: trace = 0.8758177559271068 (0.000162869% change)
+Finished solving for bands 13 to 20 after 67 iterations.
+Finished k-point with 64.8 mean iterations/band.
+freqs:, 89, 0, 0, 0, 0, 0, 0, 0.250247, 0.250247, 0.250247, 0.250247, 0.250247, 0.250248, 0.250395, 0.250395, 0.250396, 0.250396, 0.250395, 0.250396, 0.353582, 0.353582, 0.353582, 0.353675, 0.353676, 0.35382
+elapsed time for k point: 1 minute, 41 seconds.
+solve_kpoint (0,0.25,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4777169770859425 (0.00429196% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9165460131327285 (0.0257305% change)
+    iteration    9: trace = 0.9164854264448707 (0.00116336% change)
+    iteration   14: trace = 0.9163266737441303 (7.51197e-05% change)
+Finished solving for bands 11 to 20 after 16 iterations.
+Finished k-point with 12.5 mean iterations/band.
+freqs:, 90, 0, 0.25, 0, 0.25, 0.0625807, 0.0625809, 0.187741, 0.187742, 0.257948, 0.257949, 0.257958, 0.257958, 0.258097, 0.2581, 0.258095, 0.258098, 0.312708, 0.312709, 0.312873, 0.312875, 0.312891, 0.312891, 0.312992, 0.313017
+elapsed time for k point: 22 seconds.
+solve_kpoint (0,0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.5322669791159121 (0.00484097% change)
+Finished solving for bands 1 to 10 after 9 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.7836069364923434 (0.000632813% change)
+Finished solving for bands 11 to 20 after 6 iterations.
+Finished k-point with 7.5 mean iterations/band.
+freqs:, 91, 0, 0.5, 0, 0.5, 0.125161, 0.125161, 0.125162, 0.125162, 0.279703, 0.279703, 0.279733, 0.279733, 0.279844, 0.279862, 0.279839, 0.279858, 0.279865, 0.279865, 0.279902, 0.279902, 0.280002, 0.280003, 0.280029, 0.280031
+elapsed time for k point: 14 seconds.
+solve_kpoint (0.25,0.5,-0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 1.045343300646061 (0.00333976% change)
+    iteration    9: trace = 1.045181208796612 (0.00295743% change)
+    iteration   14: trace = 1.045034886253759 (0.00271378% change)
+    iteration   19: trace = 1.044897443260511 (0.00258827% change)
+    iteration   24: trace = 1.044763794844474 (0.00254821% change)
+    iteration   29: trace = 1.044630060916249 (0.00257688% change)
+    iteration   34: trace = 1.044492832002821 (0.00266996% change)
+    iteration   39: trace = 1.044348607966871 (0.00283319% change)
+    iteration   44: trace = 1.044193256492017 (0.00308335% change)
+    iteration   49: trace = 1.0440212987536 (0.00345337% change)
+    iteration   54: trace = 1.043824722389604 (0.00400475% change)
+    iteration   59: trace = 1.043590695325283 (0.00485633% change)
+    iteration   64: trace = 1.04329666683395 (0.00625373% change)
+    iteration   69: trace = 1.042899117920447 (0.00873663% change)
+    iteration   74: trace = 0.9242563855599192 (0.0105872% change)
+Finished solving for bands 11 to 20 after 78 iterations.
+Finished k-point with 41.5 mean iterations/band.
+freqs:, 92, 0.25, 0.5, -0.25, 0.612372, 0.15329, 0.15329, 0.153291, 0.153291, 0.234154, 0.234154, 0.234154, 0.234155, 0.234155, 0.234155, 0.234154, 0.234155, 0.293526, 0.293526, 0.293527, 0.293527, 0.342763, 0.342763, 0.342764, 0.342765
+elapsed time for k point: 1 minute, 19 seconds.
+solve_kpoint (0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9704841444354271 (0.0600906% change)
+    iteration    9: trace = 0.9698957987774156 (0.0131753% change)
+    iteration   14: trace = 0.9697109091202776 (0.00213942% change)
+    iteration   19: trace = 0.9696524605474419 (0.00041115% change)
+    iteration   24: trace = 0.9696212302181374 (0.000127206% change)
+    iteration   29: trace = 0.9696038427630335 (0.000117163% change)
+    iteration   34: trace = 0.9695795581051972 (3.75738e-05% change)
+    iteration   39: trace = 0.9695690032663496 (4.53726e-06% change)
+Finished solving for bands 11 to 20 after 39 iterations.
+Finished k-point with 21 mean iterations/band.
+freqs:, 93, 0.5, 0.5, -0.5, 0.866025, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414606, 0.414606, 0.414607, 0.414607
+elapsed time for k point: 41 seconds.
+solve_kpoint (0.5,0.5,-0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4151301052239273 (0.00044039% change)
+Finished solving for bands 1 to 10 after 8 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9468346890936415 (0.247192% change)
+    iteration    9: trace = 0.9285999102045638 (0.36441% change)
+    iteration   14: trace = 0.9167071564235462 (0.0654166% change)
+    iteration   19: trace = 0.9164053198898908 (0.000691443% change)
+    iteration   24: trace = 0.9164016323140619 (1.4008e-05% change)
+Finished solving for bands 11 to 20 after 25 iterations.
+Finished k-point with 16.5 mean iterations/band.
+freqs:, 94, 0.5, 0.5, -0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258025, 0.258026, 0.258024, 0.258025, 0.258025, 0.258025, 0.258026, 0.258026, 0.359491, 0.359491, 0.359493, 0.359494
+elapsed time for k point: 30 seconds.
+solve_kpoint (0.5,0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.43843747989635 (0.00257505% change)
+    iteration   12: trace = 0.4382682120922541 (0.000401439% change)
+Finished solving for bands 1 to 10 after 18 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401094550517812 (0.00259204% change)
+    iteration    9: trace = 0.9398364257367676 (1.12472e-05% change)
+    iteration   14: trace = 0.9398269046927682 (7.49179e-06% change)
+Finished solving for bands 11 to 20 after 14 iterations.
+Finished k-point with 16 mean iterations/band.
+freqs:, 95, 0.5, 0.5, 0, 0.707107, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177006, 0.177006, 0.306274, 0.306275, 0.30645, 0.306574, 0.306577, 0.306577, 0.306578, 0.306579, 0.306579, 0.30658, 0.306582, 0.306583
+elapsed time for k point: 27 seconds.
+solve_kpoint (0.5,0.5,0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 4 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.955449010468203 (0.241628% change)
+    iteration    9: trace = 0.918671909413017 (0.305938% change)
+    iteration   14: trace = 0.9164483391453084 (0.0055989% change)
+    iteration   19: trace = 0.9164027487092505 (0.000120787% change)
+Finished solving for bands 11 to 20 after 22 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 96, 0.5, 0.5, 0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258026, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.258027, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 25 seconds.
+solve_kpoint (0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9701901275826765 (0.0710237% change)
+    iteration    9: trace = 0.9697994615670747 (0.0166922% change)
+    iteration   14: trace = 0.9696594965189628 (0.00362119% change)
+    iteration   19: trace = 0.9696134869128294 (0.000727623% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 97, 0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414607, 0.414611, 0.414616, 0.414619
+elapsed time for k point: 25 seconds.
+solve_kpoint (0.25,0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4776888040969594 (0.0212279% change)
+Finished solving for bands 1 to 10 after 7 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8858986301685446 (0.369295% change)
+    iteration    9: trace = 0.8579846025491766 (0.543659% change)
+    iteration   14: trace = 0.8558251489617666 (0.00121194% change)
+Finished solving for bands 11 to 20 after 17 iterations.
+Finished k-point with 12 mean iterations/band.
+freqs:, 98, 0.25, 0.5, 0.5, 0.75, 0.188017, 0.188102, 0.188165, 0.188267, 0.188372, 0.188476, 0.254646, 0.25799, 0.258476, 0.258622, 0.188447, 0.192812, 0.257846, 0.257988, 0.258025, 0.258025, 0.359487, 0.359491, 0.359492, 0.359493
+elapsed time for k point: 22 seconds.
+solve_kpoint (0,0.5,0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386805000451205 (0.05542% change)
+    iteration   13: trace = 0.438597016975144 (0.00368394% change)
+    iteration   19: trace = 0.4384734817264399 (0.000284168% change)
+    iteration   25: trace = 0.438356245278774 (0.000310813% change)
+    iteration   31: trace = 0.4383126508384146 (0.00156793% change)
+    iteration   37: trace = 0.4382851611695394 (0.00298156% change)
+    iteration   43: trace = 0.4382717758640072 (0.000803456% change)
+    iteration   49: trace = 0.4382596237861395 (6.26886e-05% change)
+    iteration   55: trace = 0.4382539136965731 (1.91586e-05% change)
+    iteration   61: trace = 0.4382529794177928 (2.77769e-05% change)
+Finished solving for bands 1 to 10 after 62 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9402170975289734 (0.000168533% change)
+    iteration    9: trace = 0.94002128882549 (8.13716e-05% change)
+    iteration   14: trace = 0.9399316343565184 (0.000179619% change)
+    iteration   19: trace = 0.9398743803596288 (0.000411585% change)
+    iteration   24: trace = 0.9398498816215926 (0.000904303% change)
+    iteration   29: trace = 0.9398319851507664 (0.00101164% change)
+    iteration   34: trace = 0.9398252213537152 (0.000374848% change)
+Finished solving for bands 11 to 20 after 36 iterations.
+Finished k-point with 49 mean iterations/band.
+freqs:, 99, 0, 0.5, 0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177006, 0.177006, 0.306274, 0.306274, 0.306448, 0.306575, 0.306577, 0.306578, 0.306578, 0.306579, 0.306579, 0.306579, 0.30658, 0.306582
+elapsed time for k point: 1 minute, 18 seconds.
+solve_kpoint (-0.25,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164099461770738 (0.00743925% change)
+Finished solving for bands 11 to 20 after 8 iterations.
+Finished k-point with 6.5 mean iterations/band.
+freqs:, 100, -0.25, 0.5, 0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258024, 0.258026, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.258026, 0.359491, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 13 seconds.
+solve_kpoint (-0.5,0.5,0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.970206679331421 (0.0732837% change)
+    iteration    9: trace = 0.9698090167229613 (0.0161447% change)
+    iteration   14: trace = 0.9696627246029662 (0.00324068% change)
+    iteration   19: trace = 0.9696143308375607 (0.000589812% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 101, -0.5, 0.5, 0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.414607, 0.414611, 0.414616, 0.414618
+elapsed time for k point: 25 seconds.
+solve_kpoint (-0.5,0.5,0.25):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4761072343892402 (3.03261e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8780908802673943 (1.36572% change)
+    iteration    9: trace = 0.8630181914443353 (0.00708614% change)
+    iteration   14: trace = 0.8629708652274528 (6.34735e-05% change)
+    iteration   19: trace = 0.8629697876312545 (1.4193e-05% change)
+Finished solving for bands 11 to 20 after 22 iterations.
+Finished k-point with 14 mean iterations/band.
+freqs:, 102, -0.5, 0.5, 0.25, 0.75, 0.18843, 0.188545, 0.189104, 0.190061, 0.190103, 0.190813, 0.244601, 0.256214, 0.259721, 0.260172, 0.193254, 0.207081, 0.257193, 0.257876, 0.258025, 0.258025, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 27 seconds.
+solve_kpoint (-0.5,0.5,0):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.4386213907186099 (0.000460963% change)
+    iteration   12: trace = 0.4384629401649853 (0.000633167% change)
+    iteration   19: trace = 0.4383454866138218 (0.000161133% change)
+    iteration   25: trace = 0.438285614916418 (0.000192495% change)
+    iteration   32: trace = 0.438262418743229 (3.68902e-05% change)
+    iteration   39: trace = 0.438253832913317 (6.97848e-06% change)
+Finished solving for bands 1 to 10 after 39 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401416860267475 (0.000109717% change)
+    iteration    9: trace = 0.9399624465643505 (7.79844e-05% change)
+    iteration   14: trace = 0.9398420250825341 (8.06679e-05% change)
+    iteration   19: trace = 0.9398241399732982 (6.37183e-05% change)
+Finished solving for bands 11 to 20 after 20 iterations.
+Finished k-point with 29.5 mean iterations/band.
+freqs:, 103, -0.5, 0.5, 0, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306276, 0.306449, 0.306575, 0.306577, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306581, 0.306582
+elapsed time for k point: 46 seconds.
+solve_kpoint (-0.5,0.5,-0.25):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 4 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9164253365974462 (0.0200764% change)
+    iteration    9: trace = 0.9164004701937375 (3.2516e-06% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 6.5 mean iterations/band.
+freqs:, 104, -0.5, 0.5, -0.25, 0.75, 0.187741, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187742, 0.258024, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359492, 0.359492, 0.359493, 0.359493
+elapsed time for k point: 12 seconds.
+solve_kpoint (-0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    5: trace = 0.9700256163646196 (0.0182317% change)
+    iteration   10: trace = 0.9697133207437327 (0.00934909% change)
+    iteration   15: trace = 0.9696248461341651 (0.00377653% change)
+    iteration   20: trace = 0.9695957372042014 (0.00175385% change)
+Finished solving for bands 11 to 20 after 23 iterations.
+Finished k-point with 13 mean iterations/band.
+freqs:, 105, -0.5, 0.5, -0.5, 0.866025, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414608, 0.414617, 0.41462
+elapsed time for k point: 25 seconds.
+solve_kpoint (-0.25,0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.472968613865193 (3.50978e-06% change)
+Finished solving for bands 1 to 10 after 6 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.8717144651437675 (1.16358% change)
+    iteration    9: trace = 0.8662544535101901 (0.00148784% change)
+    iteration   14: trace = 0.866245753677535 (1.62164e-05% change)
+Finished solving for bands 11 to 20 after 15 iterations.
+Finished k-point with 10.5 mean iterations/band.
+freqs:, 106, -0.25, 0.5, -0.5, 0.75, 0.188986, 0.189265, 0.189392, 0.189711, 0.190201, 0.190503, 0.233467, 0.25905, 0.260006, 0.260552, 0.188823, 0.218849, 0.257449, 0.257535, 0.258025, 0.258025, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 19 seconds.
+solve_kpoint (0,0.5,-0.5):
+Solving for bands 1 to 10...
+    iteration    6: trace = 0.438623274621851 (0.00175225% change)
+    iteration   12: trace = 0.4385167433804717 (0.00403333% change)
+    iteration   19: trace = 0.4383738825090585 (0.00164995% change)
+    iteration   26: trace = 0.4382888319896678 (0.00139136% change)
+    iteration   33: trace = 0.43826279318885 (0.000473325% change)
+    iteration   40: trace = 0.4382560697646369 (0.000233458% change)
+    iteration   47: trace = 0.4382535758264386 (0.000140283% change)
+Finished solving for bands 1 to 10 after 50 iterations.
+Solving for bands 11 to 20...
+    iteration    4: trace = 0.9401955381104459 (0.000111898% change)
+    iteration    9: trace = 0.9399971168161713 (5.28284e-05% change)
+    iteration   14: trace = 0.9398473682106818 (0.000784497% change)
+    iteration   19: trace = 0.9398288779827432 (0.00105343% change)
+Finished solving for bands 11 to 20 after 21 iterations.
+Finished k-point with 35.5 mean iterations/band.
+freqs:, 107, 0, 0.5, -0.5, 0.707107, 0.177004, 0.177004, 0.177004, 0.177004, 0.177005, 0.177005, 0.177005, 0.177005, 0.306274, 0.306275, 0.306448, 0.306574, 0.306578, 0.306578, 0.306578, 0.306578, 0.306579, 0.306579, 0.306581, 0.306587
+elapsed time for k point: 53 seconds.
+solve_kpoint (0.25,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 5 iterations.
+Solving for bands 11 to 20...
+    iteration    5: trace = 0.9164030925657675 (0.00157833% change)
+Finished solving for bands 11 to 20 after 9 iterations.
+Finished k-point with 7 mean iterations/band.
+freqs:, 108, 0.25, 0.5, -0.5, 0.75, 0.187741, 0.187741, 0.187741, 0.187742, 0.187742, 0.187742, 0.187743, 0.187743, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258025, 0.258026, 0.359491, 0.359492, 0.359492, 0.359493
+elapsed time for k point: 13 seconds.
+solve_kpoint (0.5,0.5,-0.5):
+Solving for bands 1 to 10...
+Finished solving for bands 1 to 10 after 3 iterations.
+Solving for bands 11 to 20...
+    iteration    5: trace = 0.9699972382345159 (0.0178682% change)
+    iteration   10: trace = 0.969709212353619 (0.00828158% change)
+    iteration   15: trace = 0.9696313652887816 (0.00313973% change)
+    iteration   20: trace = 0.9696028908383899 (0.00178879% change)
+    iteration   25: trace = 0.969590163420745 (0.000605671% change)
+    iteration   30: trace = 0.9695771667989544 (0.000823358% change)
+Finished solving for bands 11 to 20 after 33 iterations.
+Finished k-point with 18 mean iterations/band.
+freqs:, 109, 0.5, 0.5, -0.5, 0.866025, 0.216784, 0.216784, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.216786, 0.216786, 0.216786, 0.216785, 0.216785, 0.216785, 0.216785, 0.216785, 0.216786, 0.414607, 0.414607, 0.414607, 0.414608
+elapsed time for k point: 34 seconds.
+Band 1 range: 0.0 at #(0.0 0.0 0.0) to 0.21678459422536997 at #(0.5 -0.5 -0.5)
+Band 2 range: 0.0 at #(0.0 0.0 0.0) to 0.21678470893173948 at #(0.5 0.5 -0.5)
+Band 3 range: 0.12516165800430396 at #(0.0 0.0 -0.5) to 0.25024654960411297 at #(0.0 0.0 0.0)
+Band 4 range: 0.12516165843691204 at #(0.0 0.0 -0.5) to 0.2502466197277598 at #(0.0 0.0 0.0)
+Band 5 range: 0.1770044624420838 at #(0.0 -0.5 -0.5) to 0.2797029936046856 at #(0.0 0.5 0.0)
+Band 6 range: 0.17700446266079128 at #(-0.5 -0.5 0.0) to 0.27970414359472234 at #(0.0 -0.5 0.0)
+Band 7 range: 0.1770045414684871 at #(-0.5 -0.5 0.0) to 0.2797326196086602 at #(0.0 0.0 0.5)
+Band 8 range: 0.1770047322636827 at #(0.0 -0.5 -0.5) to 0.27973272844264085 at #(0.0 0.5 0.0)
+Band 9 range: 0.2167848074136153 at #(-0.5 -0.5 -0.5) to 0.3062741956197472 at #(0.5 0.5 0.0)
+Band 10 range: 0.21678490768412936 at #(-0.5 -0.5 -0.5) to 0.3062766742843592 at #(-0.5 0.0 -0.5)
+Band 11 range: 0.18797680983901044 at #(0.25 -0.5 0.5) to 0.3064519134013586 at #(0.5 0.0 0.5)
+Band 12 range: 0.19281193736049065 at #(0.25 0.5 0.5) to 0.30657519167769975 at #(0.5 -0.5 0.0)
+Band 13 range: 0.21678460444406797 at #(-0.5 -0.5 -0.5) to 0.31270769167384865 at #(0.0 0.0 0.25)
+Band 14 range: 0.21678467914580937 at #(-0.5 -0.5 -0.5) to 0.31271269286746234 at #(0.0 0.0 -0.25)
+Band 15 range: 0.21678480753746135 at #(-0.5 -0.5 -0.5) to 0.3535816865426143 at #(0.0 0.0 0.0)
+Band 16 range: 0.21678489650989183 at #(-0.5 -0.5 -0.5) to 0.353581759196037 at #(0.0 0.0 0.0)
+Band 17 range: 0.2800011100487251 at #(0.0 -0.5 0.0) to 0.4146078475380196 at #(0.5 -0.5 -0.5)
+Band 18 range: 0.2800018651298283 at #(0.0 -0.5 0.0) to 0.4146144503659539 at #(-0.5 -0.5 0.5)
+Band 19 range: 0.280028927561936 at #(0.0 -0.5 0.0) to 0.4146171334079433 at #(-0.5 -0.5 0.5)
+Band 20 range: 0.28002965766970117 at #(0.5 0.0 0.0) to 0.4146229011372785 at #(-0.5 0.5 -0.5)
+total elapsed time for run: 1 hour, 8 minutes, 4 seconds.
+done.
