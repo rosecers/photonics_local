@@ -1,0 +1,103 @@
+#------------------------------------------------------------------------------
+#$Date: 2016-02-20 02:53:41 +0200 (Sat, 20 Feb 2016) $
+#$Revision: 176768 $
+#$URL: svn://www.crystallography.net/cod/cif/2/10/17/2101781.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/. The original data for this entry
+# were provided by IUCr Journals, http://journals.iucr.org/.
+#
+# The file may be used within the scientific community so long as
+# proper attribution is given to the journal article from which the
+# data were obtained.
+#
+data_2101781
+loop_
+_publ_author_name
+'Marsh, R. E.'
+_publ_section_title
+;
+ The perils of <i>Cc</i> revisited
+;
+_journal_issue                   2
+_journal_name_full               'Acta Crystallographica Section B'
+_journal_page_first              317
+_journal_page_last               322
+_journal_paper_doi               10.1107/S010876819601381X
+_journal_volume                  53
+_journal_year                    1997
+_chemical_formula_moiety         'C15 H45 N3 Si4 Ti'
+_chemical_formula_sum            'C15 H45 N3 Si4 Ti'
+_space_group_IT_number           161
+_symmetry_cell_setting           rhombohedral
+_symmetry_space_group_name_Hall  'R 3 -2"c'
+_symmetry_space_group_name_H-M   'R 3 c :H'
+_audit_creation_method           CSD-QUEST3D-V5
+_cell_angle_alpha                90
+_cell_angle_beta                 90
+_cell_angle_gamma                120
+_cell_formula_units_Z            6
+_cell_length_a                   15.305
+_cell_length_b                   15.305
+_cell_length_c                   19.451
+_cell_volume                     3945.838
+_cod_data_source_file            an0533.cif
+_cod_data_source_block           CSD_CIF_MIF_PENRAB01
+_cod_depositor_comments
+;
+
+  Added moiety chemical formula from Marsh (1997) paper. The summary
+  chemical formula is calculated from moiety formula using 'AdHocParser'
+  (svn://www.crystallography.net/cod-tools/trunk/Formulae/AdHocParser.yp,
+  revision 1441.)
+
+  Removing 14 atoms which were symmetric equivalents of the atoms from
+  the asymmetric unit.
+
+  Andrius Merkys
+  2013-11-06
+;
+_cod_original_sg_symbol_H-M      'R 3 c'
+_cod_database_code               2101781
+loop_
+_symmetry_equiv_pos_as_xyz
+x,y,z
+-y,x-y,z
+-y,-x,1/2+z
+-x+y,-x,z
+x,x-y,1/2+z
+-x+y,y,1/2+z
+1/3+x,2/3+y,2/3+z
+1/3-y,2/3+x-y,2/3+z
+1/3-y,2/3-x,1/6+z
+1/3-x+y,2/3-x,2/3+z
+1/3+x,2/3+x-y,1/6+z
+1/3-x+y,2/3+y,1/6+z
+2/3+x,1/3+y,1/3+z
+2/3-y,1/3+x-y,1/3+z
+2/3-y,1/3-x,5/6+z
+2/3-x+y,1/3-x,1/3+z
+2/3+x,1/3+x-y,5/6+z
+2/3-x+y,1/3+y,5/6+z
+loop_
+_atom_site_label
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_type_symbol
+Ti1 .0 .0 .0 Ti
+Si1 .0 .0 -.1354 Si
+Si2 .0552 .1597 -.1836 Si
+N1 -.0490 .0847 .0283 N
+C1 .0016 .2280 -.1373 C
+C2 .1983 .2407 -.1770 C
+C3 .0218 .1561 -.2763 C
+C4 -.1540 .0453 .0112 C
+C5 -.0065 .1793 .0664 C
+loop_
+_atom_type_symbol
+C
+N
+Si
+Ti
