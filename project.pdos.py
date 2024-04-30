@@ -2,6 +2,9 @@ from flow import FlowProject
 import numpy as np
 import signac
 
+project = signac.get_project("/Users/rca/periodic_structures/")
+MIN_PHI = project.document['min_phi']
+MAX_PHI = project.document['max_phi']
 
 class MyProject(FlowProject):
     pass
@@ -16,7 +19,7 @@ def all_pdos_done(job):
         superjob_project = signac.get_project(path=job.fn(""))
         for subjob in list(
             superjob_project.find_jobs(
-                {"doc.fill_fraction.$lt": 0.999, "radius.$gt": 0.01}
+                {"doc.fill_fraction.$lt": MAX_PHI, "doc.fill_fraction.$gt": MIN_PHI}
             )
         ):
             key = str((subjob.sp.radius, subjob.sp.dielectric))
@@ -24,6 +27,16 @@ def all_pdos_done(job):
                 return False
     return True
 
+@MyProject.post(lambda job: "kpoints" in job.document)
+@MyProject.operation
+def assign_kpoints(job):
+    import seekpath
+    kpath = seekpath.getpaths.get_path(
+        (job.sp.lattice_vectors, job.sp.basis, [1 for b in job.sp.basis])
+    )
+    kpoints = kpath["point_coords"]
+    job.document["kpoints"] = kpoints
+    job.document["kpoints_from"] = "seekpath, 2024"
 
 @MyProject.pre(lambda job: "kpoints" in job.document)
 @MyProject.post.isfile("pdos.npz")
@@ -39,14 +52,17 @@ def compute_pdos(job):
 @MyProject.pre(all_pdos_done)
 @MyProject.operation
 def purge_bad_pdos(job):
+    if not job.isfile('pdos.npz'):
+        return 
+    
     pdos_dict_raw = dict(np.load(job.fn("pdos.npz"), allow_pickle=True))
     superjob_project = signac.get_project(path=job.fn(""))
-    for subjob in list(superjob_project.find_jobs({"doc.fill_fraction.$gt": 0.999})):
+    for subjob in list(superjob_project.find_jobs({"doc.fill_fraction.$gt": MAX_PHI})):
         key = str((subjob.sp.radius, subjob.sp.dielectric))
         if key in pdos_dict_raw:
             print(key, pdos_dict_raw.pop(key))
     np.savez(job.fn("pdos.npz"), **pdos_dict_raw)
-    for subjob in list(superjob_project.find_jobs({"radius.$lte": 0.01})):
+    for subjob in list(superjob_project.find_jobs({"doc.fill_fraction.$lt": MIN_PHI})):
         key = str((subjob.sp.radius, subjob.sp.dielectric))
         if key in pdos_dict_raw:
             print(key, pdos_dict_raw.pop(key))

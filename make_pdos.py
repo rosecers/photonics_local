@@ -7,6 +7,12 @@ from scipy.ndimage import gaussian_filter
 from tqdm.auto import tqdm
 import signac
 
+project = signac.get_project("/Users/rca/periodic_structures/")
+MAX_PHI = project.document['max_phi']
+MIN_PHI = project.document['min_phi']
+
+def close_event():
+    plt.close() #timer calls this function after 3 seconds and closes the window 
 
 def tetrahedron_integration(
     num_points,
@@ -208,10 +214,12 @@ def pdos_from_mpb(mpb_output, new_kp, ngrid=10):
 
 
 def make_pdos_entry(subjob, superjob, pdos_dict_raw):
+    
     key = str((subjob.sp.radius, subjob.sp.dielectric))
-    if key in pdos_dict_raw and len(pdos_dict_raw[key]) == 4:
-        w, D, gD, _ = pdos_dict_raw.pop(key)
-    elif key not in pdos_dict_raw or len(pdos_dict_raw[key]) != 3:
+
+    if key not in pdos_dict_raw:
+        if subjob.document.fill_fraction<=MIN_PHI or subjob.document.fill_fraction>=MAX_PHI:
+            return {}
         # return {}
         w, D = pdos_from_mpb(
             subjob.fn("output2.txt")
@@ -265,34 +273,46 @@ def make_pdos(superjob):
         for subjob in tqdm(subjobs):
             i = np.where(radii == subjob.sp.radius)[0][0]
             new_entry = make_pdos_entry(subjob, superjob, pdos_dict_raw)
-            pdos_dict_raw = {**pdos_dict_raw, **new_entry}
-            w, D, gD = list(new_entry.values())[0]
-            if w_bins_Tr is None:
-                w_bins_Tr = np.zeros((len(radii), len(w)))
-                DOS_Tr = np.zeros((len(radii), len(D)))
-                gDOS = np.zeros((len(radii), len(gD)))
-            w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
-            
+            if len(list(new_entry.keys()))>0:
+                pdos_dict_raw = {**pdos_dict_raw, **new_entry}
+                w, D, gD = list(new_entry.values())[0]
+                if w_bins_Tr is None:
+                    w_bins_Tr = np.zeros((len(radii), len(w)))
+                    DOS_Tr = np.zeros((len(radii), len(D)))
+                    gDOS = np.zeros((len(radii), len(gD)))
+                w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
+
         np.savez(superjob.fn("pdos.npz"), **pdos_dict_raw)
+
+        fig = plt.figure()
+        timer = fig.canvas.new_timer(interval = 30000) 
+        timer.add_callback(plt.close)
 
         for r, w, gD, f in zip(radii, w_bins_Tr, gDOS, ff):
             plt.plot(w, gD + r, c=plt.get_cmap("jet")(f), zorder=-r)
+
+        timer.start()
         plt.show()
 
         gDOS_copy = gDOS.copy()
         gDOS_copy[gDOS_copy == 0] = np.nan
+
+        fig = plt.figure()
+        timer = fig.canvas.new_timer(interval = 30000)
+        timer.add_callback(plt.close)
 
         plt.imshow(np.flipud(gDOS_copy), aspect="auto", vmax=100)
         plt.xticks([])
         plt.yticks([])
         plt.xlabel("$\\omega/\\omega_{max}$")
         plt.ylabel("$\\phi$")
-        plt.show()
 
-        np.savez(superjob.fn("pdos.npz"), **pdos_dict_raw)
+        timer.start()
+        plt.show()
 
         for subjob in tqdm(list(superjob_project.find_jobs())):
             pdos_dict_raw = {**pdos_dict_raw, **make_pdos_entry(subjob, superjob, pdos_dict_raw)}
+
     except KeyboardInterrupt:
         pass
 
@@ -302,15 +322,14 @@ def make_pdos(superjob):
 if __name__ == "__main__":
     import sys
 
-    oproject = signac.get_project("/Users/rca/periodic_structures/")
 
     if len(sys.argv) == 1:
         ojob = [
             job
-            for job in list(oproject.find_jobs({"doc.kpoints.$exists": True}))
+            for job in list(project.find_jobs({"doc.kpoints.$exists": True}))
             if not job.isfile("pdos.npz")
         ][0]
     else:
-        ojob = oproject.open_job(id=sys.argv[1])
+        ojob = project.open_job(id=sys.argv[1])
 
     make_pdos(ojob)
