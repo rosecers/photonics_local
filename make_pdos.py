@@ -2,17 +2,21 @@ import ase
 import ase.dft
 import numpy as np
 from matplotlib import pyplot as plt
-from scipy.interpolate import LinearNDInterpolator as interpolator
+from scipy.interpolate import RBFInterpolator as interpolator
 from scipy.ndimage import gaussian_filter
 from tqdm.auto import tqdm
 import signac
+from pymatgen.core.structure import Structure
+from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 
 project = signac.get_project("/Users/rca/periodic_structures/")
-MAX_PHI = project.document['max_phi']
-MIN_PHI = project.document['min_phi']
+MAX_PHI = project.document["max_phi"]
+MIN_PHI = project.document["min_phi"]
+
 
 def close_event():
-    plt.close() #timer calls this function after 3 seconds and closes the window 
+    plt.close()  # timer calls this function after 3 seconds and closes the window
+
 
 def tetrahedron_integration(
     num_points,
@@ -160,8 +164,7 @@ def tetrahedron_integration(
     return w_bins, DOS
 
 
-def pdos_from_mpb(mpb_output, new_kp, ngrid=10):
-    # read the MPB output for frequencies and kpoints
+def setup_interpolators(mpb_output, lattice_vectors, basis):
     lines = [
         line.strip("\n").split(",")
         for line in list(open(mpb_output))
@@ -169,26 +172,95 @@ def pdos_from_mpb(mpb_output, new_kp, ngrid=10):
     ]
 
     freqs = np.array(np.array(lines[1:])[:, 6:], dtype=float)
-    num_bands = freqs.shape[1]
     kpoints = np.array(np.array(lines[1:])[:, 2:5], dtype=float)
+
+    structure = Structure(
+        lattice=lattice_vectors, species=np.ones(len(basis)), coords=basis
+    )
+    sg = SpacegroupAnalyzer(structure)
+    symm_ops = sg.get_point_group_operations()
 
     # this code adds [±i, ±j, ±k], which will have equivalent frequencies
     for f, k in zip(freqs, kpoints.copy()):
-        for r in [-1, 1]:
-            for s in [-1, 1]:
-                for t in [-1, 1]:
-                    if r < 0 or s < 0 or t < 0:  # skip [i, j, k]
-                        kM = np.array([k[0] * r, k[1] * s, k[2] * t])
+        points = np.dot(k, [m.rotation_matrix for m in symm_ops])
+        rm_list = []
+        # identify and remove duplicates from the list of equivalent k-points:
+        for i in range(len(points) - 1):
+            if np.linalg.norm(kpoints - points[i], axis=1).min() < 1e-6:
+                rm_list.append(i)
 
-                        # skip any points already in kpoint set
-                        if np.linalg.norm(kpoints - kM, axis=1).min() > 1e-6:
-                            kpoints = np.append(kpoints, [kM]).reshape(-1, 3)
-                            freqs = np.append(freqs, [f]).reshape(len(kpoints), -1)
+        for p in np.delete(points, rm_list, axis=0):
+            kpoints = np.append(kpoints, [p]).reshape(-1, 3)
+            freqs = np.append(freqs, [f]).reshape(len(kpoints), -1)
 
     # set up a set of interpolators for the kpoint grid
     interpolators = []
     for f in freqs.T:
-        interpolators.append(interpolator(kpoints, f.reshape(-1, 1)))
+        interpolators.append(interpolator(kpoints, f.reshape(-1, 1), smoothing=0.01))
+
+    return interpolators
+
+
+def plot_mpb_output(
+    mpb_output, ref_kpoints, kpoint_labels, lattice_vectors, basis, interpolation=10
+):
+    lines = [
+        line.strip("\n").split(",")
+        for line in list(open(mpb_output))
+        if line.startswith("freqs")
+    ]
+
+    freqs = np.array(np.array(lines[1:])[:, 6:], dtype=float)
+    kpoints = np.array(np.array(lines[1:])[:, 2:5], dtype=float)
+    interpolators = setup_interpolators(mpb_output, lattice_vectors, basis)
+
+    new_kpoints = np.round(
+        np.array(
+            [
+                ref_kpoints[0],
+                *[
+                    alpha * ref_kpoints[i] + (1 - alpha) * ref_kpoints[i - 1]
+                    for i in range(1, len(ref_kpoints))
+                    for alpha in np.linspace(0, 1, interpolation + 1)[1:]
+                ],
+            ]
+        ),
+        6,
+    )
+
+    xticks = np.array(list(range(len(new_kpoints))[::interpolation]))
+    new_freqs = np.array([i(new_kpoints).flatten() for i in interpolators]).T
+
+    mask = np.ones(len(new_freqs), dtype=bool)
+    for i in reversed(range(len(new_kpoints))):
+        if np.isnan(new_freqs[i][0]):
+            mask[i] = False
+            xticks[xticks >= i] -= 1
+
+    plt.plot(new_freqs[mask])
+    # print(xticks.shape, new_freqs[xticks].shape)
+    for k, f in zip(kpoints, freqs):
+        if np.linalg.norm(new_kpoints - k, axis=1).min() < 1e-6:
+            i = np.where(np.linalg.norm(new_kpoints - k, axis=1) < 1e-6)[0][0]
+            # print(k, i, f, new_freqs[i])
+            plt.scatter(i * np.ones(len(new_freqs[i])), new_freqs[i], marker=".")
+    plt.gca().set_xticks(xticks)
+    GREEK_LETTERS = ["gamma", "sigma_0"]
+    plt.gca().set_xticklabels(
+        [
+            r"${}$".format(k)
+            if k.lower() not in GREEK_LETTERS
+            else r"$\{}$".format(k.title())
+            for k in kpoint_labels
+        ]
+    )
+    plt.show()
+
+
+def pdos_from_mpb(mpb_output, lattice_vectors, basis, ngrid=10):
+    # read the MPB output for frequencies and kpoints
+    interpolators = setup_interpolators(mpb_output, lattice_vectors, basis)
+    num_bands = len(interpolators)
 
     # use the interpolators to make an evenly spaced grid for the
     # tetrahedral decomposition
@@ -214,18 +286,21 @@ def pdos_from_mpb(mpb_output, new_kp, ngrid=10):
 
 
 def make_pdos_entry(subjob, superjob, pdos_dict_raw):
-    
     key = str((subjob.sp.radius, subjob.sp.dielectric))
 
     if key not in pdos_dict_raw:
-        if subjob.document.fill_fraction<=MIN_PHI or subjob.document.fill_fraction>=MAX_PHI:
+        if (
+            subjob.document.fill_fraction <= MIN_PHI
+            or subjob.document.fill_fraction >= MAX_PHI
+        ):
             return {}
         # return {}
         w, D = pdos_from_mpb(
             subjob.fn("output2.txt")
             if subjob.isfile("output2.txt")
             else subjob.fn("output.txt"),
-            superjob.document.kpoints,
+            list(superjob.sp.lattice_vectors),
+            list(superjob.sp.basis),
         )
         gD = gaussian_filter(D, np.nanmean(D))
         w = w.tolist()
@@ -240,7 +315,7 @@ def make_pdos_entry(subjob, superjob, pdos_dict_raw):
 def make_pdos(superjob):
     superjob_project = signac.get_project(path=superjob.fn(""))
 
-    if superjob.isfile('pdos.npz'):
+    if superjob.isfile("pdos.npz"):
         pdos_dict_raw = dict(np.load(superjob.fn("pdos.npz"), allow_pickle=True))
     else:
         pdos_dict_raw = {}
@@ -273,7 +348,7 @@ def make_pdos(superjob):
         for subjob in tqdm(subjobs):
             i = np.where(radii == subjob.sp.radius)[0][0]
             new_entry = make_pdos_entry(subjob, superjob, pdos_dict_raw)
-            if len(list(new_entry.keys()))>0:
+            if len(list(new_entry.keys())) > 0:
                 pdos_dict_raw = {**pdos_dict_raw, **new_entry}
                 w, D, gD = list(new_entry.values())[0]
                 if w_bins_Tr is None:
@@ -285,7 +360,7 @@ def make_pdos(superjob):
         np.savez(superjob.fn("pdos.npz"), **pdos_dict_raw)
 
         fig = plt.figure()
-        timer = fig.canvas.new_timer(interval = 30000) 
+        timer = fig.canvas.new_timer(interval=30000)
         timer.add_callback(plt.close)
 
         for r, w, gD, f in zip(radii, w_bins_Tr, gDOS, ff):
@@ -298,7 +373,7 @@ def make_pdos(superjob):
         gDOS_copy[gDOS_copy == 0] = np.nan
 
         fig = plt.figure()
-        timer = fig.canvas.new_timer(interval = 30000)
+        timer = fig.canvas.new_timer(interval=30000)
         timer.add_callback(plt.close)
 
         plt.imshow(np.flipud(gDOS_copy), aspect="auto", vmax=100)
@@ -311,7 +386,10 @@ def make_pdos(superjob):
         plt.show()
 
         for subjob in tqdm(list(superjob_project.find_jobs())):
-            pdos_dict_raw = {**pdos_dict_raw, **make_pdos_entry(subjob, superjob, pdos_dict_raw)}
+            pdos_dict_raw = {
+                **pdos_dict_raw,
+                **make_pdos_entry(subjob, superjob, pdos_dict_raw),
+            }
 
     except KeyboardInterrupt:
         pass
@@ -321,7 +399,6 @@ def make_pdos(superjob):
 
 if __name__ == "__main__":
     import sys
-
 
     if len(sys.argv) == 1:
         ojob = [
