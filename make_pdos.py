@@ -14,8 +14,17 @@ MAX_PHI = project.document["max_phi"]
 MIN_PHI = project.document["min_phi"]
 
 
-def close_event():
-    plt.close()  # timer calls this function after 3 seconds and closes the window
+def get_epsilons(job):
+    if job.document.has_gap:
+        eps = list(
+            reversed(
+                sorted(set([epsilon for f in job.document.has_gaps_at for epsilon in f]))
+            )
+        )
+        eps.append(eps[-1]-2)
+        return eps
+    else:
+        return [16]
 
 
 def tetrahedron_integration(
@@ -237,13 +246,24 @@ def plot_mpb_output(
             mask[i] = False
             xticks[xticks >= i] -= 1
 
-    plt.plot(new_freqs[mask])
-    # print(xticks.shape, new_freqs[xticks].shape)
-    for k, f in zip(kpoints, freqs):
-        if np.linalg.norm(new_kpoints - k, axis=1).min() < 1e-6:
-            i = np.where(np.linalg.norm(new_kpoints - k, axis=1) < 1e-6)[0][0]
-            # print(k, i, f, new_freqs[i])
-            plt.scatter(i * np.ones(len(new_freqs[i])), new_freqs[i], marker=".")
+    cmap = plt.get_cmap("jet")
+    for fi, f in enumerate(new_freqs.T):
+        c = cmap(fi / (new_freqs.shape[1] + 1))
+        plt.plot(f[mask], c=c)
+        for k in kpoints:
+            if np.linalg.norm(new_kpoints - k, axis=1).min() < 1e-6:
+                i = np.where(np.linalg.norm(new_kpoints - k, axis=1) < 1e-6)[0][0]
+                plt.scatter(i, f[i], marker=".", c=c)
+        if fi > 0 and np.min(f) > np.max(new_freqs[:, fi - 1]):
+            plt.fill_between(
+                [0, len(new_kpoints)],
+                np.max(new_freqs[:, fi - 1]),
+                np.min(f),
+                color="grey",
+                alpha=0.2,
+            )
+            print(np.min(f), np.max(new_freqs[:, fi - 1]))
+
     plt.gca().set_xticks(xticks)
     GREEK_LETTERS = ["gamma", "sigma_0"]
     plt.gca().set_xticklabels(
@@ -314,99 +334,88 @@ def make_pdos_entry(subjob, superjob, pdos_dict_raw):
 
 def make_pdos(superjob):
     superjob_project = signac.get_project(path=superjob.fn(""))
+    epsilons = get_epsilons(job)
 
-    if superjob.isfile("pdos.npz"):
-        pdos_dict_raw = dict(np.load(superjob.fn("pdos.npz"), allow_pickle=True))
-    else:
-        pdos_dict_raw = {}
+    for e in epsilons:
+        pdos_name = f"pdos/epsilon={e}.npz"
+        if superjob.isfile(pdos_name):
+            pdos_dict_raw = dict(np.load(superjob.fn(pdos_name), allow_pickle=True))
+        else:
+            pdos_dict_raw = {}
 
-    subjobs = list(
-        sorted(
-            list(superjob_project.find_jobs({"dielectric": 16})),
-            key=lambda job: job.sp.radius,
-        )
-    )
-
-    radii = np.array([job.sp.radius for job in subjobs])
-    ff = np.array([job.document.fill_fraction for job in subjobs])
-
-    if len(superjob.document.fill_fraction) != len(ff):
-        inp = input(
-            "Overwrite ff & radius? {}->{}".format(
-                len(superjob.document.fill_fraction), len(ff)
+        subjobs = list(
+            sorted(
+                list(superjob_project.find_jobs({"dielectric": e})),
+                key=lambda job: job.sp.radius,
             )
-        ).upper()
-        if inp == "Y":
-            superjob.document.fill_fraction = ff
-            superjob.document.radii = radii
+        )
 
-    w_bins_Tr = None
-    DOS_Tr = None
-    gDOS = None
+        radii = np.array([job.sp.radius for job in subjobs])
+        ff = np.array([job.document.fill_fraction for job in subjobs])
 
-    try:
-        for subjob in tqdm(subjobs):
-            i = np.where(radii == subjob.sp.radius)[0][0]
-            new_entry = make_pdos_entry(subjob, superjob, pdos_dict_raw)
-            if len(list(new_entry.keys())) > 0:
-                pdos_dict_raw = {**pdos_dict_raw, **new_entry}
-                w, D, gD = list(new_entry.values())[0]
-                if w_bins_Tr is None:
-                    w_bins_Tr = np.zeros((len(radii), len(w)))
-                    DOS_Tr = np.zeros((len(radii), len(D)))
-                    gDOS = np.zeros((len(radii), len(gD)))
-                w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
+        if len(superjob.document.fill_fraction) != len(ff):
+            inp = input(
+                "Overwrite ff & radius? {}->{}".format(
+                    len(superjob.document.fill_fraction), len(ff)
+                )
+            ).upper()
+            if inp == "Y":
+                superjob.document.fill_fraction = ff
+                superjob.document.radii = radii
 
-        np.savez(superjob.fn("pdos.npz"), **pdos_dict_raw)
+        w_bins_Tr = None
+        DOS_Tr = None
+        gDOS = None
 
-        fig = plt.figure()
-        timer = fig.canvas.new_timer(interval=30000)
-        timer.add_callback(plt.close)
+        try:
+            for subjob in tqdm(subjobs):
+                i = np.where(radii == subjob.sp.radius)[0][0]
+                new_entry = make_pdos_entry(subjob, superjob, pdos_dict_raw)
+                if len(list(new_entry.keys())) > 0:
+                    pdos_dict_raw = {**pdos_dict_raw, **new_entry}
+                    w, D, gD = list(new_entry.values())[0]
+                    if w_bins_Tr is None:
+                        w_bins_Tr = np.zeros((len(radii), len(w)))
+                        DOS_Tr = np.zeros((len(radii), len(D)))
+                        gDOS = np.zeros((len(radii), len(gD)))
+                    w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
 
-        for r, w, gD, f in zip(radii, w_bins_Tr, gDOS, ff):
-            plt.plot(w, gD + r, c=plt.get_cmap("jet")(f), zorder=-r)
+            np.savez(superjob.fn(pdos_name), **pdos_dict_raw)
 
-        timer.start()
-        plt.show()
+            # fig = plt.figure()
+            # timer = fig.canvas.new_timer(interval=30000)
+            # timer.add_callback(plt.close)
 
-        gDOS_copy = gDOS.copy()
-        gDOS_copy[gDOS_copy == 0] = np.nan
+            # for r, w, gD, f in zip(radii, w_bins_Tr, gDOS, ff):
+            #     plt.plot(w, gD + r, c=plt.get_cmap("jet")(f), zorder=-r)
 
-        fig = plt.figure()
-        timer = fig.canvas.new_timer(interval=30000)
-        timer.add_callback(plt.close)
+            # timer.start()
+            # plt.show()
 
-        plt.imshow(np.flipud(gDOS_copy), aspect="auto", vmax=100)
-        plt.xticks([])
-        plt.yticks([])
-        plt.xlabel("$\\omega/\\omega_{max}$")
-        plt.ylabel("$\\phi$")
+            # gDOS_copy = gDOS.copy()
+            # gDOS_copy[gDOS_copy == 0] = np.nan
 
-        timer.start()
-        plt.show()
+            # fig = plt.figure()
+            # timer = fig.canvas.new_timer(interval=30000)
+            # timer.add_callback(plt.close)
 
-        for subjob in tqdm(list(superjob_project.find_jobs())):
-            pdos_dict_raw = {
-                **pdos_dict_raw,
-                **make_pdos_entry(subjob, superjob, pdos_dict_raw),
-            }
+            # plt.imshow(np.flipud(gDOS_copy), aspect="auto", vmax=100)
+            # plt.xticks([])
+            # plt.yticks([])
+            # plt.xlabel("$\\omega/\\omega_{max}$")
+            # plt.ylabel("$\\phi$")
 
-    except KeyboardInterrupt:
-        pass
-
-    np.savez(superjob.fn("pdos.npz"), **pdos_dict_raw)
+            # timer.start()
+            # plt.show()\
+        except KeyboardInterrupt:
+            np.savez(superjob.fn(pdos_name), **pdos_dict_raw)
+            break
 
 
 if __name__ == "__main__":
     import sys
 
-    if len(sys.argv) == 1:
-        ojob = [
-            job
-            for job in list(project.find_jobs({"doc.kpoints.$exists": True}))
-            if not job.isfile("pdos.npz")
-        ][0]
-    else:
-        ojob = project.open_job(id=sys.argv[1])
+    assert len(sys.argv) == 2
+    ojob = project.open_job(id=sys.argv[1])
 
     make_pdos(ojob)

@@ -1,6 +1,8 @@
 from flow import FlowProject
 import numpy as np
 import signac
+import os
+from make_pdos import make_pdos, get_epsilons
 
 project = signac.get_project("/Users/rca/periodic_structures/")
 MIN_PHI = project.document["min_phi"]
@@ -13,20 +15,29 @@ class MyProject(FlowProject):
 
 @MyProject.label
 def all_pdos_done(job):
-    if not job.isfile("pdos.npz"):
-        return False
-    else:
-        pdos_dict_raw = dict(np.load(job.fn("pdos.npz"), allow_pickle=True))
-        superjob_project = signac.get_project(path=job.fn(""))
-        for subjob in list(
-            superjob_project.find_jobs(
-                {"doc.fill_fraction.$lt": MAX_PHI, "doc.fill_fraction.$gt": MIN_PHI}
+    epsilons = get_epsilons(job)
+
+    for e in epsilons:
+        if not job.isfile(f"pdos/epsilon={e}.npz"):
+            return False
+        else:
+            pdos_dict_raw = dict(
+                np.load(job.fn(f"pdos/epsilon={e}.npz"), allow_pickle=True)
             )
-        ):
-            key = str((subjob.sp.radius, subjob.sp.dielectric))
-            if key not in pdos_dict_raw:
-                return False
-    return True
+            superjob_project = signac.get_project(path=job.fn(""))
+            for subjob in list(
+                superjob_project.find_jobs(
+                    {
+                        "dielectric": e,
+                        "doc.fill_fraction.$lt": MAX_PHI,
+                        "doc.fill_fraction.$gt": MIN_PHI,
+                    }
+                )
+            ):
+                key = str((subjob.sp.radius, subjob.sp.dielectric))
+                if key not in pdos_dict_raw:
+                    return False
+        return True
 
 
 @MyProject.post(lambda job: "kpoints" in job.document)
@@ -65,38 +76,79 @@ def assign_kpoints(job):
     job.document["kpoints_from"] = "seekpath, 2024"
 
 
+@MyProject.pre.isfile("pdos.npz")
+@MyProject.post(
+    lambda job: all([
+        job.isfile(f"pdos/epsilon={epsilon}.npz") for epsilon in get_epsilons(job)
+    ])
+)
+@MyProject.operation
+def fix_pdos(job):
+    from tqdm.auto import tqdm
+
+    epsilons = get_epsilons(job)
+    pdos_dict_raw = dict(np.load(job.fn("pdos.npz"), allow_pickle=True))
+    pdos_dicts = {e: {} for e in epsilons}
+    for key, entry in pdos_dict_raw.items():
+        epsilon = int(key.split(",")[1][:-1])
+        try:
+            pdos_dicts[epsilon][key] = entry
+        except KeyError:
+            input((str(job), key, epsilon))
+
+    if not os.path.isdir(job.fn('pdos')):
+        os.mkdir(job.fn("pdos"))
+
+    for e in pdos_dicts.keys():
+        pdos_name = job.fn(f"pdos/epsilon={e}.npz")
+        np.savez(pdos_name, **pdos_dicts[e])
+
+    new_pdos = {k: v for epsilon in epsilons for k,v in dict(np.load(job.fn(f'pdos/epsilon={epsilon}.npz'), allow_pickle=True)).items()}
+    for key in tqdm(pdos_dict_raw.keys()):
+        assert key in new_pdos
+        assert np.linalg.norm(pdos_dict_raw[key] - new_pdos[key])<1E-12
+    os.remove(job.fn('pdos.npz'))
+
+
 @MyProject.pre(lambda job: "kpoints" in job.document)
-@MyProject.post.isfile("pdos.npz")
 @MyProject.post(all_pdos_done)
 @MyProject.operation
 def compute_pdos(job):
-    from make_pdos import make_pdos
-
     make_pdos(job)
 
 
-@MyProject.pre.isfile("pdos.npz")
 @MyProject.pre(all_pdos_done)
 @MyProject.operation
 def purge_bad_pdos(job):
-    if not job.isfile("pdos.npz"):
-        return
+    epsilons = list(
+        set([e for e in get_epsilons(job) if job.isfile(f"pdos/epsilon={e}.npz")])
+    )
 
-    pdos_dict_raw = dict(np.load(job.fn("pdos.npz"), allow_pickle=True))
-    print(list(pdos_dict_raw.keys()))
-    superjob_project = signac.get_project(path=job.fn(""))
-    for subjob in list(superjob_project.find_jobs({"doc.fill_fraction.$gt": MAX_PHI})):
-        key = str((subjob.sp.radius, subjob.sp.dielectric))
-        print(key, key in pdos_dict_raw)
-        if key in pdos_dict_raw:
-            print(key, pdos_dict_raw.pop(key))
-    np.savez(job.fn("pdos.npz"), **pdos_dict_raw)
-    for subjob in list(superjob_project.find_jobs({"doc.fill_fraction.$lt": MIN_PHI})):
-        key = str((subjob.sp.radius, subjob.sp.dielectric))
-        print(key, key in pdos_dict_raw)
-        if key in pdos_dict_raw:
-            print(key, pdos_dict_raw.pop(key))
-    np.savez(job.fn("pdos.npz"), **pdos_dict_raw)
+    for e in epsilons:
+        pdos_name = job.fn(f"pdos/epsilon={e}.npz")
+        pdos_dict_raw = dict(np.load(pdos_name, allow_pickle=True))
+        # print(list(pdos_dict_raw.keys()))
+        superjob_project = signac.get_project(path=job.fn(""))
+        for subjob in list(
+            superjob_project.find_jobs(
+                {"dielectric": e, "doc.fill_fraction.$gt": MAX_PHI}
+            )
+        ):
+            key = str((subjob.sp.radius, subjob.sp.dielectric))
+            # print(key, key in pdos_dict_raw)
+            if key in pdos_dict_raw:
+                print(key, pdos_dict_raw.pop(key))
+        np.savez(pdos_name, **pdos_dict_raw)
+        for subjob in list(
+            superjob_project.find_jobs(
+                {"dielectric": e, "doc.fill_fraction.$lt": MIN_PHI}
+            )
+        ):
+            key = str((subjob.sp.radius, subjob.sp.dielectric))
+            # print(key, key in pdos_dict_raw)
+            if key in pdos_dict_raw:
+                print(key, pdos_dict_raw.pop(key))
+        np.savez(pdos_name, **pdos_dict_raw)
 
 
 @MyProject.label
@@ -112,7 +164,9 @@ def make_images(job):
     from matplotlib import pyplot as plt
 
     epsilon = 16
-    pdos_dict_raw = dict(np.load(job.fn("pdos.npz"), allow_pickle=True))
+    pdos_dict_raw = dict(
+        np.load(job.fn(f"pdos/epsilon={epsilon}.npz"), allow_pickle=True)
+    )
     w_bins_Tr = None
     DOS_Tr = None
     gDOS = None
