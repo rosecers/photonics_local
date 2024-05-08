@@ -8,6 +8,7 @@ from tqdm.auto import tqdm
 import signac
 from pymatgen.core.structure import Structure
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
+import os
 
 project = signac.get_project("/Users/rca/periodic_structures/")
 MAX_PHI = project.document["max_phi"]
@@ -18,10 +19,12 @@ def get_epsilons(job):
     if job.document.has_gap:
         eps = list(
             reversed(
-                sorted(set([epsilon for f in job.document.has_gaps_at for epsilon in f]))
+                sorted(
+                    set([epsilon for f in job.document.has_gaps_at for epsilon in f])
+                )
             )
         )
-        eps.append(eps[-1]-2)
+        eps.append(eps[-1] - 2)
         return eps
     else:
         return [16]
@@ -334,7 +337,10 @@ def make_pdos_entry(subjob, superjob, pdos_dict_raw):
 
 def make_pdos(superjob):
     superjob_project = signac.get_project(path=superjob.fn(""))
-    epsilons = get_epsilons(job)
+    epsilons = get_epsilons(superjob)
+
+    if not os.path.isdir(superjob.fn("pdos")):
+        os.mkdir(superjob.fn("pdos"))
 
     for e in epsilons:
         pdos_name = f"pdos/epsilon={e}.npz"
