@@ -100,8 +100,9 @@ def fix_pdos(job):
         os.mkdir(job.fn("pdos"))
 
     for e in pdos_dicts.keys():
-        pdos_name = job.fn(f"pdos/epsilon={e}.npz")
-        np.savez(pdos_name, **pdos_dicts[e])
+        if len(list(pdos_keys[e].keys()))>0:
+            pdos_name = job.fn(f"pdos/epsilon={e}.npz")
+            np.savez(pdos_name, **pdos_dicts[e])
 
     new_pdos = {k: v for epsilon in epsilons for k,v in dict(np.load(job.fn(f'pdos/epsilon={epsilon}.npz'), allow_pickle=True)).items()}
     for key in tqdm(pdos_dict_raw.keys()):
