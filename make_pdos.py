@@ -359,7 +359,7 @@ def make_pdos(superjob):
         radii = np.array([job.sp.radius for job in subjobs])
         ff = np.array([job.document.fill_fraction for job in subjobs])
 
-        if e==16 and len(superjob.document.fill_fraction) != len(ff):
+        if e == 16 and len(superjob.document.fill_fraction) != len(ff):
             # inp = input(
             #     "Overwrite ff & radius? {}->{}".format(
             #         len(superjob.document.fill_fraction), len(ff)
