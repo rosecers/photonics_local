@@ -186,15 +186,30 @@ def setup_interpolators(mpb_output, lattice_vectors, basis):
     freqs = np.array(np.array(lines[1:])[:, 6:], dtype=float)
     kpoints = np.array(np.array(lines[1:])[:, 2:5], dtype=float)
 
-    structure = Structure(
-        lattice=lattice_vectors, species=np.ones(len(basis)), coords=basis
-    )
-    sg = SpacegroupAnalyzer(structure)
-    symm_ops = sg.get_point_group_operations()
+    try:
+        structure = Structure(
+            lattice=lattice_vectors, species=np.ones(len(basis)), coords=basis
+        )
+        sg = SpacegroupAnalyzer(structure)
+        symm_ops = sg.get_point_group_operations()
+        rotations = np.array([m.rotation_matrix for m in symm_ops])
+    except ValueError:
+        # this is the case where the SpacegroupAnalyzer fails, falling back to spglib
+        from spglib import get_symmetry
+
+        rotations = []
+        for i, r in enumerate(
+            get_symmetry((lattice_vectors, basis, np.ones(len(basis))))["rotations"]
+        ):
+            if i == 0:
+                rotations.append(r)
+            elif np.linalg.norm(np.array(rotations) - r, axis=1).min() > 1e-4:
+                rotations.append(r)
+        rotations = np.array(rotations)
 
     # this code adds [±i, ±j, ±k], which will have equivalent frequencies
     for f, k in zip(freqs, kpoints.copy()):
-        points = np.dot(k, [m.rotation_matrix for m in symm_ops])
+        points = np.dot(k, rotations)
         rm_list = []
         # identify and remove duplicates from the list of equivalent k-points:
         for i in range(len(points) - 1):
