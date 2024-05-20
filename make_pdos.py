@@ -350,9 +350,10 @@ def make_pdos_entry(subjob, superjob, pdos_dict_raw):
     return {key: np.asanyarray((w, D, gD), dtype=object)}
 
 
-def make_pdos(superjob):
+def make_pdos(superjob, epsilons=None):
     superjob_project = signac.get_project(path=superjob.fn(""))
-    epsilons = get_epsilons(superjob)
+    if epsilons is None:
+        epsilons = get_epsilons(superjob)
 
     if not os.path.isdir(superjob.fn("pdos")):
         os.mkdir(superjob.fn("pdos"))

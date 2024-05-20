@@ -115,7 +115,7 @@ def fix_pdos(job):
 @MyProject.post(all_pdos_done)
 @MyProject.operation
 def compute_pdos(job):
-    make_pdos(job)
+    make_pdos(job, [16])
 
 
 @MyProject.pre(all_pdos_done)
