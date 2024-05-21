@@ -35,7 +35,6 @@ def run(
     mesh_size=5,
     num_bands=20,
 ):
-    
     default_material = Medium(epsilon=background_epsilon)
     sphere_material = Medium(epsilon=sphere_epsilon)
     geometry_lattice = Lattice(
@@ -47,7 +46,8 @@ def run(
 
     k_points = interpolate(interpolation, [mp.Vector3(*k) for k in kpoints])
     geometry = [
-        Sphere(material=sphere_material, center=mp.Vector3(*c), radius=radius) for c in centers
+        Sphere(material=sphere_material, center=mp.Vector3(*c), radius=radius)
+        for c in centers
     ]
 
     print("HERE")
@@ -140,7 +140,7 @@ def parse_ctl_file(ctl_file):
                     centers.append(find_vector_by_key(l, "center"))
                 elif l.startswith("(set-param"):
                     key = l.split()[1]
-                    params[key.replace('-','_')] = int(find_by_key(l, key))
+                    params[key.replace("-", "_")] = int(find_by_key(l, key))
                 # else:
                 #     print("NOT CAUGHT", l, len(l))
 
@@ -156,13 +156,15 @@ if __name__ == "__main__":
     import sys
     import argparse
 
-    parser = argparse.ArgumentParser(description='Process some integers.')
-    parser.add_argument('-j', '--job_id', type=str, help='The ID of the job')
-    parser.add_argument('-r', '--radius', type=float, help='The radius')
-    parser.add_argument('-e', '--epsilon', type=int, help='The epsilon value')
-    parser.add_argument('-t', '--threshold', type=float, help='The epsilon value', default=1E-12)
-    parser.add_argument('--unique', action='store_true', default=False)
-    parser.add_argument('--reduce_kp', action='store_true', default=False)
+    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument("-j", "--job_id", type=str, help="The ID of the job")
+    parser.add_argument("-r", "--radius", type=float, help="The radius")
+    parser.add_argument("-e", "--epsilon", type=int, help="The epsilon value")
+    parser.add_argument(
+        "-t", "--threshold", type=float, help="The epsilon value", default=1e-12
+    )
+    parser.add_argument("--unique", action="store_true", default=False)
+    parser.add_argument("--reduce_kp", action="store_true", default=False)
 
     args = parser.parse_args()
 
@@ -173,29 +175,32 @@ if __name__ == "__main__":
     ctl_file = job.fn("input2.ctl") if job.isfile("input2.ctl") else job.fn("input.ctl")
     ctl_params = parse_ctl_file(ctl_file)
 
-    if ctl_params['sphere_epsilon'] == 0:
-        ctl_params['sphere_epsilon'] = epsilon 
-    elif ctl_params['background_epsilon'] == 0:
-        ctl_params['background_epsilon'] = epsilon 
+    if ctl_params["sphere_epsilon"] == 0:
+        ctl_params["sphere_epsilon"] = epsilon
+    elif ctl_params["background_epsilon"] == 0:
+        ctl_params["background_epsilon"] = epsilon
 
-    if ctl_params['radius'] == 0:
-        ctl_params['radius'] = radius 
+    if ctl_params["radius"] == 0:
+        ctl_params["radius"] = radius
 
-    assert np.linalg.norm(job.sp.lattice_vectors - ctl_params["lattice_vectors"]) <= args.threshold
+    assert (
+        np.linalg.norm(job.sp.lattice_vectors - ctl_params["lattice_vectors"])
+        <= args.threshold
+    )
     assert np.linalg.norm(job.sp.basis - ctl_params["centers"]) <= args.threshold
 
     if args.unique:
-        orig_centers = ctl_params.pop('centers')
+        orig_centers = ctl_params.pop("centers")
         centers = []
         for i, c in enumerate(orig_centers):
-            if i==0:
+            if i == 0:
                 centers.append(c)
-            elif np.linalg.norm(np.array(centers) - c, axis=1).min()>args.threshold:
+            elif np.linalg.norm(np.array(centers) - c, axis=1).min() > args.threshold:
                 print(c, np.linalg.norm(np.array(centers) - c, axis=1).min())
                 centers.append(c)
-        ctl_params['centers'] = centers
-    input((len(orig_centers), '-->', len(centers)))
+        ctl_params["centers"] = centers
+    input((len(orig_centers), "-->", len(centers)))
 
     if args.reduce_kp:
-        ctl_params['kpoints'] = job.document.kpoints
+        ctl_params["kpoints"] = job.document.kpoints
     run(**ctl_params)

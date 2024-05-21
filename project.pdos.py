@@ -78,9 +78,9 @@ def assign_kpoints(job):
 
 @MyProject.pre.isfile("pdos.npz")
 @MyProject.post(
-    lambda job: all([
-        job.isfile(f"pdos/epsilon={epsilon}.npz") for epsilon in get_epsilons(job)
-    ])
+    lambda job: all(
+        [job.isfile(f"pdos/epsilon={epsilon}.npz") for epsilon in get_epsilons(job)]
+    )
 )
 @MyProject.operation
 def fix_pdos(job):
@@ -96,19 +96,25 @@ def fix_pdos(job):
         except KeyError:
             input((str(job), key, epsilon))
 
-    if not os.path.isdir(job.fn('pdos')):
+    if not os.path.isdir(job.fn("pdos")):
         os.mkdir(job.fn("pdos"))
 
     for e in pdos_dicts.keys():
-        if len(list(pdos_keys[e].keys()))>0:
+        if len(list(pdos_keys[e].keys())) > 0:
             pdos_name = job.fn(f"pdos/epsilon={e}.npz")
             np.savez(pdos_name, **pdos_dicts[e])
 
-    new_pdos = {k: v for epsilon in epsilons for k,v in dict(np.load(job.fn(f'pdos/epsilon={epsilon}.npz'), allow_pickle=True)).items()}
+    new_pdos = {
+        k: v
+        for epsilon in epsilons
+        for k, v in dict(
+            np.load(job.fn(f"pdos/epsilon={epsilon}.npz"), allow_pickle=True)
+        ).items()
+    }
     for key in tqdm(pdos_dict_raw.keys()):
         assert key in new_pdos
-        assert np.linalg.norm(pdos_dict_raw[key] - new_pdos[key])<1E-12
-    os.remove(job.fn('pdos.npz'))
+        assert np.linalg.norm(pdos_dict_raw[key] - new_pdos[key]) < 1e-12
+    os.remove(job.fn("pdos.npz"))
 
 
 @MyProject.pre(lambda job: "kpoints" in job.document)
@@ -118,7 +124,31 @@ def compute_pdos(job):
     make_pdos(job, [16])
 
 
+@MyProject.label
+def images_stored(job):
+    image_files = [
+        "dos_eps_auto.png",
+        "dos_logeps_auto.png",
+        "gdos_eps_auto.png",
+        "gdos_logeps_auto.png",
+        "dos_eps_auto_highlighted.png",
+        "dos_logeps_auto_highlighted.png",
+        "gdos_eps_auto_highlighted.png",
+        "gdos_logeps_auto_highlighted.png",
+        "dos_eps_rect.png",
+        "dos_logeps_rect.png",
+        "gdos_eps_rect.png",
+        "gdos_logeps_rect.png",
+        "dos_eps_rect_highlighted.png",
+        "dos_logeps_rect_highlighted.png",
+        "gdos_eps_rect_highlighted.png",
+        "gdos_logeps_rect_highlighted.png",
+    ]
+    return all([job.isfile(img) for img in image_files])
+
+
 @MyProject.pre(all_pdos_done)
+@MyProject.post(images_stored)
 @MyProject.operation
 def purge_bad_pdos(job):
     epsilons = list(
@@ -128,7 +158,7 @@ def purge_bad_pdos(job):
     for e in epsilons:
         pdos_name = job.fn(f"pdos/epsilon={e}.npz")
         pdos_dict_raw = dict(np.load(pdos_name, allow_pickle=True))
-        # print(list(pdos_dict_raw.keys()))
+        print(list(pdos_dict_raw.keys()))
         superjob_project = signac.get_project(path=job.fn(""))
         for subjob in list(
             superjob_project.find_jobs(
@@ -136,7 +166,7 @@ def purge_bad_pdos(job):
             )
         ):
             key = str((subjob.sp.radius, subjob.sp.dielectric))
-            # print(key, key in pdos_dict_raw)
+            print(key, key in pdos_dict_raw)
             if key in pdos_dict_raw:
                 print(key, pdos_dict_raw.pop(key))
         np.savez(pdos_name, **pdos_dict_raw)
@@ -146,23 +176,20 @@ def purge_bad_pdos(job):
             )
         ):
             key = str((subjob.sp.radius, subjob.sp.dielectric))
-            # print(key, key in pdos_dict_raw)
+            print(key, key in pdos_dict_raw)
             if key in pdos_dict_raw:
                 print(key, pdos_dict_raw.pop(key))
         np.savez(pdos_name, **pdos_dict_raw)
 
 
-@MyProject.label
-def images_stored(job):
-    image_files = ["gdos_logeps.png", "gdos_eps.png", "dos_logeps.png", "dos_eps.png"]
-    return all([job.isfile(img) for img in image_files])
-
-
 @MyProject.pre(all_pdos_done)
 @MyProject.post(images_stored)
-@MyProject.operation
+@MyProject.operation(cmd=True)
 def make_images(job):
     from matplotlib import pyplot as plt
+
+    if not os.path.isdir(job.fn("pdos_images")):
+        os.mkdir(job.fn("pdos_images"))
 
     epsilon = 16
     pdos_dict_raw = dict(
@@ -172,27 +199,51 @@ def make_images(job):
     DOS_Tr = None
     gDOS = None
     effective_eps = []
+    radii = np.array(list(job.document.radii))
+    fills = np.array(list(job.document.fill_fraction))
 
-    for i, r, f in zip(
-        range(len(job.document.radii)), job.document.radii, job.document.fill_fraction
-    ):
+    if len(radii) != len(fills):
+        print(job, len(radii), len(fills))
+        return
+
+    if any(fills < MIN_PHI):
+        radii = radii[fills >= MIN_PHI]
+        fills = fills[fills >= MIN_PHI]
+    if any(fills > MAX_PHI):
+        radii = radii[fills <= MAX_PHI]
+        fills = fills[fills <= MAX_PHI]
+
+    superproject = signac.get_project(path=job.fn(""))
+    gap_ranges = [
+        list(superproject.find_jobs({"radius": r, "dielectric": epsilon}))[
+            0
+        ].document.gap_ranges
+        for r in radii
+    ]
+
+    for i, r, f in zip(range(len(radii)), radii, fills):
         key = str((r, epsilon))
         if key in pdos_dict_raw:
             w, D, gD = pdos_dict_raw[key]
+            # print(key, i, D.max(), np.mean(D))
             if w_bins_Tr is None:
-                w_bins_Tr = -np.ones((len(job.document.radii), len(w)))
-                DOS_Tr = -np.ones((len(job.document.radii), len(D)))
-                gDOS = -np.ones((len(job.document.radii), len(gD)))
+                w_bins_Tr = -np.ones((len(radii), len(w)))
+                DOS_Tr = -np.ones((len(radii), len(D)))
+                gDOS = -np.ones((len(radii), len(gD)))
             w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
             effective_eps.append(f * epsilon + (1 - f))
+            # if gaps[i]:
+            #     plt.plot(w_bins_Tr[i], DOS_Tr[i])
+            #     plt.plot(w_bins_Tr[i], gDOS[i])
+            #     plt.show()
 
     log_eff_eps = np.log10(effective_eps)
-    log_eps_min = np.log10(0.05 * 16 + 0.95)
-    log_eps_max = np.log10(0.95 * 16 + 0.05)
+    log_eps_min = np.log10(MIN_PHI * 16 + MAX_PHI)
+    log_eps_max = np.log10(MAX_PHI * 16 + MIN_PHI)
 
     effective_eps = np.array(effective_eps)
-    eps_min = 0.05 * 16 + 0.95
-    eps_max = 0.95 * 16 + 0.05
+    eps_min = MIN_PHI * 16 + MAX_PHI
+    eps_max = MAX_PHI * 16 + MIN_PHI
 
     gDOS_copy = gDOS.copy()
     gDOS_copy[gDOS_copy == -1] = np.nan
@@ -200,46 +251,77 @@ def make_images(job):
     DOS_copy = DOS_Tr.copy()
     DOS_copy[DOS_copy == -1] = np.nan
 
-    for name, e_list, extrema, dos_list in zip(
-        ["gdos_logeps.png", "gdos_eps.png", "dos_logeps.png", "dos_eps.png"],
-        [log_eff_eps, effective_eps, log_eff_eps, effective_eps],
-        [
-            [log_eps_min, log_eps_max],
-            [eps_min, eps_max],
-            [log_eps_min, log_eps_max],
-            [eps_min, eps_max],
+    params = {
+        "dos": [["gdos", gDOS_copy], ["dos", DOS_copy]],
+        "e_list": [
+            ["logeps", log_eff_eps, [log_eps_min, log_eps_max]],
+            ["eps", effective_eps, [eps_min, eps_max]],
         ],
-        [gDOS_copy, gDOS_copy, DOS_copy, DOS_copy],
-    ):
-        for i, f, w, g in zip(range(len(e_list)), e_list, w_bins_Tr, dos_list):
-            if i == 0:
-                e_extent = sorted(
-                    [0.5 * (f + e_list[i + 1]), f + 0.5 * (f - e_list[i + 1])]
-                )
-            elif i == len(log_eff_eps) - 1:
-                e_extent = sorted(
-                    [0.5 * (f + e_list[i - 1]), f + 0.5 * (f - e_list[i - 1])]
-                )
-            else:
-                e_extent = sorted(
-                    [0.5 * (f + e_list[i - 1]), 0.5 * (f + e_list[i + 1])]
-                )
+        "w_bounds": [
+            ["rect", lambda w: [0, 1]],
+            ["auto", lambda w: [w.min() / w_bins_Tr.max(), w.max() / w_bins_Tr.max()]],
+        ],
+        "highlight": [["_highlighted", True], ["", False]],
+    }
 
-            plt.imshow(
-                g.reshape(1, -1) / np.nanmax(dos_list),
-                extent=[
-                    w.min() / w_bins_Tr.max(),
-                    w.max() / w_bins_Tr.max(),
-                    *e_extent,
-                ],
-                aspect="auto",
-                vmin=0,
-                vmax=1,
-            )
+    for dos_name, dos_list in params["dos"]:
+        for e_name, e_list, extrema in params["e_list"]:
+            for w_name, w_b in params["w_bounds"]:
+                for h_name, highlight in params["highlight"]:
+                    name = f"pdos_images/{dos_name}_{e_name}_{w_name}{h_name}.png"
 
-        plt.gca().set_xlim([0, 1])
-        plt.gca().set_ylim(extrema)
-        plt.savefig(job.fn(name))
+                    plt.figure()
+                    for i, f, w, g, gr in zip(
+                        range(len(e_list)), e_list, w_bins_Tr, dos_list, gap_ranges
+                    ):
+                        if i == 0:
+                            e_extent = sorted(
+                                [
+                                    0.5 * (f + e_list[i + 1]),
+                                    f + 0.5 * (f - e_list[i + 1]),
+                                ]
+                            )
+                        elif i == len(log_eff_eps) - 1:
+                            e_extent = sorted(
+                                [
+                                    0.5 * (f + e_list[i - 1]),
+                                    f + 0.5 * (f - e_list[i - 1]),
+                                ]
+                            )
+                        else:
+                            e_extent = sorted(
+                                [0.5 * (f + e_list[i - 1]), 0.5 * (f + e_list[i + 1])]
+                            )
+                        g_eff = g.reshape(1, -1) / np.nanmax(dos_list)
+                        plt.imshow(
+                            g_eff,
+                            extent=[
+                                *w_b(w),
+                                *e_extent,
+                            ],
+                            aspect="auto",
+                            vmin=0,
+                            vmax=1,
+                            cmap="bone_r",
+                        )
+
+                        if highlight:
+                            if np.max(gr) > 0:
+                                for gg in gr:
+                                    if w_b(np.array(gg))[0] == 0:
+                                        wgg = (np.array(gg) - min(w)) / (
+                                            max(w) - min(w)
+                                        )
+                                    else:
+                                        wgg = w_b(np.array(gg))
+                                    plt.fill_between(
+                                        x=wgg, y1=e_extent[0], y2=e_extent[1], color="r"
+                                    )
+                    plt.gca().set_xlim([0, 1])
+                    plt.gca().set_ylim(extrema)
+                    plt.savefig(job.fn(name))
+    # return f'open {job.fn("")}/pdos_images/*png'
+    return ""
 
 
 if __name__ == "__main__":

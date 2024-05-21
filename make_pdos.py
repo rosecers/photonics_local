@@ -375,16 +375,14 @@ def make_pdos(superjob, epsilons=None):
         radii = np.array([job.sp.radius for job in subjobs])
         ff = np.array([job.document.fill_fraction for job in subjobs])
 
-        if e == 16 and len(superjob.document.fill_fraction) != len(ff):
-            # inp = input(
-            #     "Overwrite ff & radius? {}->{}".format(
-            #         len(superjob.document.fill_fraction), len(ff)
-            #     )
-            # ).upper()
-            # if inp == "Y":
+        if e == 16 and (
+            len(superjob.document.fill_fraction) != len(ff)
+            or len(superjob.document.radii) != len(radii)
+        ):
             print(
-                "Overwriting for {}, {}->{}".format(
-                    superjob, len(superjob.document.fill_fraction), len(ff)
+                "Overwriting for {}, {}->{}, {}->{}".format(
+                    superjob, len(superjob.document.fill_fraction), len(ff),
+                    len(superjob.document.radii), len(radii)
                 )
             )
             superjob.document.fill_fraction = ff
@@ -440,9 +438,54 @@ def make_pdos(superjob, epsilons=None):
 
 
 if __name__ == "__main__":
-    import sys
+    import signac
+    import argparse
 
-    assert len(sys.argv) == 2
-    ojob = project.open_job(id=sys.argv[1])
+    parser = argparse.ArgumentParser(description="Process some integers.")
+    parser.add_argument("-j", "--job_id", type=str, help="The ID of the job")
+    parser.add_argument("-r", "--radius", type=float, help="The radius")
+    parser.add_argument("-e", "--epsilon", type=int, help="The dielectric constant")
+    parser.add_argument("--pdos", action="store_true", default=False)
+    parser.add_argument("--spectra", action="store_true", default=False)
 
-    make_pdos(ojob)
+    args = parser.parse_args()
+
+    job = signac.get_project().open_job(id=args.job_id)
+    radius = args.radius
+    epsilon = int(args.epsilon)
+
+    pdos_name = f"pdos/epsilon={epsilon}.npz"
+
+    if job.isfile(pdos_name):
+        pdos_dict_raw = dict(np.load(job.fn(pdos_name), allow_pickle=True))
+    else:
+        pdos_dict_raw = {}
+
+    ojob = list(
+        signac.get_project(path=job.fn("")).find_jobs(
+            {"radius": radius, "dielectric": epsilon}
+        )
+    )[0]
+
+    assert (args.pdos is True) or (args.spectra is True)
+
+    if args.pdos:
+        entry = make_pdos_entry(ojob, job, pdos_dict_raw)
+        w, D, gD = list(entry.values())[0]
+        plt.plot(w, D)
+        plt.plot(w, gD)
+        plt.show()
+
+    if args.spectra:
+        output_file = (
+            ojob.fn("output2.txt")
+            if ojob.isfile("output2.txt")
+            else ojob.fn("output.txt")
+        )
+        plot_mpb_output(
+            output_file,
+            job.document.kpoints,
+            job.document.kp_labels,
+            job.sp.lattice_vectors,
+            job.sp.basis,
+        )
