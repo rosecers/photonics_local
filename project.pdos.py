@@ -144,7 +144,7 @@ def images_stored(job):
         "gdos_eps_rect_highlighted.png",
         "gdos_logeps_rect_highlighted.png",
     ]
-    return all([job.isfile(img) for img in image_files])
+    return all([job.isfile("pdos_images/"+img) for img in image_files])
 
 
 @MyProject.pre(all_pdos_done)
@@ -184,7 +184,7 @@ def purge_bad_pdos(job):
 
 @MyProject.pre(all_pdos_done)
 @MyProject.post(images_stored)
-@MyProject.operation(cmd=True)
+@MyProject.operation
 def make_images(job):
     from matplotlib import pyplot as plt
 
@@ -212,6 +212,7 @@ def make_images(job):
     if any(fills > MAX_PHI):
         radii = radii[fills <= MAX_PHI]
         fills = fills[fills <= MAX_PHI]
+    print(radii, fills)
 
     superproject = signac.get_project(path=job.fn(""))
     gap_ranges = [
@@ -320,8 +321,8 @@ def make_images(job):
                     plt.gca().set_xlim([0, 1])
                     plt.gca().set_ylim(extrema)
                     plt.savefig(job.fn(name))
+                    plt.close()
     # return f'open {job.fn("")}/pdos_images/*png'
-    return ""
 
 
 if __name__ == "__main__":

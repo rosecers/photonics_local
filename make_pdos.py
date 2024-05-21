@@ -378,6 +378,8 @@ def make_pdos(superjob, epsilons=None):
         if e == 16 and (
             len(superjob.document.fill_fraction) != len(ff)
             or len(superjob.document.radii) != len(radii)
+            or any([r in superjob.document.radii for r in radii])
+            or any([f in superjob.document.fill_fraction for f in ff])
         ):
             print(
                 "Overwriting for {}, {}->{}, {}->{}".format(
@@ -466,6 +468,7 @@ if __name__ == "__main__":
             {"radius": radius, "dielectric": epsilon}
         )
     )[0]
+    print(ojob.document.fill_fraction * 16 + (1-ojob.document.fill_fraction))
 
     assert (args.pdos is True) or (args.spectra is True)
 
