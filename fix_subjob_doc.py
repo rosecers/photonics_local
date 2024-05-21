@@ -1,7 +1,6 @@
 import numpy as np
 
 def fix(subjob):
-    print(subjob.document)
     outputfile = subjob.fn('output2.txt') if subjob.isfile('output2.txt') else subjob.fn('output.txt')
     gaps = []
     band_nos = []
@@ -21,22 +20,24 @@ def fix(subjob):
         gap_ranges.append([f1, f2])
         mid_gaps.append(0.5 * (f1 + f2))
 
-    subjob.document['gap'] = gaps if len(gaps)>0 else [0]
-    subjob.document['max_gap'] = max(gaps, default=0)
-    subjob.document['band_nos'] = band_nos 
-    if subjob.document['max_gap']>0:
-        subjob.document['gap_ranges'] = gap_ranges 
-        subjob.document['gap_range_of_max'] = gap_ranges[np.argmax(gaps)]
-    else:
-        subjob.document['gap_ranges'] = [[0, 0], [0, 0]]
-        subjob.document['gap_range_of_max'] = [[0, 0]]
-    if subjob.document['max_gap']>0:
-        subjob.document['mid_gaps'] = mid_gaps
-        subjob.document['mid_gap_of_max'] = mid_gaps[np.argmax(gaps)]
-    else:
-        subjob.document['mid_gaps'] = [0, 0]
-        subjob.document['mid_gap_of_max'] = 0
-    print(subjob.document)
+    if np.abs(max(gaps, default=0) - subjob.document.get('max_gap', 0))>=1E-4:
+        print(subjob.document)
+        subjob.document['gap'] = gaps if len(gaps)>0 else [0]
+        subjob.document['max_gap'] = max(gaps, default=0)
+        subjob.document['band_nos'] = band_nos 
+        if subjob.document['max_gap']>0:
+            subjob.document['gap_ranges'] = gap_ranges 
+            subjob.document['gap_range_of_max'] = gap_ranges[np.argmax(gaps)]
+        else:
+            subjob.document['gap_ranges'] = [[0, 0], [0, 0]]
+            subjob.document['gap_range_of_max'] = [[0, 0]]
+        if subjob.document['max_gap']>0:
+            subjob.document['mid_gaps'] = mid_gaps
+            subjob.document['mid_gap_of_max'] = mid_gaps[np.argmax(gaps)]
+        else:
+            subjob.document['mid_gaps'] = [0, 0]
+            subjob.document['mid_gap_of_max'] = 0
+        print(subjob.document)
 
 if __name__ == "__main__":
     import signac
