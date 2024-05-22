@@ -135,14 +135,14 @@ def images_stored(job):
         "dos_logeps_auto_highlighted.png",
         "gdos_eps_auto_highlighted.png",
         "gdos_logeps_auto_highlighted.png",
-        "dos_eps_rect.png",
-        "dos_logeps_rect.png",
-        "gdos_eps_rect.png",
-        "gdos_logeps_rect.png",
-        "dos_eps_rect_highlighted.png",
-        "dos_logeps_rect_highlighted.png",
-        "gdos_eps_rect_highlighted.png",
-        "gdos_logeps_rect_highlighted.png",
+        "dos_eps_vscaled.png",
+        "dos_logeps_vscaled.png",
+        "gdos_eps_vscaled.png",
+        "gdos_logeps_vscaled.png",
+        "dos_eps_vscaled_highlighted.png",
+        "dos_logeps_vscaled_highlighted.png",
+        "gdos_eps_vscaled_highlighted.png",
+        "gdos_logeps_vscaled_highlighted.png",
     ]
     return all([job.isfile("pdos_images/"+img) for img in image_files])
 
@@ -212,7 +212,12 @@ def make_images(job):
     if any(fills > MAX_PHI):
         radii = radii[fills <= MAX_PHI]
         fills = fills[fills <= MAX_PHI]
-    print(radii, fills)
+    # print(radii, fills)
+
+    # determine the effective lattice spacing
+    a1, a2, a3 = np.array(job.sp.lattice_vectors)
+    v = np.abs(np.dot(a1, np.cross(a2, a3)))
+    effective_a = v ** (1.0 / 3.0)
 
     superproject = signac.get_project(path=job.fn(""))
     gap_ranges = [
@@ -259,8 +264,8 @@ def make_images(job):
             ["eps", effective_eps, [eps_min, eps_max]],
         ],
         "w_bounds": [
-            ["rect", lambda w: [0, 1]],
-            ["auto", lambda w: [w.min() / w_bins_Tr.max(), w.max() / w_bins_Tr.max()]],
+            ["vscaled", lambda w: [w.min() * effective_a, w.max() * effective_a]],
+            ["auto", lambda w: [w.min(), w.max()]],
         ],
         "highlight": [["_highlighted", True], ["", False]],
     }
@@ -320,7 +325,9 @@ def make_images(job):
                                     )
                     plt.gca().set_xlim([0, 1])
                     plt.gca().set_ylim(extrema)
-                    plt.savefig(job.fn(name))
+                    plt.gca().set_xticks([])
+                    plt.gca().set_yticks([])
+                    plt.savefig(job.fn(name), bbox_inches='tight')
                     plt.close()
     # return f'open {job.fn("")}/pdos_images/*png'
 
