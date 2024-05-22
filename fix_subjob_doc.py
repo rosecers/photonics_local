@@ -20,7 +20,7 @@ def fix(subjob):
         gap_ranges.append([f1, f2])
         mid_gaps.append(0.5 * (f1 + f2))
 
-    if np.abs(max(gaps, default=0) - subjob.document.get('max_gap', 0))>=1E-4:
+    if np.abs(max(gaps, default=0) - subjob.document.get('max_gap', -1))>=1E-4:
         print(subjob.document)
         subjob.document['gap'] = gaps if len(gaps)>0 else [0]
         subjob.document['max_gap'] = max(gaps, default=0)
@@ -42,7 +42,13 @@ def fix(subjob):
 if __name__ == "__main__":
     import signac
     import sys
-    project = signac.get_project('./')
+    import os
+
+    if 'workspace' not in os.getcwd():
+        superjob = signac.get_project().open_job(id=sys.argv[2])
+        project = signac.get_project(path=superjob.fn(""))
+    else:
+        project = signac.get_project('./')
 
     job = project.open_job(id=sys.argv[1])
     fix(job)
