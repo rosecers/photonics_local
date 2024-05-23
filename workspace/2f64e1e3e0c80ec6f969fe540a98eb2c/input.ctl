@@ -175,11 +175,6 @@
 
 	(make sphere (center 0.5338888888888889 -0.13277777777777777 0.2222222222222222) (radius r) (material diel))
 
-	(make sphere (center -0.4444444444444444 -0.4444444444444444 -0.4444444444444444) (radius r) (material diel))
-
-	(make sphere (center 0.2222222222222222 -0.1111111111111111 -0.1111111111111111) (radius r) (material diel))
-
-	(make sphere (center -0.1111111111111111 0.2222222222222222 0.2222222222222222) (radius r) (material diel))
 ))
 (set-param! resolution 16)
 (set-param! mesh-size 5)
