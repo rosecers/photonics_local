@@ -11,6 +11,7 @@ import numpy as np
 from meep import Medium, Lattice, interpolate, Sphere
 from meep import mpb
 import meep as mp
+from fix_subjob_doc import fix
 
 REQUIRED_KEYS = [
     "background_epsilon",
@@ -19,6 +20,7 @@ REQUIRED_KEYS = [
     "sphere_epsilon",
     "centers",
     "kpoints",
+    "interpolation",
 ]
 
 
@@ -64,6 +66,20 @@ def run(
 
     # Running the simulation
     ms.run()
+    ms.output_epsilon()
+
+
+def run_wrap(subjob, ctl_params):
+    if ctl_params["sphere_epsilon"] == 0:
+        ctl_params["sphere_epsilon"] = subjob.sp.dielectric
+    elif ctl_params["background_epsilon"] == 0:
+        ctl_params["background_epsilon"] = subjob.sp.dielectric
+
+    if ctl_params["radius"] == 0:
+        ctl_params["radius"] = subjob.sp.radius
+
+    with open(subjob.fn("output.txt"), "w") as sys.stdout:
+        run(**ctl_params)
 
 
 def parse_ctl_file(ctl_file):
@@ -144,13 +160,14 @@ def parse_ctl_file(ctl_file):
                 # else:
                 #     print("NOT CAUGHT", l, len(l))
 
-    if 'background_epsilon' not in params:
-        params['background_epsilon'] = 1
+    if "background_epsilon" not in params:
+        params["background_epsilon"] = 1
     params["centers"] = np.array(centers)
     params["kpoints"] = np.array(kpoints)
     for key in REQUIRED_KEYS:
         print("Checking for {}...".format(key))
         assert key in params
+
     return params
 
 
@@ -161,7 +178,12 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Process some integers.")
     parser.add_argument("-j", "--job_id", type=str, help="The ID of the job")
-    parser.add_argument("-sj", "--subjob_id", type=str, help="The ID of the subjob, overrides entries for radius and epsilon")
+    parser.add_argument(
+        "-sj",
+        "--subjob_id",
+        type=str,
+        help="The ID of the subjob, overrides entries for radius and epsilon",
+    )
     parser.add_argument("-r", "--radius", type=float, help="The radius")
     parser.add_argument("-e", "--epsilon", type=int, help="The epsilon value")
     parser.add_argument(
@@ -174,25 +196,8 @@ if __name__ == "__main__":
 
     job = signac.get_project().open_job(id=args.job_id)
 
-    if args.subjob_id is not None:
-        subjob = signac.get_project(path=job.fn("")).open_job(id=args.subjob_id)
-        radius = subjob.sp.radius
-        epsilon = subjob.sp.dielectric
-    else:
-        radius = args.radius
-        epsilon = args.epsilon
-        subjob = list(signac.get_project(path=job.fn("")).find_jobs({"radius": radius, "dielectric": epsilon}))[0]
-
     ctl_file = job.fn("input2.ctl") if job.isfile("input2.ctl") else job.fn("input.ctl")
     ctl_params = parse_ctl_file(ctl_file)
-
-    if ctl_params["sphere_epsilon"] == 0:
-        ctl_params["sphere_epsilon"] = epsilon
-    elif ctl_params["background_epsilon"] == 0:
-        ctl_params["background_epsilon"] = epsilon
-
-    if ctl_params["radius"] == 0:
-        ctl_params["radius"] = radius
 
     assert (
         np.linalg.norm(job.sp.lattice_vectors - ctl_params["lattice_vectors"])
@@ -214,5 +219,23 @@ if __name__ == "__main__":
 
     if args.reduce_kp:
         ctl_params["kpoints"] = job.document.kpoints
-    with open(subjob.fn('output.txt'), 'w') as sys.stdout:
-        run(**ctl_params)
+        ctl_params["interpolation"] = max(ctl_params["interpolation"], 1)
+
+    print(
+        "{} total kpoints".format(
+            (len(ctl_params["kpoints"]) - 1) * (ctl_params["interpolation"] + 1) + 1
+        )
+    )
+
+    if args.subjob_id is not None:
+        subjob = signac.get_project(path=job.fn("")).open_job(id=args.subjob_id)
+        run_wrap(subjob, ctl_params)
+    else:
+        radius = args.radius
+        epsilon = args.epsilon
+        subjob = (
+            signac.get_project(path=job.fn(""))
+            .open_job({"radius": radius, "dielectric": epsilon})
+            .init()
+        )
+        run_wrap(subjob, ctl_params)

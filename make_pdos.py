@@ -9,6 +9,7 @@ import signac
 from pymatgen.core.structure import Structure
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 import os
+from scipy.spatial.distance import cdist
 
 project = signac.get_project("/Users/rca/periodic_structures/")
 MAX_PHI = project.document["max_phi"]
@@ -209,21 +210,22 @@ def setup_interpolators(mpb_output, lattice_vectors, basis):
 
     # this code adds [±i, ±j, ±k], which will have equivalent frequencies
     for f, k in zip(freqs, kpoints.copy()):
-        points = np.dot(k, rotations)
-        rm_list = []
-        # identify and remove duplicates from the list of equivalent k-points:
-        for i in range(len(points) - 1):
-            if np.linalg.norm(kpoints - points[i], axis=1).min() < 1e-6:
-                rm_list.append(i)
-
-        for p in np.delete(points, rm_list, axis=0):
-            kpoints = np.append(kpoints, [p]).reshape(-1, 3)
+        points = np.unique(np.dot(k, rotations), axis=0)
+        dist = cdist(kpoints, points)
+        for i in np.where(dist.min(axis=0) > 1e-6)[0]:
+            kpoints = np.append(kpoints, points[i]).reshape(-1, 3)
             freqs = np.append(freqs, [f]).reshape(len(kpoints), -1)
 
     # set up a set of interpolators for the kpoint grid
     interpolators = []
     for f in freqs.T:
-        interpolators.append(interpolator(kpoints, f.reshape(-1, 1), smoothing=0.01))
+        if len(kpoints) > 10000:
+            my_i = np.random.choice(np.arange(kpoints.shape[0]), 10000)
+        else:
+            my_i = np.arange(len(kpoints))
+        interpolators.append(
+            interpolator(kpoints[my_i], f.reshape(-1, 1)[my_i], smoothing=0.01)
+        )
 
     return interpolators
 
@@ -383,8 +385,11 @@ def make_pdos(superjob, epsilons=None):
         ):
             print(
                 "Overwriting for {}, {}->{}, {}->{}".format(
-                    superjob, len(superjob.document.fill_fraction), len(ff),
-                    len(superjob.document.radii), len(radii)
+                    superjob,
+                    len(superjob.document.fill_fraction),
+                    len(ff),
+                    len(superjob.document.radii),
+                    len(radii),
                 )
             )
             superjob.document.fill_fraction = ff
@@ -468,13 +473,14 @@ if __name__ == "__main__":
             {"radius": radius, "dielectric": epsilon}
         )
     )[0]
-    print(ojob.document.fill_fraction * 16 + (1-ojob.document.fill_fraction))
+    print(ojob.document.fill_fraction * 16 + (1 - ojob.document.fill_fraction))
 
     assert (args.pdos is True) or (args.spectra is True)
 
     if args.pdos:
         entry = make_pdos_entry(ojob, job, pdos_dict_raw)
         w, D, gD = list(entry.values())[0]
+
         plt.plot(w, D)
         plt.plot(w, gD)
         plt.show()

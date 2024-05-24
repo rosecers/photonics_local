@@ -7,6 +7,7 @@ from make_pdos import make_pdos, get_epsilons
 project = signac.get_project("/Users/rca/periodic_structures/")
 MIN_PHI = project.document["min_phi"]
 MAX_PHI = project.document["max_phi"]
+ZERO_CUTOFF = 10
 
 
 class MyProject(FlowProject):
@@ -144,7 +145,7 @@ def images_stored(job):
         "gdos_eps_vscaled_highlighted.png",
         "gdos_logeps_vscaled_highlighted.png",
     ]
-    return all([job.isfile("pdos_images/"+img) for img in image_files])
+    return all([job.isfile("pdos_images/" + img) for img in image_files])
 
 
 @MyProject.pre(all_pdos_done)
@@ -231,6 +232,14 @@ def make_images(job):
         key = str((r, epsilon))
         if key in pdos_dict_raw:
             w, D, gD = pdos_dict_raw[key]
+            zeros = np.where(D < ZERO_CUTOFF)[0]
+            consecutive_zeros = np.split(zeros, np.where(np.diff(zeros) != 1)[0] + 1)[
+                -1
+            ]
+            if max(D[consecutive_zeros[-1] :]) < ZERO_CUTOFF:
+                gD[consecutive_zeros] = -1
+                D[consecutive_zeros] = -1
+
             # print(key, i, D.max(), np.mean(D))
             if w_bins_Tr is None:
                 w_bins_Tr = -np.ones((len(radii), len(w)))
@@ -277,6 +286,7 @@ def make_images(job):
                     name = f"pdos_images/{dos_name}_{e_name}_{w_name}{h_name}.png"
 
                     plt.figure()
+                    plt.gca().set_facecolor((0.5, 0.5, 0.8))
                     for i, f, w, g, gr in zip(
                         range(len(e_list)), e_list, w_bins_Tr, dos_list, gap_ranges
                     ):
@@ -298,7 +308,7 @@ def make_images(job):
                             e_extent = sorted(
                                 [0.5 * (f + e_list[i - 1]), 0.5 * (f + e_list[i + 1])]
                             )
-                        g_eff = g.reshape(1, -1) / np.nanmax(dos_list)
+                        g_eff = g.reshape(1, -1)
                         plt.imshow(
                             g_eff,
                             extent=[
@@ -307,7 +317,7 @@ def make_images(job):
                             ],
                             aspect="auto",
                             vmin=0,
-                            vmax=1,
+                            vmax=100,
                             cmap="bone_r",
                         )
 
@@ -327,7 +337,7 @@ def make_images(job):
                     plt.gca().set_ylim(extrema)
                     plt.gca().set_xticks([])
                     plt.gca().set_yticks([])
-                    plt.savefig(job.fn(name), bbox_inches='tight')
+                    plt.savefig(job.fn(name), bbox_inches="tight")
                     plt.close()
     # return f'open {job.fn("")}/pdos_images/*png'
 
