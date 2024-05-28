@@ -30,6 +30,9 @@ def fix(subjob):
 
     if np.abs(max(gaps, default=0) - subjob.document.get("max_gap", -1)) >= 1e-4:
         print(subjob.document)
+        if len(gaps) > 0:
+            print("SOMEONE FOUND A GAP PLEASE CHECK")
+            subjob.document["inspect"] = True
         subjob.document["gap"] = gaps if len(gaps) > 0 else [0]
         subjob.document["max_gap"] = max(gaps, default=0)
         subjob.document["band_nos"] = band_nos

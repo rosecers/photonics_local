@@ -120,65 +120,6 @@
 
 	(make sphere (center 0.9 0.1 0.5) (radius r) (material diel))
 
-	(make sphere (center 0.0 0.0 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.5 0.5 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.4 0.4 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.6 0.6 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.1 0.9 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.9 0.1 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.1841 0.1841 0.252) (radius r) (material diel))
-
-	(make sphere (center 0.8159 0.8159 0.748) (radius r) (material diel))
-
-	(make sphere (center 0.8159 0.8159 0.252) (radius r) (material diel))
-
-	(make sphere (center 0.1841 0.1841 0.748) (radius r) (material diel))
-
-	(make sphere (center 0.3159 0.6841 0.752) (radius r) (material diel))
-
-	(make sphere (center 0.6841 0.3159 0.248) (radius r) (material diel))
-
-	(make sphere (center 0.6841 0.3159 0.752) (radius r) (material diel))
-
-	(make sphere (center 0.3159 0.6841 0.248) (radius r) (material diel))
-
-	(make sphere (center 0.5344 0.1317 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.4656 0.8683 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.3683 0.0344 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.6317 0.9656 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.9656 0.6317 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.0344 0.3683 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.1317 0.5344 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.8683 0.4656 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.0624 0.2566 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.9376 0.7434 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.2434 0.5624 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.7566 0.4376 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.4376 0.7566 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.5624 0.2434 0.5) (radius r) (material diel))
-
-	(make sphere (center 0.2566 0.0624 0.0) (radius r) (material diel))
-
-	(make sphere (center 0.7434 0.9376 0.0) (radius r) (material diel))
 ))
 (set-param! resolution 32)
 (set-param! mesh-size 5)

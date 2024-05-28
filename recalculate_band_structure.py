@@ -199,12 +199,6 @@ if __name__ == "__main__":
     ctl_file = job.fn("input2.ctl") if job.isfile("input2.ctl") else job.fn("input.ctl")
     ctl_params = parse_ctl_file(ctl_file)
 
-    assert (
-        np.linalg.norm(job.sp.lattice_vectors - ctl_params["lattice_vectors"])
-        <= args.threshold
-    )
-    assert np.linalg.norm(job.sp.basis - ctl_params["centers"]) <= args.threshold
-
     if args.unique:
         orig_centers = ctl_params.pop("centers")
         centers = []
@@ -212,17 +206,44 @@ if __name__ == "__main__":
             if i == 0:
                 centers.append(c)
             elif np.linalg.norm(np.array(centers) - c, axis=1).min() > args.threshold:
-                print(c, np.linalg.norm(np.array(centers) - c, axis=1).min())
                 centers.append(c)
-        ctl_params["centers"] = centers
-        input((len(orig_centers), "-->", len(centers)))
+            else:
+                print(
+                    "Ignoring duplicate",
+                    c,
+                    np.linalg.norm(np.array(centers) - c, axis=1).min(),
+                )
+
+        if len(centers) != len(orig_centers):
+            ctl_params["centers"] = np.array(centers)
+            print("Centers changing:", (len(orig_centers), "-->", len(centers)))
+        else:
+            ctl_params["centers"] = orig_centers
+
+    if len(ctl_params["centers"]) != len(job.sp.basis):
+        centers = []
+        for i, c in enumerate(ctl_params["centers"]):
+            if (
+                i == 0
+                or np.linalg.norm(np.array(centers) - c, axis=1).min() > args.threshold
+            ):
+                centers.append(c)
+            else:
+                print("Duplicate:", c)
+        raise AssertionError
+
+    assert (
+        np.linalg.norm(job.sp.lattice_vectors - ctl_params["lattice_vectors"])
+        <= args.threshold
+    )
+    assert np.linalg.norm(job.sp.basis - ctl_params["centers"]) <= args.threshold
 
     if args.reduce_kp:
         ctl_params["kpoints"] = job.document.kpoints
-        ctl_params["interpolation"] = max(ctl_params["interpolation"], 1)
+        ctl_params["interpolation"] = max(ctl_params["interpolation"], 4)
 
     print(
-        "{} total kpoints".format(
+        "{} total kpoints\n\nEmpty line for counter".format(
             (len(ctl_params["kpoints"]) - 1) * (ctl_params["interpolation"] + 1) + 1
         )
     )
@@ -230,7 +251,7 @@ if __name__ == "__main__":
     if args.subjob_id is not None:
         subjob = signac.get_project(path=job.fn("")).open_job(id=args.subjob_id)
         run_wrap(subjob, ctl_params)
-    else:
+    elif args.radius is not None:
         radius = args.radius
         epsilon = args.epsilon
         subjob = (
