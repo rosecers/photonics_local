@@ -1,88 +1,50 @@
 
-#(C) 2018 by FIZ Karlsruhe - Leibniz Institute for Information Infrastructure.  All rights reserved.
-data_2354-ICSD
-_database_code_ICSD 2354
-_audit_creation_date 1980-01-01
-_audit_update_record 1987-04-16
-_chemical_name_systematic 'Oxovanadium(IV) diselenate(IV)'
-_chemical_formula_structural 'V O Se2 O5'
-_chemical_formula_sum 'O6 Se2 V1'
-_exptl_crystal_density_diffrn 4.09
-_publ_section_title
+#======================================================================
+# CRYSTAL DATA
+#----------------------------------------------------------------------
+data_VESTA_phase_1
 
-;
-Cristallochimie du selenium(+IV). I. V Se2 O6, une structure a trois chaines
-paralleles ((V O5)n)(6n) independantes pontees par des groupements (Se2 O)(6+)
-;
-loop_
-_citation_id
-_citation_journal_full
-_citation_year
-_citation_journal_volume
-_citation_page_first
-_citation_page_last
-_citation_journal_id_ASTM
-primary
+_chemical_name_common                  'O6 Se2 V1'
+_cell_length_a                         11.22(6)
+_cell_length_b                         11.22(6)
+_cell_length_c                         7.86(4)
+_cell_angle_alpha                      90.000000
+_cell_angle_beta                       90.000000
+_cell_angle_gamma                      90.000000
+_cell_volume                           989.482888
+_space_group_name_H-M_alt              'P 4 c c'
+_space_group_IT_number                 103
 
-;
-Acta Crystallographica, Section B: Structural Crystallography and Crystal
-Chemistry
-; 1974 30 2834 2839 ACBCAR
 loop_
-_publ_author_name
-'Meunier, G.'
-'Bertaud, M.'
-'Galy, J.'
-_cell_length_a 11.22(6)
-_cell_length_b 11.22(6)
-_cell_length_c 7.86(4)
-_cell_angle_alpha 90.
-_cell_angle_beta 90.
-_cell_angle_gamma 90.
-_cell_volume 989.48
-_cell_formula_units_Z 8
-_symmetry_space_group_name_H-M 'P 4 c c'
-_symmetry_Int_Tables_number 103
-_refine_ls_R_factor_all 0.041
+_space_group_symop_operation_xyz
+   'x, y, z'
+   '-x, -y, z'
+   '-y, x, z'
+   'y, -x, z'
+   'x, -y, z+1/2'
+   '-x, y, z+1/2'
+   '-y, -x, z+1/2'
+   'y, x, z+1/2'
+
 loop_
-_symmetry_equiv_pos_site_id
-_symmetry_equiv_pos_as_xyz
-1 'y, x, z+1/2'
-2 '-y, -x, z+1/2'
-3 'y, -x, z'
-4 '-y, x, z'
-5 'x, -y, z+1/2'
-6 '-x, y, z+1/2'
-7 '-x, -y, z'
-8 'x, y, z'
-loop_
-_atom_type_symbol
-_atom_type_oxidation_number
-Se4+ 4
-V4+ 4
-O2- -2
-loop_
-_atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_Wyckoff_symbol
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_B_iso_or_equiv
-_atom_site_occupancy
-_atom_site_attached_hydrogens
-Se1 Se4+ 8 d 0.1033(1) 0.2405(1) 0 0.58 1. 0
-Se2 Se4+ 8 d 0.3671(1) 0.2818(1) 0.1031(2) 0.54 1. 0
-V1 V4+ 2 a 0 0 0.1715(6) 0.41 1. 0
-V2 V4+ 2 b 0.5 0.5 0.4274(5) 0.28 1. 0
-V3 V4+ 4 c 0 0.5 0.0972(3) 0.46 1. 0
-O1 O2- 2 a 0 0 0.377(3) 1.17 1. 0
-O2 O2- 2 b 0.5 0.5 0.223(2) 0.89 1. 0
-O3 O2- 4 c 0 0.5 0.391(1) 1. 1. 0
-O4 O2- 8 d 0.1233(7) 0.1200(8) 0.130(1) 0.69 1. 0
-O5 O2- 8 d 0.2546(7) 0.2550(7) 0.440(1) 0.68 1. 0
-O6 O2- 8 d 0.0919(7) 0.3511(7) 0.146(1) 0.81 1. 0
-O7 O2- 8 d 0.3271(7) 0.4759(7) 0.468(1) 0.5 1. 0
-O8 O2- 8 d 0.4059(7) 0.1432(7) 0.150(1) 0.93 1. 0
-#End of TTdata_2354-ICSD
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_adp_type
+   _atom_site_B_iso_or_equiv
+   _atom_site_type_symbol
+   Se1        1.0     0.10330(10)  0.24050(10)  0.000000    Biso  0.580000 Se
+   Se2        1.0     0.36710(10)  0.28180(10)  0.1031(2)   Biso  0.540000 Se
+   V1         1.0     0.000000     0.000000     0.1715(7)   Biso  0.410000 V
+   V2         1.0     0.500000     0.500000     0.4274(5)   Biso  0.280000 V
+   V3         1.0     0.000000     0.500000     0.0972(4)   Biso  0.460000 V
+   O1         1.0     0.000000     0.000000     0.377(3)    Biso  1.170000 O
+   O2         1.0     0.500000     0.500000     0.223(2)    Biso  0.890000 O
+   O3         1.0     0.000000     0.500000     0.3910(10)  Biso  1.000000 O
+   O4         1.0     0.1233(7)    0.1200(8)    0.1300(10)  Biso  0.690000 O
+   O5         1.0     0.2546(7)    0.2550(7)    0.4400(10)  Biso  0.680000 O
+   O6         1.0     0.0919(7)    0.3511(7)    0.1460(10)  Biso  0.810000 O
+   O7         1.0     0.3271(7)    0.4759(7)    0.4680(10)  Biso  0.500000 O
+   O8         1.0     0.4059(7)    0.1432(7)    0.1500(10)  Biso  0.930000 O

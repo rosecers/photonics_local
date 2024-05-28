@@ -1,87 +1,49 @@
-#------------------------------------------------------------------------------
-#$Date: 2016-02-14 16:26:36 +0200 (Sun, 14 Feb 2016) $
-#$Revision: 176435 $
-#$URL: svn://www.crystallography.net/cod/cif/1/00/04/1000428.cif $
-#------------------------------------------------------------------------------
-#
-# This file is available in the Crystallography Open Database (COD),
-# http://www.crystallography.net/
-#
-# All data on this site have been placed in the public domain by the
-# contributors.
-#
-data_1000428
+data_image0
+_chemical_formula_structural       Ba4Ca2In6O12
+_chemical_formula_sum              "Ba4 Ca2 In6 O12"
+_cell_length_a       9.888
+_cell_length_b       9.888
+_cell_length_c       3.217
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    119.99999999999999
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
 loop_
-_publ_author_name
-'Baldinozzi, G'
-'Goutenoire, F'
-'Hervieu, M'
-'Suard, E'
-'Grebille, D'
-_publ_section_title
-;
-Incommensurate modulated disorder in Ba0.85 Ca2.15 In6 O12
-;
-_journal_coden_ASTM              ASBSDK
-_journal_name_full               'Acta Crystallographica B (39,1983-)'
-_journal_page_first              780
-_journal_page_last               789
-_journal_volume                  52
-_journal_year                    1996
-_chemical_formula_analytical     'Ba0.85 Ca2.15 In6 O12'
-_chemical_formula_structural     'Ba0.86 Ca2 In6 O12'
-_chemical_formula_sum            'Ba0.86 Ca2 In6 O12'
-_chemical_name_systematic        'Barium calcium indium oxide (0.86/2/6/12)'
-_space_group_IT_number           176
-_symmetry_cell_setting           hexagonal
-_symmetry_Int_Tables_number      176
-_symmetry_space_group_name_Hall  '-P 6c'
-_symmetry_space_group_name_H-M   'P 63/m'
-_cell_angle_alpha                90
-_cell_angle_beta                 90
-_cell_angle_gamma                120
-_cell_formula_units_Z            1
-_cell_length_a                   9.8880(1)
-_cell_length_b                   9.8880(1)
-_cell_length_c                   3.2170(1)
-_cell_volume                     272.4
-_refine_ls_R_factor_all          0.024
-_cod_original_formula_sum        'Ba.86 Ca2 In6 O12'
-_cod_database_code               1000428
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
 loop_
-_symmetry_equiv_pos_as_xyz
-x,y,z
--y,x-y,z
-y-x,-x,z
--x,-y,1/2+z
-y,y-x,1/2+z
-x-y,x,1/2+z
--x,-y,-z
-y,y-x,-z
-x-y,x,-z
-x,y,1/2-z
--y,x-y,1/2-z
-y-x,-x,1/2-z
-loop_
-_atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_Wyckoff_symbol
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_occupancy
-_atom_site_attached_hydrogens
-_atom_site_calc_flag
-Ba1 Ba2+ 4 e 0. 0. 0.160(12) 0.215(25) 0 d
-Ca1 Ca2+ 2 c 0.3333 0.6667 0.25 1. 0 d
-In1 In3+ 6 h 0.3472(1) -0.0044(2) 0.25 1. 0 d
-O1 O2- 6 h 0.1935(3) 0.3048(3) 0.25 1. 0 d
-O2 O2- 6 h 0.5316(3) 0.3985(2) 0.25 1. 0 d
-loop_
-_atom_type_symbol
-_atom_type_oxidation_number
-Ba2+ 2.000
-Ca2+ 2.000
-In3+ 3.000
-O2- -2.000
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ba  Ba1       1.0  0.0  0.0  0.16  0.2150
+  Ba  Ba2       1.0  0.0  0.0  0.66  0.2150
+  Ba  Ba3       1.0  0.0  0.0  0.84  0.2150
+  Ba  Ba4       1.0  0.0  0.0  0.33999999999999997  0.2150
+  Ca  Ca1       1.0  0.3333  0.6667  0.24999999999999994  1.0000
+  Ca  Ca2       1.0  0.6667000000000001  0.33330000000000004  0.7499999999999999  1.0000
+  In  In1       1.0  0.34720000000000006  0.9956000000000002  0.24999999999999994  1.0000
+  In  In2       1.0  0.004399999999999997  0.3516  0.24999999999999994  1.0000
+  In  In3       1.0  0.6484  0.6528  0.24999999999999994  1.0000
+  In  In4       1.0  0.6528  0.0044  0.7499999999999999  1.0000
+  In  In5       1.0  0.9956000000000002  0.6484  0.7499999999999999  1.0000
+  In  In6       1.0  0.3516  0.3472  0.7499999999999999  1.0000
+  O   O1        1.0  0.19350000000000006  0.3048  0.24999999999999994  1.0000
+  O   O2        1.0  0.6952  0.8887  0.24999999999999994  1.0000
+  O   O3        1.0  0.11129999999999997  0.8065  0.24999999999999994  1.0000
+  O   O4        1.0  0.8065  0.6952  0.7499999999999999  1.0000
+  O   O5        1.0  0.30480000000000007  0.11129999999999998  0.7499999999999999  1.0000
+  O   O6        1.0  0.8887000000000002  0.19350000000000003  0.7499999999999999  1.0000
+  O   O7        1.0  0.5316  0.3985  0.24999999999999994  1.0000
+  O   O8        1.0  0.6015  0.13309999999999994  0.24999999999999994  1.0000
+  O   O9        1.0  0.8669  0.4684  0.24999999999999994  1.0000
+  O   O10       1.0  0.4684000000000001  0.6014999999999999  0.7499999999999999  1.0000
+  O   O11       1.0  0.3985000000000001  0.8669  0.7499999999999999  1.0000
+  O   O12       1.0  0.13309999999999994  0.5316  0.7499999999999999  1.0000

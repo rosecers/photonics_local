@@ -2,6 +2,8 @@ import os
 import signac
 from shutil import copy
 from tqdm.auto import tqdm
+from check_cif import check
+from ase.io import write
 
 project = signac.get_project()
 jobs = list(project.find_jobs())
@@ -60,6 +62,19 @@ for fn in os.listdir(jobs[0].fn("pdos_images")):
             outf.write(
                 "Additionally, the band gaps for this system have been highlighted in red.\n"
             )
+
+subfolder = "exported_images/xyz_files"
+if not os.path.exists(subfolder):
+    os.mkdir(subfolder)
+
+n_open = 0
 for job in tqdm(jobs):
-    for fn in os.listdir(jobs[0].fn("pdos_images")):
-        copy(job.fn("pdos_images/" + fn), "{}/{}.png".format(subfolders[fn], str(job)))
+    if n_open < 20:
+        for fn in os.listdir(jobs[0].fn("pdos_images")):
+            copy(
+                job.fn("pdos_images/" + fn),
+                "{}/{}.png".format(subfolders[fn], str(job)),
+            )
+        frame, opened = check(job.fn(job.sp.structure + ".cif"))
+        n_open += int(opened)
+        write(f"exported_images/xyz_files/{job}.xyz", frame)

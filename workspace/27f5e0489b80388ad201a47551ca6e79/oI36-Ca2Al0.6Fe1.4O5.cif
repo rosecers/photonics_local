@@ -1,84 +1,69 @@
-#------------------------------------------------------------------------------
-#$Date: 2016-02-14 16:26:36 +0200 (Sun, 14 Feb 2016) $
-#$Revision: 176435 $
-#$URL: svn://www.crystallography.net/cod/cif/1/00/00/1000040.cif $
-#------------------------------------------------------------------------------
-#
-# This file is available in the Crystallography Open Database (COD),
-# http://www.crystallography.net/
-#
-# All data on this site have been placed in the public domain by the
-# contributors.
-#
-data_1000040
+data_image0
+_chemical_formula_structural       Ca8Fe8O20
+_chemical_formula_sum              "Ca8 Fe8 O20"
+_cell_length_a       5.588
+_cell_length_b       14.61
+_cell_length_c       5.38
+_cell_angle_alpha    90.0
+_cell_angle_beta     90.0
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
 loop_
-_publ_author_name
-'Colville, A A'
-'Geller, S'
-_publ_section_title
-;
-Crystal structures of Ca~2~ Fe~1.43~ Al~0.57~ O~5~ and  Ca~2~ Fe~1.28~ 
-Al~0.72~ O~5~
-;
-_journal_coden_ASTM              ACBCAR
-_journal_name_full               'Acta Crystallographica B (24,1968-38,1982)'
-_journal_page_first              3196
-_journal_page_last               3200
-_journal_paper_doi               10.1107/S0567740872007733
-_journal_volume                  28
-_journal_year                    1972
-_chemical_formula_structural     'Ca2 Fe1.40 Al0.60 O5'
-_chemical_formula_sum            'Al0.6 Ca2 Fe1.4 O5'
-_chemical_name_systematic        'Calcium aluminium iron oxide (2/0.6/1.4/5)'
-_space_group_IT_number           46
-_symmetry_cell_setting           orthorhombic
-_symmetry_Int_Tables_number      46
-_symmetry_space_group_name_Hall  'I 2 -2b'
-_symmetry_space_group_name_H-M   'I b m 2'
-_cell_angle_alpha                90
-_cell_angle_beta                 90
-_cell_angle_gamma                90
-_cell_formula_units_Z            4
-_cell_length_a                   5.588(5)
-_cell_length_b                   14.61(2)
-_cell_length_c                   5.380(5)
-_cell_volume                     439.2
-_refine_ls_R_factor_all          0.029
-_cod_original_formula_sum        'Al.6 Ca2 Fe1.4 O5'
-_cod_database_code               1000040
+  _space_group_symop_operation_xyz
+  'x, y, z'
+
 loop_
-_symmetry_equiv_pos_as_xyz
-x,y,z
--x,-y,z
-x,1/2-y,z
--x,1/2+y,z
-1/2+x,1/2+y,1/2+z
-1/2-x,1/2-y,1/2+z
-1/2+x,-y,1/2+z
-1/2-x,y,1/2+z
-loop_
-_atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_Wyckoff_symbol
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_occupancy
-_atom_site_attached_hydrogens
-_atom_site_calc_flag
-Ca1 Ca2+ 8 c 0.0270(1) 0.1084(1) 0.4910(3) 1. 0 d
-Fe1 Fe3+ 4 a 0. 0. 0. 0.85 0 d
-Al1 Al3+ 4 a 0. 0. 0. 0.15 0 d
-Fe2 Fe3+ 4 b 0.9293(2) 0.25 0.9516(4) 0.55 0 d
-Al2 Al3+ 4 b 0.9293(2) 0.25 0.9516(4) 0.45 0 d
-O1 O2- 8 c 0.2533(8) 0.9856(2) 0.2520(8) 1. 0 d
-O2 O2- 8 c 0.0687(6) 0.1429(2) 0.0269(8) 1. 0 d
-O3 O2- 4 b 0.8668(8) 0.25 0.6147(9) 1. 0 d
-loop_
-_atom_type_symbol
-_atom_type_oxidation_number
-Ca2+ 2.000
-Fe3+ 3.000
-Al3+ 3.000
-O2- -2.000
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Ca  Ca1       1.0  0.027000000000000003  0.10839999999999997  0.491  1.0000
+  Ca  Ca2       1.0  0.973  0.8916000000000001  0.491  1.0000
+  Ca  Ca3       1.0  0.027000000000000003  0.39159999999999995  0.491  1.0000
+  Ca  Ca4       1.0  0.973  0.6083999999999998  0.491  1.0000
+  Ca  Ca5       1.0  0.527  0.6083999999999998  0.991  1.0000
+  Ca  Ca6       1.0  0.473  0.39159999999999995  0.991  1.0000
+  Ca  Ca7       1.0  0.527  0.8916000000000001  0.991  1.0000
+  Ca  Ca8       1.0  0.473  0.10839999999999997  0.991  1.0000
+  Fe  Fe1       1.0  0.0  0.0  0.0  0.8500
+  Fe  Fe2       1.0  0.0  0.49999999999999994  0.0  0.8500
+  Fe  Fe3       1.0  0.5  0.49999999999999994  0.5  0.8500
+  Fe  Fe4       1.0  0.5  0.0  0.5  0.8500
+  Fe  Fe5       1.0  0.9293000000000001  0.24999999999999994  0.9516  0.5500
+  Fe  Fe6       1.0  0.07069999999999987  0.7499999999999999  0.9516  0.5500
+  Fe  Fe7       1.0  0.4293  0.7499999999999999  0.45160000000000006  0.5500
+  Fe  Fe8       1.0  0.5706999999999999  0.24999999999999997  0.45160000000000006  0.5500
+  O   O1        1.0  0.2533  0.9855999999999998  0.25200000000000006  1.0000
+  O   O2        1.0  0.7466999999999999  0.014400000000000078  0.25200000000000006  1.0000
+  O   O3        1.0  0.2533  0.5144000000000001  0.25200000000000006  1.0000
+  O   O4        1.0  0.7466999999999999  0.48559999999999975  0.25200000000000006  1.0000
+  O   O5        1.0  0.7533000000000001  0.48559999999999975  0.752  1.0000
+  O   O6        1.0  0.24669999999999997  0.5144000000000001  0.752  1.0000
+  O   O7        1.0  0.7533000000000001  0.014400000000000078  0.752  1.0000
+  O   O8        1.0  0.24669999999999997  0.9855999999999998  0.752  1.0000
+  O   O9        1.0  0.0687  0.14289999999999994  0.0269  1.0000
+  O   O10       1.0  0.9313  0.8571  0.0269  1.0000
+  O   O11       1.0  0.0687  0.3571  0.0269  1.0000
+  O   O12       1.0  0.9313  0.6428999999999999  0.0269  1.0000
+  O   O13       1.0  0.5687  0.6428999999999999  0.5269  1.0000
+  O   O14       1.0  0.43130000000000007  0.3571  0.5269  1.0000
+  O   O15       1.0  0.5687  0.8571  0.5269  1.0000
+  O   O16       1.0  0.43130000000000007  0.14289999999999994  0.5269  1.0000
+  O   O17       1.0  0.8668  0.24999999999999994  0.6147  1.0000
+  O   O18       1.0  0.13319999999999999  0.7499999999999999  0.6147  1.0000
+  O   O19       1.0  0.3668  0.7499999999999999  0.11470000000000004  1.0000
+  O   O20       1.0  0.6332000000000001  0.24999999999999997  0.11470000000000004  1.0000
+  Al  Al1       1.0  0.0  0.0  0.0  0.1500
+  Al  Al2       1.0  0.0  0.49999999999999994  0.0  0.1500
+  Al  Al3       1.0  0.5  0.49999999999999994  0.5  0.1500
+  Al  Al4       1.0  0.5  0.0  0.5  0.1500
+  Al  Al5       1.0  0.9293000000000001  0.24999999999999994  0.9516  0.4500
+  Al  Al6       1.0  0.07069999999999987  0.7499999999999999  0.9516  0.4500
+  Al  Al7       1.0  0.4293  0.7499999999999999  0.45160000000000006  0.4500
+  Al  Al8       1.0  0.5706999999999999  0.24999999999999997  0.45160000000000006  0.4500

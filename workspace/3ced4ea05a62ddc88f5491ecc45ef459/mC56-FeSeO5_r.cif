@@ -1,90 +1,53 @@
-#------------------------------------------------------------------------------
-#$Date: 2016-02-14 16:26:36 +0200 (Sun, 14 Feb 2016) $
-#$Revision: 176435 $
-#$URL: svn://www.crystallography.net/cod/cif/2/00/30/2003025.cif $
-#------------------------------------------------------------------------------
-#
-# This file is available in the Crystallography Open Database (COD),
-# http://www.crystallography.net/. The original data for this entry
-# were provided by IUCr Journals, http://journals.iucr.org/.
-#
-# The file may be used within the scientific community so long as
-# proper attribution is given to the journal article from which the
-# data were obtained.
-#
-data_2003025
+data_image0
+_chemical_formula_structural       Fe4O20Se4
+_chemical_formula_sum              "Fe4 O20 Se4"
+_cell_length_a       7.14
+_cell_length_b       8.05
+_cell_length_c       7.84
+_cell_angle_alpha    90.0
+_cell_angle_beta     118.09999999999998
+_cell_angle_gamma    90.0
+
+_space_group_name_H-M_alt    "P 1"
+_space_group_IT_number       1
+
 loop_
-_publ_author_name
-'Aleksovska, S.'
-'Petrusevski, V. M.'
-'Soptrajanov, B.'
-_publ_section_title
-;
- Calculation of Structural Parameters in Isostructural Series: the
- Kieserite Group
-;
-_journal_issue                   5
-_journal_name_full               'Acta Crystallographica Section B'
-_journal_page_first              564
-_journal_page_last               567
-_journal_paper_doi               10.1107/S0108768198000974
-_journal_volume                  54
-_journal_year                    1998
-_chemical_formula_sum            'Fe H2 O5 Se'
-_space_group_IT_number           15
-_symmetry_cell_setting           monoclinic
-_symmetry_space_group_name_Hall  '-C 2yc'
-_symmetry_space_group_name_H-M   'C 1 2/c 1'
-_cell_angle_alpha                90.00
-_cell_angle_beta                 118.1(4)
-_cell_angle_gamma                90.00
-_cell_formula_units_Z            4
-_cell_length_a                   7.14(3)
-_cell_length_b                   8.05(4)
-_cell_length_c                   7.84(4)
-_cell_volume                     398(4)
-_cod_data_source_file            na0082.cif
-_cod_data_source_block           I
-_cod_depositor_comments
-;
-The following automatic conversions were performed:
-'_symmetry_cell_setting' value 'Monoclinic' changed to 'monoclinic'
-according to '/home/saulius/struct/CIF-dictionaries/cif_core.dic'
-dictionary named 'cif_core.dic' version 2.4.1 from 2010-06-29.
+  _space_group_symop_operation_xyz
+  'x, y, z'
 
-Automatic conversion script
-Id: cif_fix_enum 1527 2010-12-29 10:47:43Z saulius 
-
-The following automatic conversions were performed:
-
-'_symmetry_cell_setting' value 'Monoclinic' changed to 'monoclinic'
-according to /home/saulius/struct/CIF-dictionaries/cif_core.dic
-dictionary named 'cif_core.dic' version 2.4.1 from 2010-06-29.
-
-Automatic conversion script
-Id: cif_fix_values 1715 2011-07-08 13:25:40Z adriana 
-;
-_cod_original_sg_symbol_H-M      C2/c
-_cod_original_formula_sum        'Fe1 H2 O5 Se1'
-_cod_database_code               2003025
 loop_
-_symmetry_equiv_pos_as_xyz
-'x, y, z'
-'-x, y, -z+1/2'
-'x+1/2, y+1/2, z'
-'-x+1/2, y+1/2, -z+1/2'
-'-x, -y, -z'
-'x, -y, z-1/2'
-'-x+1/2, -y+1/2, -z'
-'x+1/2, -y+1/2, z-1/2'
-loop_
-_atom_site_label
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_U_iso_or_equiv
-Fe .0 .5 .0 ?
-O1 .1823(10) .0441(10) .416(2) ?
-O2 .112(3) .2769(14) .1525(15) ?
-O3 .0 .6354(9) .25 ?
-Se .0 .1601(6) .25 ?
+  _atom_site_type_symbol
+  _atom_site_label
+  _atom_site_symmetry_multiplicity
+  _atom_site_fract_x
+  _atom_site_fract_y
+  _atom_site_fract_z
+  _atom_site_occupancy
+  Fe  Fe1       1.0  0.0  0.5  0.0  1.0000
+  Fe  Fe2       1.0  0.0  0.5  0.5  1.0000
+  Fe  Fe3       1.0  0.5  0.0  0.0  1.0000
+  Fe  Fe4       1.0  0.5  0.0  0.5  1.0000
+  O   O1        1.0  0.18230000000000005  0.044099999999999986  0.4160000000000001  1.0000
+  O   O2        1.0  0.8177  0.044099999999999986  0.08399999999999998  1.0000
+  O   O3        1.0  0.6823  0.5441  0.4160000000000001  1.0000
+  O   O4        1.0  0.3177  0.5441  0.08399999999999998  1.0000
+  O   O5        1.0  0.8177000000000001  0.9559  0.5840000000000001  1.0000
+  O   O6        1.0  0.18230000000000007  0.9559  0.9160000000000001  1.0000
+  O   O7        1.0  0.31770000000000004  0.4559  0.5840000000000001  1.0000
+  O   O8        1.0  0.6823  0.4559  0.9160000000000001  1.0000
+  O   O9        1.0  0.11199999999999997  0.2769  0.1525  1.0000
+  O   O10       1.0  0.888  0.2769  0.34750000000000003  1.0000
+  O   O11       1.0  0.612  0.7768999999999998  0.1525  1.0000
+  O   O12       1.0  0.388  0.7768999999999998  0.34750000000000003  1.0000
+  O   O13       1.0  0.888  0.7231000000000001  0.8475000000000001  1.0000
+  O   O14       1.0  0.11199999999999999  0.7231000000000001  0.6525  1.0000
+  O   O15       1.0  0.38800000000000007  0.22310000000000002  0.8475000000000001  1.0000
+  O   O16       1.0  0.612  0.22310000000000002  0.6525  1.0000
+  O   O17       1.0  0.0  0.6354  0.25  1.0000
+  O   O18       1.0  0.5  0.13539999999999996  0.25  1.0000
+  O   O19       1.0  0.0  0.36460000000000004  0.75  1.0000
+  O   O20       1.0  0.49999999999999994  0.8645999999999999  0.75  1.0000
+  Se  Se1       1.0  0.0  0.16009999999999994  0.25  1.0000
+  Se  Se2       1.0  0.5  0.6600999999999998  0.25  1.0000
+  Se  Se3       1.0  0.0  0.8399000000000001  0.75  1.0000
+  Se  Se4       1.0  0.49999999999999994  0.3399  0.75  1.0000
