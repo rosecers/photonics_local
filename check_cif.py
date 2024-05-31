@@ -11,7 +11,13 @@ def check(fn):
     opened = False
     try:
         frame = read(fn)
-    except (KeyError, AttributeError, RuntimeError, SpacegroupNotFoundError, ValueError):
+    except (
+        KeyError,
+        AttributeError,
+        RuntimeError,
+        SpacegroupNotFoundError,
+        ValueError,
+    ):
         os.system(f"open {fn}")
         opened = True
         return None, True
@@ -43,14 +49,25 @@ def check(fn):
         input(frame.info)
     return frame, opened
 
+
 if __name__ == "__main__":
     import signac
+
     n_opened = 0
 
     for job in tqdm(list(signac.get_project().find_jobs())):
         if n_opened < 20:
-            if not job.isfile(job.sp.structure+".cif") and job.isfile(job.sp.structure[:-2]+".cif"):
-                print(job.fn(job.sp.structure[:-2]+".cif"),"-->", job.fn(job.sp.structure+".cif"))
-                os.rename(job.fn(job.sp.structure[:-2]+".cif"), job.fn(job.sp.structure+".cif"))
-            _, opened = check(job.fn(job.sp.structure+".cif"))
+            if not job.isfile(job.sp.structure + ".cif") and job.isfile(
+                job.sp.structure[:-2] + ".cif"
+            ):
+                print(
+                    job.fn(job.sp.structure[:-2] + ".cif"),
+                    "-->",
+                    job.fn(job.sp.structure + ".cif"),
+                )
+                os.rename(
+                    job.fn(job.sp.structure[:-2] + ".cif"),
+                    job.fn(job.sp.structure + ".cif"),
+                )
+            _, opened = check(job.fn(job.sp.structure + ".cif"))
             n_opened += int(opened)

@@ -13,9 +13,16 @@ def fix(subjob):
     mid_gaps = []
 
     lines = list(open(outputfile))
-    subjob.document.fill_fraction = (
-        float([l for l in lines if l.endswith('"fill"\n')][0].split()[-2][:-1]) / 100.0
-    )
+
+    fill_line = [l for l in lines if l.endswith('"fill"\n')][0]
+    if fill_line.startswith("epsilon: 1-1,"):
+        subjob.document.fill_fraction = 0.0
+        print(subjob.document.fill_fraction)
+    else:
+        subjob.document.fill_fraction = round(
+            (float(fill_line.split()[-2][:-1]) / 100.0), 8
+        )
+        print(subjob.document.fill_fraction)
     gap_lines = [l for l in lines if l.startswith("Gap")]
     for g in gap_lines:
         _, _, _, no, f1, _, _, _, f2, size = g.split()

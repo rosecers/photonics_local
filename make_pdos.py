@@ -369,7 +369,11 @@ def make_pdos(superjob, epsilons=None):
 
         subjobs = list(
             sorted(
-                list(superjob_project.find_jobs({"dielectric": e})),
+                list(
+                    superjob_project.find_jobs(
+                        {"dielectric": e, "doc.fill_fraction.$exists": True}
+                    )
+                ),
                 key=lambda job: job.sp.radius,
             )
         )

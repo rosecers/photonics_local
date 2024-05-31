@@ -119,6 +119,7 @@ def fix_pdos(job):
 
 
 @MyProject.pre(lambda job: "kpoints" in job.document)
+@MyProject.pre.not_(lambda job: job.isfile("fix.sh"))
 @MyProject.post(all_pdos_done)
 @MyProject.operation
 def compute_pdos(job):
