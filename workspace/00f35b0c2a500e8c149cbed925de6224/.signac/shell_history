@@ -1,0 +1,7 @@
+import numpy as np
+radii = [round(x, 3) for x in np.arange(0.04, 0.2, 0.05)]
+radii
+radii = [round(x, 3) for x in np.arange(0.04, 0.2, 0.005)]
+radii
+for r in radii:
+	job = project.open_job({"radius": r, "dielectric": 16}).init()
