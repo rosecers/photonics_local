@@ -239,7 +239,6 @@ def plot_mpb_output(
         if line.startswith("freqs")
     ]
 
-    freqs = np.array(np.array(lines[1:])[:, 6:], dtype=float)
     kpoints = np.array(np.array(lines[1:])[:, 2:5], dtype=float)
     interpolators = setup_interpolators(mpb_output, lattice_vectors, basis)
 
@@ -458,12 +457,30 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--epsilon", type=int, help="The dielectric constant")
     parser.add_argument("--pdos", action="store_true", default=False)
     parser.add_argument("--spectra", action="store_true", default=False)
+    parser.add_argument("--recalc", action="store_true", default=False)
+    parser.add_argument(
+        "-sj",
+        "--subjob_id",
+        type=str,
+        help="The ID of the subjob, overrides entries for radius and epsilon",
+    )
 
     args = parser.parse_args()
 
     job = signac.get_project().open_job(id=args.job_id)
-    radius = args.radius
-    epsilon = int(args.epsilon)
+
+    if args.subjob_id is not None:
+        subjob = signac.get_project(path=job.fn("")).open_job(id=args.subjob_id)
+        radius = subjob.sp.radius
+        epsilon  = subjob.sp.dielectric
+    elif args.radius is not None:
+        radius = args.radius
+        epsilon = int(args.epsilon)
+        subjob = (
+            signac.get_project(path=job.fn(""))
+            .open_job({"radius": radius, "dielectric": epsilon})
+            .init()
+        )
 
     pdos_name = f"pdos/epsilon={epsilon}.npz"
 
@@ -472,17 +489,24 @@ if __name__ == "__main__":
     else:
         pdos_dict_raw = {}
 
-    ojob = list(
-        signac.get_project(path=job.fn("")).find_jobs(
-            {"radius": radius, "dielectric": epsilon}
-        )
-    )[0]
-    print(ojob.document.fill_fraction * 16 + (1 - ojob.document.fill_fraction))
+    print(subjob.document.fill_fraction * 16 + (1 - subjob.document.fill_fraction))
 
-    assert (args.pdos is True) or (args.spectra is True)
+    assert (args.pdos is True) or (args.spectra is True) or (args.recalc is True)
+
+    if args.recalc:
+        if str((radius, epsilon)) in pdos_dict_raw:
+            _ = pdos_dict_raw.pop(str((radius, epsilon)))
+        entry = make_pdos_entry(subjob, job, pdos_dict_raw)
+        pdos_dict_raw = {**pdos_dict_raw, **entry}
+        np.savez(job.fn(pdos_name), **pdos_dict_raw)
+        w, D, gD = list(entry.values())[0]
+
+        plt.plot(w, D)
+        plt.plot(w, gD)
+        plt.show()
 
     if args.pdos:
-        entry = make_pdos_entry(ojob, job, pdos_dict_raw)
+        entry = make_pdos_entry(subjob, job, pdos_dict_raw)
         w, D, gD = list(entry.values())[0]
 
         plt.plot(w, D)
@@ -491,9 +515,9 @@ if __name__ == "__main__":
 
     if args.spectra:
         output_file = (
-            ojob.fn("output2.txt")
-            if ojob.isfile("output2.txt")
-            else ojob.fn("output.txt")
+            subjob.fn("output2.txt")
+            if subjob.isfile("output2.txt")
+            else subjob.fn("output.txt")
         )
         plot_mpb_output(
             output_file,

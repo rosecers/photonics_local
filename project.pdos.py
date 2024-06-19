@@ -7,16 +7,25 @@ from make_pdos import make_pdos, get_epsilons
 project = signac.get_project("/Users/rca/periodic_structures/")
 MIN_PHI = project.document["min_phi"]
 MAX_PHI = project.document["max_phi"]
-ZERO_CUTOFF = 10
+ZERO_CUTOFF = 1
+N_RADII = 10
 
 
 class MyProject(FlowProject):
     pass
 
+@MyProject.label
+def consider_adding_more_radii(job):
+    return len(job.document.radii)<N_RADII
+
 
 @MyProject.label
 def all_pdos_done(job):
     epsilons = get_epsilons(job)
+    superjob_project = signac.get_project(path=job.fn(""))
+    undone_jobs = superjob_project.find_jobs({"doc.fill_fraction.$exists": False})
+    if len(undone_jobs)>0:
+        return False
 
     for e in epsilons:
         if not job.isfile(f"pdos/epsilon={e}.npz"):
@@ -25,7 +34,6 @@ def all_pdos_done(job):
             pdos_dict_raw = dict(
                 np.load(job.fn(f"pdos/epsilon={e}.npz"), allow_pickle=True)
             )
-            superjob_project = signac.get_project(path=job.fn(""))
             for subjob in list(
                 superjob_project.find_jobs(
                     {
@@ -119,7 +127,6 @@ def fix_pdos(job):
 
 
 @MyProject.pre(lambda job: "kpoints" in job.document)
-@MyProject.pre.not_(lambda job: job.isfile("fix.sh"))
 @MyProject.post(all_pdos_done)
 @MyProject.operation
 def compute_pdos(job):
@@ -214,7 +221,7 @@ def make_images(job):
     if any(fills > MAX_PHI):
         radii = radii[fills <= MAX_PHI]
         fills = fills[fills <= MAX_PHI]
-    # print(radii, fills)
+    print(radii, fills)
 
     # determine the effective lattice spacing
     a1, a2, a3 = np.array(job.sp.lattice_vectors)
@@ -241,7 +248,6 @@ def make_images(job):
                 gD[consecutive_zeros] = -1
                 D[consecutive_zeros] = -1
 
-            # print(key, i, D.max(), np.mean(D))
             if w_bins_Tr is None:
                 w_bins_Tr = -np.ones((len(radii), len(w)))
                 DOS_Tr = -np.ones((len(radii), len(D)))
@@ -258,6 +264,8 @@ def make_images(job):
     log_eps_max = np.log10(MAX_PHI * 16 + MIN_PHI)
 
     effective_eps = np.array(effective_eps)
+    for r, e in zip(radii, effective_eps):
+        print(r,e)
     eps_min = MIN_PHI * 16 + MAX_PHI
     eps_max = MAX_PHI * 16 + MIN_PHI
 
@@ -266,6 +274,8 @@ def make_images(job):
 
     DOS_copy = DOS_Tr.copy()
     DOS_copy[DOS_copy == -1] = np.nan
+
+    w_scaled = w_bins_Tr * effective_a
 
     params = {
         "dos": [["gdos", gDOS_copy], ["dos", DOS_copy]],
@@ -277,6 +287,11 @@ def make_images(job):
             ["vscaled", lambda w: [w.min() * effective_a, w.max() * effective_a]],
             ["auto", lambda w: [w.min(), w.max()]],
         ],
+        "x_bounds": {
+            "vscaled": [w_scaled.min(), w_scaled.max()],
+            "auto": [w_bins_Tr.min(), w_bins_Tr.max()]
+        }
+        ,
         "highlight": [["_highlighted", True], ["", False]],
     }
 
@@ -334,13 +349,13 @@ def make_images(job):
                                     plt.fill_between(
                                         x=wgg, y1=e_extent[0], y2=e_extent[1], color="r"
                                     )
-                    plt.gca().set_xlim([0, 1])
+                    plt.gca().set_xlim(params['x_bounds'][w_name])
                     plt.gca().set_ylim(extrema)
-                    plt.gca().set_xticks([])
-                    plt.gca().set_yticks([])
+                    # plt.gca().set_xticks([])
+                    # plt.gca().set_yticks([])
                     plt.savefig(job.fn(name), bbox_inches="tight")
                     plt.close()
-    # return f'open {job.fn("")}/pdos_images/*png'
+    # return f'open {job.fn("")}/pdos_images/*png && rm -irf {job.fn("")}/pdos_images/'
 
 
 if __name__ == "__main__":
