@@ -21,10 +21,13 @@ def consider_adding_more_radii(job):
 
 @MyProject.label
 def all_pdos_done(job):
+    if 'rca' not in os.getcwd() and 'pdos_stored' in job.document:
+        return job.document['pdos_stored']
     epsilons = get_epsilons(job)
     superjob_project = signac.get_project(path=job.fn(""))
     undone_jobs = superjob_project.find_jobs({"doc.fill_fraction.$exists": False})
     if len(undone_jobs)>0:
+        job.document['pdos_stored'] = False
         return False
 
     for e in epsilons:
@@ -45,7 +48,9 @@ def all_pdos_done(job):
             ):
                 key = str((subjob.sp.radius, subjob.sp.dielectric))
                 if key not in pdos_dict_raw:
+                    job.document['pdos_stored'] = False
                     return False
+        job.document['pdos_stored'] = True
         return True
 
 
