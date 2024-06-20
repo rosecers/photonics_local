@@ -4,7 +4,7 @@ import signac
 import os
 from make_pdos import make_pdos, get_epsilons
 
-project = signac.get_project("/Users/rca/periodic_structures/")
+project = signac.get_project("./")
 MIN_PHI = project.document["min_phi"]
 MAX_PHI = project.document["max_phi"]
 ZERO_CUTOFF = 1
