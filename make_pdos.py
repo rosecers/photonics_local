@@ -11,7 +11,7 @@ from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 import os
 from scipy.spatial.distance import cdist
 
-project = signac.get_project("/Users/rca/periodic_structures/")
+project = signac.get_project("./")
 MAX_PHI = project.document["max_phi"]
 MIN_PHI = project.document["min_phi"]
 
