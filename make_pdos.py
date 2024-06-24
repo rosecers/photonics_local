@@ -472,7 +472,7 @@ if __name__ == "__main__":
     if args.subjob_id is not None:
         subjob = signac.get_project(path=job.fn("")).open_job(id=args.subjob_id)
         radius = subjob.sp.radius
-        epsilon  = subjob.sp.dielectric
+        epsilon = subjob.sp.dielectric
     elif args.radius is not None:
         radius = args.radius
         epsilon = int(args.epsilon)

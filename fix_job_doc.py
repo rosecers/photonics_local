@@ -37,36 +37,37 @@ def fix(job):
                 gaps_by_band[str(b)].append(0)
         band_nos.append(my_band)
 
-    new_dict = {}
-    new_dict['has_gap'] = has_gap
-    new_dict['band_nos'] = band_nos
-    new_dict['gaps_by_band'] = gaps_by_band
-    new_dict['has_gaps_above_band'] = list(sorted([int(s) for s in gaps_by_band]))
-    new_dict['gap_threshold_radii'] = [radii[np.where(np.array(gaps_by_band[str(b)])>0)[0][0]] for b in new_dict['has_gaps_above_band']]
-    new_dict['has_gaps_of_size'] = [max(gaps_by_band[str(b)]) for b in new_dict['has_gaps_above_band']]
-    new_dict['has_gaps_at'] = [[16] for g in new_dict['has_gaps_above_band']]
-    new_dict['has_gaps_at_conclusive'] = False
-    new_dict['omega_stars'] = "NOT CALCULATED"
-    max_data = {"max": {"gap": 0}}
-    for b in new_dict['has_gaps_above_band']:
-        best_subjob = subjobs[np.argmax(gaps_by_band[str(b)])]
-        bi = best_subjob.document.band_nos.index(int(b))
-        max_data[str(b)] = {"fill_fraction": best_subjob.document.fill_fraction,
-                            "gap": best_subjob.document['gap'][bi],
-                            "gap_range": best_subjob.document['gap_ranges'][bi],
-                            "mid_gap": best_subjob.document['mid_gaps'][bi],
-                            "radius": best_subjob.sp.radius
-                            }
-        if max_data[str(b)]['gap'] > max_data['max']['gap']:
-            max_data['max'] = max_data[str(b)]
+    if has_gap:
+        new_dict = {}
+        new_dict['has_gap'] = has_gap
+        new_dict['band_nos'] = band_nos
+        new_dict['gaps_by_band'] = gaps_by_band
+        new_dict['has_gaps_above_band'] = list(sorted([int(s) for s in gaps_by_band]))
+        new_dict['gap_threshold_radii'] = [radii[np.where(np.array(gaps_by_band[str(b)])>0)[0][0]] for b in new_dict['has_gaps_above_band']]
+        new_dict['has_gaps_of_size'] = [max(gaps_by_band[str(b)]) for b in new_dict['has_gaps_above_band']]
+        new_dict['has_gaps_at'] = [[16] for g in new_dict['has_gaps_above_band']]
+        new_dict['has_gaps_at_conclusive'] = False
+        new_dict['omega_stars'] = "NOT CALCULATED"
+        max_data = {"max": {"gap": 0}}
+        for b in new_dict['has_gaps_above_band']:
+            best_subjob = subjobs[np.argmax(gaps_by_band[str(b)])]
+            bi = best_subjob.document.band_nos.index(int(b))
+            max_data[str(b)] = {"fill_fraction": best_subjob.document.fill_fraction,
+                                "gap": best_subjob.document['gap'][bi],
+                                "gap_range": best_subjob.document['gap_ranges'][bi],
+                                "mid_gap": best_subjob.document['mid_gaps'][bi],
+                                "radius": best_subjob.sp.radius
+                                }
+            if max_data[str(b)]['gap'] > max_data['max']['gap']:
+                max_data['max'] = max_data[str(b)]
 
-    new_dict['max_data'] = max_data
+        new_dict['max_data'] = max_data
 
-    for k in keys:
-        assert k in new_dict
-        if input((k, old_dict[k], "-->", new_dict[k]))!="N":
-            job.document[k] = new_dict.pop(k)
-    
+        for k in keys:
+            assert k in new_dict
+            if input((k, old_dict[k], "-->", new_dict[k]))!="N":
+                job.document[k] = new_dict.pop(k)
+        
 if __name__ == "__main__":
     
     import sys

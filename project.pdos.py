@@ -14,20 +14,21 @@ N_RADII = 10
 class MyProject(FlowProject):
     pass
 
+
 @MyProject.label
 def consider_adding_more_radii(job):
-    return len(job.document.radii)<N_RADII
+    return len(job.document.radii) < N_RADII
 
 
 @MyProject.label
 def all_pdos_done(job):
-    if 'rca' not in os.getcwd() and 'pdos_stored' in job.document:
-        return job.document['pdos_stored']
+    if "rca" not in os.getcwd() and "pdos_stored" in job.document:
+        return job.document["pdos_stored"]
     epsilons = get_epsilons(job)
     superjob_project = signac.get_project(path=job.fn(""))
     undone_jobs = superjob_project.find_jobs({"doc.fill_fraction.$exists": False})
-    if len(undone_jobs)>0:
-        job.document['pdos_stored'] = False
+    if len(undone_jobs) > 0:
+        job.document["pdos_stored"] = False
         return False
 
     for e in epsilons:
@@ -48,9 +49,9 @@ def all_pdos_done(job):
             ):
                 key = str((subjob.sp.radius, subjob.sp.dielectric))
                 if key not in pdos_dict_raw:
-                    job.document['pdos_stored'] = False
+                    job.document["pdos_stored"] = False
                     return False
-        job.document['pdos_stored'] = True
+        job.document["pdos_stored"] = True
         return True
 
 
@@ -233,13 +234,16 @@ def make_images(job):
     v = np.abs(np.dot(a1, np.cross(a2, a3)))
     effective_a = v ** (1.0 / 3.0)
 
+    suffix = ""
     superproject = signac.get_project(path=job.fn(""))
-    gap_ranges = [
-        list(superproject.find_jobs({"radius": r, "dielectric": epsilon}))[
-            0
-        ].document.gap_ranges
-        for r in radii
-    ]
+    gap_ranges = []
+    for r in radii:
+        sj = list(superproject.find_jobs({"radius": r, "dielectric": epsilon, "doc.gap_ranges.$exists": True}))
+        if len(sj) > 0:
+            gap_ranges.append(sj[0].document.gap_ranges)
+        else:
+            gap_ranges.append([np.nan, np.nan])
+            suffix = "_temp"
 
     for i, r, f in zip(range(len(radii)), radii, fills):
         key = str((r, epsilon))
@@ -269,8 +273,8 @@ def make_images(job):
     log_eps_max = np.log10(MAX_PHI * 16 + MIN_PHI)
 
     effective_eps = np.array(effective_eps)
-    for r, e in zip(radii, effective_eps):
-        print(r,e)
+    for r, e, gr in zip(radii, effective_eps, gap_ranges):
+        print(r, e, gr)
     eps_min = MIN_PHI * 16 + MAX_PHI
     eps_max = MAX_PHI * 16 + MIN_PHI
 
@@ -281,6 +285,8 @@ def make_images(job):
     DOS_copy[DOS_copy == -1] = np.nan
 
     w_scaled = w_bins_Tr * effective_a
+    w_scaled[w_scaled<0] = 0
+    w_bins_Tr[w_bins_Tr<0] = 0
 
     params = {
         "dos": [["gdos", gDOS_copy], ["dos", DOS_copy]],
@@ -293,10 +299,9 @@ def make_images(job):
             ["auto", lambda w: [w.min(), w.max()]],
         ],
         "x_bounds": {
-            "vscaled": [w_scaled.min(), w_scaled.max()],
-            "auto": [w_bins_Tr.min(), w_bins_Tr.max()]
-        }
-        ,
+            "vscaled": [np.nanmin(w_scaled), np.nanmax(w_scaled)],
+            "auto": [np.nanmin(w_bins_Tr), np.nanmax(w_bins_Tr)],
+        },
         "highlight": [["_highlighted", True], ["", False]],
     }
 
@@ -304,7 +309,9 @@ def make_images(job):
         for e_name, e_list, extrema in params["e_list"]:
             for w_name, w_b in params["w_bounds"]:
                 for h_name, highlight in params["highlight"]:
-                    name = f"pdos_images/{dos_name}_{e_name}_{w_name}{h_name}.png"
+                    name = (
+                        f"pdos_images/{dos_name}_{e_name}_{w_name}{h_name}{suffix}.png"
+                    )
 
                     plt.figure()
                     plt.gca().set_facecolor((0.5, 0.5, 0.8))
@@ -343,7 +350,7 @@ def make_images(job):
                         )
 
                         if highlight:
-                            if np.max(gr) > 0:
+                            if np.nanmax(gr) > 0:
                                 for gg in gr:
                                     if w_b(np.array(gg))[0] == 0:
                                         wgg = (np.array(gg) - min(w)) / (
@@ -354,7 +361,7 @@ def make_images(job):
                                     plt.fill_between(
                                         x=wgg, y1=e_extent[0], y2=e_extent[1], color="r"
                                     )
-                    plt.gca().set_xlim(params['x_bounds'][w_name])
+                    plt.gca().set_xlim(params["x_bounds"][w_name])
                     plt.gca().set_ylim(extrema)
                     # plt.gca().set_xticks([])
                     # plt.gca().set_yticks([])

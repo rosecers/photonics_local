@@ -1,5 +1,5 @@
 import numpy as np
-import sys
+import sys, os
 import signac
 
 project = signac.get_project()
@@ -24,3 +24,6 @@ input(new_radii)
 
 for r in new_radii:
     job = job_project.open_job({"radius": r, "dielectric": 16}).init()
+
+if superjob.isfile('pdos_images'):
+    os.system(f'rm -rf {job.fn("pdos_images")}')
