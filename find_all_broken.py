@@ -16,10 +16,17 @@ MAX_PHI = project.document["max_phi"]
 def add_output(job, subjob, outf):
     outf.write(f"echo {subjob}\n")
     outf.write(f"git add workspace/{job}/workspace/{subjob}/signac_statepoint.json\n")
-    outf.write(f"python recalculate_band_structure.py -j {job} -s {subjob} --unique&\n")
-    outf.write(
-        f'echo ""\nwhile [[ -z $(grep "done" workspace/{job}/workspace/{subjob}/output.txt) ]]; do sleep 10; echo -e "\r\033[1A\033[0K$(grep "freqs" workspace/{job}/workspace/{subjob}/output.txt | tail -n 1)"; done\n'
-    )
+    if "rca" in os.getcwd():
+        outf.write(
+            f"python recalculate_band_structure.py -j {job} -s {subjob} --unique&\n"
+        )
+        outf.write(
+            f'echo ""\nwhile [[ -z $(grep "done" workspace/{job}/workspace/{subjob}/output.txt) ]]; do sleep 10; echo -e "\r\033[1A\033[0K$(grep "freqs" workspace/{job}/workspace/{subjob}/output.txt | tail -n 1)"; done\n'
+        )
+    else:
+        outf.write(
+            f"python recalculate_band_structure.py -j {job} -s {subjob} --unique\n"
+        )
     outf.write(f"python fix_subjob_doc.py {subjob} {job}\n")
     outf.write(f"git add workspace/{job}/workspace/{subjob}/signac_job_document.json\n")
     outf.write(f"git add workspace/{job}/workspace/{subjob}/output.txt\n")
@@ -33,13 +40,15 @@ for job in tqdm(jobs):
         for radius, ff in zip(job.document.radii, job.document.fill_fraction):
             if ff >= MIN_PHI and ff <= MAX_PHI:
                 subjob = sproj.open_job({"radius": radius, "dielectric": 16}).init()
-                if not subjob.isfile("output.txt") or "fill_fraction" not in subjob.document:
+                if (
+                    not subjob.isfile("output.txt")
+                    or "fill_fraction" not in subjob.document
+                ):
                     outputs_to_add.append(subjob)
         for subjob in sproj:
-            if (
-                subjob.sp.radius not in job.document.radii
-                and ("fill_fraction" not in subjob.document
-                or not subjob.isfile("output.txt"))
+            if subjob.sp.radius not in job.document.radii and (
+                "fill_fraction" not in subjob.document
+                or not subjob.isfile("output.txt")
             ):
                 outputs_to_add.append(subjob)
         outf.write("echo '{}: {} jobs total'\n".format(job, len(outputs_to_add)))
