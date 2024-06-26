@@ -1,12 +1,4 @@
-echo '5ea379e26af44a348e222c089efb08be: 29 jobs total'
-echo 01d31985738903014a8e5f6ec49bc3c8
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/01d31985738903014a8e5f6ec49bc3c8/signac_statepoint.json
-python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 01d31985738903014a8e5f6ec49bc3c8 --unique&
-echo ""
-while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/01d31985738903014a8e5f6ec49bc3c8/output.txt) ]]; do sleep 10; echo -e "[1A[0K$(grep "freqs" workspace/5ea379e26af44a348e222c089efb08be/workspace/01d31985738903014a8e5f6ec49bc3c8/output.txt | tail -n 1)"; done
-python fix_subjob_doc.py 01d31985738903014a8e5f6ec49bc3c8 5ea379e26af44a348e222c089efb08be
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/01d31985738903014a8e5f6ec49bc3c8/signac_job_document.json
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/01d31985738903014a8e5f6ec49bc3c8/output.txt
+echo '5ea379e26af44a348e222c089efb08be: 24 jobs total'
 echo 0433e560058a44274ae8730e61b99436
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/0433e560058a44274ae8730e61b99436/signac_statepoint.json
 python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 0433e560058a44274ae8730e61b99436 --unique&
@@ -23,14 +15,6 @@ while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/0
 python fix_subjob_doc.py 0637d81831557a7d75fb474b07b70bf1 5ea379e26af44a348e222c089efb08be
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/0637d81831557a7d75fb474b07b70bf1/signac_job_document.json
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/0637d81831557a7d75fb474b07b70bf1/output.txt
-echo 06987e3da5c45708cd95fb3a3836e53d
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/06987e3da5c45708cd95fb3a3836e53d/signac_statepoint.json
-python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 06987e3da5c45708cd95fb3a3836e53d --unique&
-echo ""
-while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/06987e3da5c45708cd95fb3a3836e53d/output.txt) ]]; do sleep 10; echo -e "[1A[0K$(grep "freqs" workspace/5ea379e26af44a348e222c089efb08be/workspace/06987e3da5c45708cd95fb3a3836e53d/output.txt | tail -n 1)"; done
-python fix_subjob_doc.py 06987e3da5c45708cd95fb3a3836e53d 5ea379e26af44a348e222c089efb08be
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/06987e3da5c45708cd95fb3a3836e53d/signac_job_document.json
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/06987e3da5c45708cd95fb3a3836e53d/output.txt
 echo 09e28902e6e06d7e20795262e0a55d2c
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/09e28902e6e06d7e20795262e0a55d2c/signac_statepoint.json
 python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 09e28902e6e06d7e20795262e0a55d2c --unique&
@@ -55,14 +39,6 @@ while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/1
 python fix_subjob_doc.py 1f534ae640d863da834a3251ed452f3f 5ea379e26af44a348e222c089efb08be
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/1f534ae640d863da834a3251ed452f3f/signac_job_document.json
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/1f534ae640d863da834a3251ed452f3f/output.txt
-echo 2a81addfda88a9990a4dd7deab2080ea
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/2a81addfda88a9990a4dd7deab2080ea/signac_statepoint.json
-python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 2a81addfda88a9990a4dd7deab2080ea --unique&
-echo ""
-while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/2a81addfda88a9990a4dd7deab2080ea/output.txt) ]]; do sleep 10; echo -e "[1A[0K$(grep "freqs" workspace/5ea379e26af44a348e222c089efb08be/workspace/2a81addfda88a9990a4dd7deab2080ea/output.txt | tail -n 1)"; done
-python fix_subjob_doc.py 2a81addfda88a9990a4dd7deab2080ea 5ea379e26af44a348e222c089efb08be
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/2a81addfda88a9990a4dd7deab2080ea/signac_job_document.json
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/2a81addfda88a9990a4dd7deab2080ea/output.txt
 echo 2d9fc419c9c3eb8c0b6019c6ddff6284
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/2d9fc419c9c3eb8c0b6019c6ddff6284/signac_statepoint.json
 python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 2d9fc419c9c3eb8c0b6019c6ddff6284 --unique&
@@ -127,14 +103,6 @@ while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/5
 python fix_subjob_doc.py 5e19b39af720f2c46c7f548d2f698104 5ea379e26af44a348e222c089efb08be
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/5e19b39af720f2c46c7f548d2f698104/signac_job_document.json
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/5e19b39af720f2c46c7f548d2f698104/output.txt
-echo 71ebe7e91577abae3fcfee4592b3d483
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/71ebe7e91577abae3fcfee4592b3d483/signac_statepoint.json
-python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 71ebe7e91577abae3fcfee4592b3d483 --unique&
-echo ""
-while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/71ebe7e91577abae3fcfee4592b3d483/output.txt) ]]; do sleep 10; echo -e "[1A[0K$(grep "freqs" workspace/5ea379e26af44a348e222c089efb08be/workspace/71ebe7e91577abae3fcfee4592b3d483/output.txt | tail -n 1)"; done
-python fix_subjob_doc.py 71ebe7e91577abae3fcfee4592b3d483 5ea379e26af44a348e222c089efb08be
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/71ebe7e91577abae3fcfee4592b3d483/signac_job_document.json
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/71ebe7e91577abae3fcfee4592b3d483/output.txt
 echo 79b2d0588e2d7e05187da1cede030c35
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/79b2d0588e2d7e05187da1cede030c35/signac_statepoint.json
 python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s 79b2d0588e2d7e05187da1cede030c35 --unique&
@@ -223,12 +191,4 @@ while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/e
 python fix_subjob_doc.py e710fdccb75baebbe741e4f54a8cbcb5 5ea379e26af44a348e222c089efb08be
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/e710fdccb75baebbe741e4f54a8cbcb5/signac_job_document.json
 git add workspace/5ea379e26af44a348e222c089efb08be/workspace/e710fdccb75baebbe741e4f54a8cbcb5/output.txt
-echo e7784187dfe75ad8132b507bb497ba03
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/e7784187dfe75ad8132b507bb497ba03/signac_statepoint.json
-python recalculate_band_structure.py -j 5ea379e26af44a348e222c089efb08be -s e7784187dfe75ad8132b507bb497ba03 --unique&
-echo ""
-while [[ -z $(grep "done" workspace/5ea379e26af44a348e222c089efb08be/workspace/e7784187dfe75ad8132b507bb497ba03/output.txt) ]]; do sleep 10; echo -e "[1A[0K$(grep "freqs" workspace/5ea379e26af44a348e222c089efb08be/workspace/e7784187dfe75ad8132b507bb497ba03/output.txt | tail -n 1)"; done
-python fix_subjob_doc.py e7784187dfe75ad8132b507bb497ba03 5ea379e26af44a348e222c089efb08be
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/e7784187dfe75ad8132b507bb497ba03/signac_job_document.json
-git add workspace/5ea379e26af44a348e222c089efb08be/workspace/e7784187dfe75ad8132b507bb497ba03/output.txt
 rm /Users/rca/periodic_structures/workspace/5ea379e26af44a348e222c089efb08be/fix.sh
