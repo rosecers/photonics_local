@@ -1,0 +1,26 @@
+if [ ${#1} -lt 32 ]; then
+    job=$(python -c "import signac; project=signac.get_project(); job=project.open_job(id='$1'); print(job)")
+else
+    job=$1 
+fi
+git pull
+s=$(git cat-file -e origin/$job-pdos:workspace/$job/pdos && echo "FOUND")
+if [[ ! -z $s ]]; then
+	git checkout origin/$job-pdos -- workspace/$job/pdos
+	python project.pdos.py exec compute_pdos $job
+	python reset_band_structure.py $job
+	python fix_job_doc.py $job
+	git push origin --delete $job-pdos
+	git add workspace/$job/pdos
+	git commit -m "Adding pdos for $job"
+	git push
+	flag=$(python find_all_broken.py $job)
+	if [ $flag -eq 0 ]; then
+		rm -rf workspace/$1/pdos_images; python project.pdos.py exec make_images $1 && open workspace/$1/pdos_images/dos_eps_auto.png
+	fi;
+else
+	python reset_band_structure.py $job
+	git push origin --delete $job-pdos
+	echo "python csubmit.py $job" >> jobs_to_add
+fi
+

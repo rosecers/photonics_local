@@ -1,0 +1,30 @@
+name: photonics-x64
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ase
+  - babel
+  - blas~2.117=openblas
+  - eigen~3
+  - envisage~6.0.1
+  - fftw~3.3.10
+  - guile~2.2.4
+  - h5py~3.11.0
+  - h5utils~1.13.2
+  - llvm-openm
+  - llvm-tools
+  - mpb~1.11.1
+  - openblas~0.3.23
+  - pip
+  - scipy
+  - vtk
+  - zstd=1.5.6=h915ae27_0
+  - pip:
+      - pymatgen
+      - scikit-learn
+      - signac
+      - signac-flow
+      - spglib
+      - sympy
+      - tqdm

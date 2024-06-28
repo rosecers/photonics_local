@@ -1,0 +1,11 @@
+if [ ${#1} -lt 32 ]; then
+    job=$(python -c "import signac; project=signac.get_project(); job=project.open_job(id='$1'); print(job)")
+else
+    job=$1 
+fi
+git pull
+git checkout origin/$job-mpb -- workspace/$job/workspace
+git push origin --delete $job-mpb
+git add workspace/$job/workspace
+git commit -m "Adding more jobs for $job"
+git push
