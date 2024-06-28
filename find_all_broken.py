@@ -2,13 +2,9 @@ from tqdm.auto import tqdm
 import signac
 import os
 import sys
+import numpy as np
 
 project = signac.get_project()
-if len(sys.argv) == 1:
-    jobs = list(project.find_jobs())
-else:
-    jobs = [project.open_job(id=s) for s in sys.argv[1:]]
-
 MIN_PHI = project.document["min_phi"]
 MAX_PHI = project.document["max_phi"]
 
@@ -32,13 +28,12 @@ def add_output(job, subjob, outf):
     outf.write(f"git add workspace/{job}/workspace/{subjob}/output.txt\n")
 
 
-n_jobs = 0
-for job in tqdm(jobs):
+def find(job):
     with open(job.fn("fix.sh"), "w") as outf:
         outputs_to_add = []
         sproj = signac.get_project(path=job.fn(""))
         for radius, ff in zip(job.document.radii, job.document.fill_fraction):
-            if ff >= MIN_PHI and ff <= MAX_PHI:
+            if (ff >= MIN_PHI and ff <= MAX_PHI) or np.isnan(ff):
                 subjob = sproj.open_job({"radius": radius, "dielectric": 16}).init()
                 if (
                     not subjob.isfile("output.txt")
@@ -57,7 +52,18 @@ for job in tqdm(jobs):
         outf.write(f"rm {job.fn('fix.sh')}\n")
     if len(list(open(job.fn("fix.sh")))) <= 2:
         os.remove(job.fn("fix.sh"))
+        return 0, len(outputs_to_add)
     else:
-        n_jobs += 1
+        return 1, len(outputs_to_add)
 
-print(n_jobs)
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        jobs = list(project.find_jobs())
+    else:
+        jobs = [project.open_job(id=s) for s in sys.argv[1:]]
+    n_jobs = 0
+    for job in tqdm(jobs):
+        n_jobs += find(job)[0]
+
+    print(n_jobs)
