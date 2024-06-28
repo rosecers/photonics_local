@@ -16,6 +16,24 @@ class MyProject(FlowProject):
 
 
 @MyProject.label
+def all_radii_done(job):
+    from find_all_broken import find
+
+    _, ota = find(job)
+    if ota > 0:
+        job.document["outputs_still_to_do"] = ota
+    else:
+        _ = job.document.pop("outputs_still_to_do")
+    return not job.isfile("fix.sh")
+
+
+@MyProject.post(all_radii_done)
+@MyProject.operation(cmd=True)
+def fix_outputs(job):
+    return f"bash " + job.fn("fix.sh")
+
+
+@MyProject.label
 def consider_adding_more_radii(job):
     return len(job.document.radii) < N_RADII
 
@@ -238,7 +256,11 @@ def make_images(job):
     superproject = signac.get_project(path=job.fn(""))
     gap_ranges = []
     for r in radii:
-        sj = list(superproject.find_jobs({"radius": r, "dielectric": epsilon, "doc.gap_ranges.$exists": True}))
+        sj = list(
+            superproject.find_jobs(
+                {"radius": r, "dielectric": epsilon, "doc.gap_ranges.$exists": True}
+            )
+        )
         if len(sj) > 0:
             gap_ranges.append(sj[0].document.gap_ranges)
         else:
@@ -262,19 +284,21 @@ def make_images(job):
                 DOS_Tr = -np.ones((len(radii), len(D)))
                 gDOS = -np.ones((len(radii), len(gD)))
             w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
-            effective_eps.append(f * epsilon + (1 - f))
-            # if gaps[i]:
-            #     plt.plot(w_bins_Tr[i], DOS_Tr[i])
-            #     plt.plot(w_bins_Tr[i], gDOS[i])
-            #     plt.show()
+        effective_eps.append(f * epsilon + (1 - f))
+        # if gaps[i]:
+        #     plt.plot(w_bins_Tr[i], DOS_Tr[i])
+        #     plt.plot(w_bins_Tr[i], gDOS[i])
+        #     plt.show()
 
+    if gDOS is None:
+        return
     log_eff_eps = np.log10(effective_eps)
     log_eps_min = np.log10(MIN_PHI * 16 + MAX_PHI)
     log_eps_max = np.log10(MAX_PHI * 16 + MIN_PHI)
 
     effective_eps = np.array(effective_eps)
     for r, e, gr in zip(radii, effective_eps, gap_ranges):
-        print(r, e, gr)
+        print(r, round(e, 2), gr)
     eps_min = MIN_PHI * 16 + MAX_PHI
     eps_max = MAX_PHI * 16 + MIN_PHI
 
@@ -285,8 +309,8 @@ def make_images(job):
     DOS_copy[DOS_copy == -1] = np.nan
 
     w_scaled = w_bins_Tr * effective_a
-    w_scaled[w_scaled<0] = 0
-    w_bins_Tr[w_bins_Tr<0] = 0
+    w_scaled[w_scaled < 0] = 0
+    w_bins_Tr[w_bins_Tr < 0] = 0
 
     params = {
         "dos": [["gdos", gDOS_copy], ["dos", DOS_copy]],
@@ -336,31 +360,42 @@ def make_images(job):
                             e_extent = sorted(
                                 [0.5 * (f + e_list[i - 1]), 0.5 * (f + e_list[i + 1])]
                             )
-                        g_eff = g.reshape(1, -1)
-                        plt.imshow(
-                            g_eff,
-                            extent=[
-                                *w_b(w),
-                                *e_extent,
-                            ],
-                            aspect="auto",
-                            vmin=0,
-                            vmax=100,
-                            cmap="bone_r",
-                        )
+                        if not np.isnan(f):
+                            if np.isnan(e_extent[0]) and np.isnan(e_extent[1]):
+                                e_extent[0] = f - 0.1
+                                e_extent[1] = f + 0.1
+                            elif np.isnan(e_extent[0]):
+                                e_extent[0] = e_extent[1] - 0.5
+                            elif np.isnan(e_extent[1]):
+                                e_extent[1] = e_extent[0] + 0.5
+                            g_eff = g.reshape(1, -1)
+                            plt.imshow(
+                                g_eff,
+                                extent=[
+                                    *w_b(w),
+                                    *e_extent,
+                                ],
+                                aspect="auto",
+                                vmin=0,
+                                vmax=100,
+                                cmap="bone_r",
+                            )
 
-                        if highlight:
-                            if np.nanmax(gr) > 0:
-                                for gg in gr:
-                                    if w_b(np.array(gg))[0] == 0:
-                                        wgg = (np.array(gg) - min(w)) / (
-                                            max(w) - min(w)
+                            if highlight:
+                                if np.nanmax(gr) > 0:
+                                    for gg in gr:
+                                        if w_b(np.array(gg))[0] == 0:
+                                            wgg = (np.array(gg) - min(w)) / (
+                                                max(w) - min(w)
+                                            )
+                                        else:
+                                            wgg = w_b(np.array(gg))
+                                        plt.fill_between(
+                                            x=wgg,
+                                            y1=e_extent[0],
+                                            y2=e_extent[1],
+                                            color="r",
                                         )
-                                    else:
-                                        wgg = w_b(np.array(gg))
-                                    plt.fill_between(
-                                        x=wgg, y1=e_extent[0], y2=e_extent[1], color="r"
-                                    )
                     plt.gca().set_xlim(params["x_bounds"][w_name])
                     plt.gca().set_ylim(extrema)
                     # plt.gca().set_xticks([])

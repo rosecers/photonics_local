@@ -10,6 +10,7 @@ from pymatgen.core.structure import Structure
 from pymatgen.symmetry.analyzer import SpacegroupAnalyzer
 import os
 from scipy.spatial.distance import cdist
+from update_radii import update
 
 project = signac.get_project("./")
 MAX_PHI = project.document["max_phi"]
@@ -368,52 +369,39 @@ def make_pdos(superjob, epsilons=None):
 
         subjobs = list(
             sorted(
-                list(
-                    superjob_project.find_jobs(
-                        {"dielectric": e, "doc.fill_fraction.$exists": True}
-                    )
-                ),
+                list(superjob_project.find_jobs({"dielectric": e})),
                 key=lambda job: job.sp.radius,
             )
         )
 
         radii = np.array([job.sp.radius for job in subjobs])
-        ff = np.array([job.document.fill_fraction for job in subjobs])
+        ff = np.array([job.document.get("fill_fraction", np.nan) for job in subjobs])
 
-        if e == 16 and (
-            len(superjob.document.fill_fraction) != len(ff)
-            or len(superjob.document.radii) != len(radii)
-            or any([r in superjob.document.radii for r in radii])
-            or any([f in superjob.document.fill_fraction for f in ff])
-        ):
-            print(
-                "Overwriting for {}, {}->{}, {}->{}".format(
-                    superjob,
-                    len(superjob.document.fill_fraction),
-                    len(ff),
-                    len(superjob.document.radii),
-                    len(radii),
-                )
+        if e == 16:
+            update(superjob)
+
+        print(
+            "\t\t-->{} to go".format(
+                len([r for r in radii if str((r, e)) not in pdos_dict_raw])
             )
-            superjob.document.fill_fraction = ff
-            superjob.document.radii = radii
-
+        )
         w_bins_Tr = None
         DOS_Tr = None
         gDOS = None
 
         try:
             for subjob in tqdm(subjobs):
-                i = np.where(radii == subjob.sp.radius)[0][0]
-                new_entry = make_pdos_entry(subjob, superjob, pdos_dict_raw)
-                if len(list(new_entry.keys())) > 0:
-                    pdos_dict_raw = {**pdos_dict_raw, **new_entry}
-                    w, D, gD = list(new_entry.values())[0]
-                    if w_bins_Tr is None:
-                        w_bins_Tr = np.zeros((len(radii), len(w)))
-                        DOS_Tr = np.zeros((len(radii), len(D)))
-                        gDOS = np.zeros((len(radii), len(gD)))
-                    w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
+                if "fill_fraction" in subjob.document:
+                    i = np.where(radii == subjob.sp.radius)[0][0]
+                    new_entry = make_pdos_entry(subjob, superjob, pdos_dict_raw)
+                    if len(list(new_entry.keys())) > 0:
+                        pdos_dict_raw = {**pdos_dict_raw, **new_entry}
+                        w, D, gD = list(new_entry.values())[0]
+                        if w_bins_Tr is None:
+                            w_bins_Tr = np.zeros((len(radii), len(w)))
+                            DOS_Tr = np.zeros((len(radii), len(D)))
+                            gDOS = np.zeros((len(radii), len(gD)))
+                        w_bins_Tr[i], DOS_Tr[i], gDOS[i] = w, D, gD
 
             np.savez(superjob.fn(pdos_name), **pdos_dict_raw)
 
