@@ -1,16 +1,7 @@
 import os
 
-conda_prefix = os.getenv("CONDA_PREFIX")
-try:
-    assert "photonics-x64" in conda_prefix
-except AssertionError:
-    print("You need to activate photonics-x64.")
-    raise AssertionError
 
 import numpy as np
-from meep import Medium, Lattice, interpolate, Sphere
-from meep import mpb
-import meep as mp
 from fix_subjob_doc import fix
 
 REQUIRED_KEYS = [
@@ -37,6 +28,10 @@ def run(
     mesh_size=5,
     num_bands=20,
 ):
+    from meep import Medium, Lattice, interpolate, Sphere
+    from meep import mpb
+    import meep as mp
+
     default_material = Medium(epsilon=background_epsilon)
     sphere_material = Medium(epsilon=sphere_epsilon)
     geometry_lattice = Lattice(
@@ -172,6 +167,12 @@ def parse_ctl_file(ctl_file):
 
 
 if __name__ == "__main__":
+    conda_prefix = os.getenv("CONDA_PREFIX")
+    try:
+        assert "photonics-x64" in conda_prefix
+    except AssertionError:
+        print("You need to activate photonics-x64.")
+        raise AssertionError
     import signac
     import sys
     import argparse
